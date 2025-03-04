@@ -1,0 +1,693 @@
+﻿@page
+@model SunuerManage.Pages.Manage.Articless.ArticlesEdtModel
+@{
+}
+
+<link href="~/css/bootstrap.min.css" rel="stylesheet">
+<script src="~/js/bootstrap.min.js"></script>
+<link href="~/css/summernote.min.css" rel="stylesheet" />
+<script src="~/js/summernote.min.js"></script>
+<script src="~/js/summernote-zh-cn.min.js"></script>
+
+<style>
+    .layui-form-label {
+        position: relative;
+        float: left;
+        display: block;
+        padding: 9px 15px;
+        width: 120px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: right;
+    }
+
+    .layui-input-block {
+        margin-left: 150px;
+        min-height: 36px;
+    }
+
+    pre code {
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 4px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        display: block;
+        white-space: pre-wrap; /* 保持换行 */
+    }
+</style>
+<style>
+    .file-iteme {
+        position: relative;
+        padding: 0px 20px;
+        display: inline-block;
+    }
+
+    .layui-icon-close {
+        position: absolute;
+        top: 5px;
+        border: 0px solid #666;
+        color: #fff;
+        right: 25px;
+        z-index: 888
+    }
+
+    .file-iteme button {
+        margin-top: 5px;
+        display: inline-block;
+        padding: 5px;
+        cursor: pointer;
+        font-size: 12px;
+    }
+
+    .imgclik {
+        position: absolute;
+        bottom: 7px;
+        left: 0px;
+        width: 100%;
+        text-align: center;
+    }
+
+        .imgclik span {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            padding: 6px 17px;
+            color: #fff;
+            border-radius: 3px;
+            margin: 0px 6px;
+        }
+    /* 隐藏文件输入框 */
+    .hidden-file-input {
+        display: none;
+    }
+
+    .summernote {
+        width: 97%;
+    }
+
+    .layui-form-label {
+        padding-right: 0px;
+    }
+</style>
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+    <div class="layui-form-item">
+        <label class="layui-form-label">分类<span class="red">*</span></label>
+        <div class="layui-input-block nselect">
+            <div id="ParentIDnow"></div>
+            <input name="BigID" id="BigID" class="layui-input" type="hidden" lay-verify="required" autocomplete="off" value="@Model.Model.BigID" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">标题<span class="red">*</span></label>
+        <div class="layui-input-block">
+            <input type="text" name="ArticleTitle" lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input" value="@Model.Model.ArticleTitle">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">关键字</label>
+        <div class="layui-input-block">
+            <input type="text" name="Articlekey" lay-verify="required" placeholder="请输入关键字" autocomplete="off" class="layui-input" value="@Model.Model.Articlekey">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">描述</label>
+        <div class="layui-input-block">
+            <textarea name="ArticleDesn" class="layui-textarea" placeholder="" id="ArticleDesn">@Model.Model.ArticleDesn</textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序<span class="red">*</span></label>
+        <div class="layui-input-block">
+            <input type="text" name="Sorts" lay-verify="required|number" placeholder="排序" autocomplete="off" class="layui-input" value="@Model.Model.Sorts" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">显示<span class="red">*</span></label>
+        <div class="layui-input-block">
+            <input type="radio" name="Statues" value="0" title="是" lay-filter="Statues" @(Model.Model.Statues == 0 ? "checked" : "")>
+            <input type="radio" name="Statues" value="1" title="否" lay-filter="Statues" @(Model.Model.Statues == 1 ? "checked" : "")>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">跳转地址</label>
+        <div class="layui-input-block">
+            <input type="text" name="NavSites" placeholder="跳转地址" autocomplete="off" class="layui-input" value="@Model.Model.NavSites" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">发布时间<span class="red">*</span></label>
+        <div class="layui-input-block">
+            <input type="text" name="ReleaseTime" lay-verify="required" placeholder="发布时间" autocomplete="off" class="layui-input" value="@Model.Model.ReleaseTime.ToString("yyyy-MM-dd HH:mm:ss")" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">点击率<span class="red">*</span></label>
+        <div class="layui-input-block">
+            <input type="text" name="Hits" lay-verify="required|number" placeholder="点击率" autocomplete="off" class="layui-input" value="@Model.Model.Hits" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">图片</label>
+        <div class="layui-input-block">
+            <div id="UpImageImage" class="layui-upload-list" style="float: left; margin-left: 10px;">
+                <div id="ImagePathImage">
+                </div>
+                <div class="layui-upload-drag" id="ImageUpImage" style="padding: 0px; display: block;">
+                    <i class="layui-icon">&#xe67c;</i>
+                    <p>点击上传，或将文件拖拽到此处</p>
+                </div>
+
+                <input id="PicturePathImage" name="Image" type="hidden" value="@Model.Model.Image" />
+
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">图片集</label>
+        <div class="layui-input-block">
+            <div id="UpImageImages" class="layui-upload-list" style="float: left; margin-left: 10px;">
+                <div id="ImagePathImages">
+                </div>
+                <div class="layui-upload-drag" id="ImageUpImages" style="padding: 0px; display: block;">
+                    <i class="layui-icon">&#xe67c;</i>
+                    <p>点击上传，或将文件拖拽到此处</p>
+                </div>
+
+                <input id="PicturePathImages" name="Images" type="hidden" value="@Model.Model.Images" />
+
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">内容</label>
+        <div class="layui-input-block">
+            <div class="summernote" id="summernote"></div>
+            <!-- 用于附件上传的隐藏文件输入框 -->
+            <input type="file" id="fileInput" style="display:none" class="hidden-file-input" multiple />
+            <textarea name="Desn" class="layui-textarea" style="display:none" placeholder="" id="Desn">@Model.Model.Desn</textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline">
+            <input type="button" lay-submit lay-filter="layuiadmin-app-form-submit" class="layui-btn btn" id="layuiadmin-app-form-submit" value="确认编辑">
+        </div>
+    </div>
+</div>
+
+<script src="/js/layuiadmin/xm-select.js"></script>
+<style>
+    .nselect {
+        z-index: 20;
+    }
+
+    .wrap {
+        width: 80%;
+        margin: 40px auto;
+        display: flex;
+    }
+
+        .wrap > div {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .wrap p {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 40px;
+            color: #ffffff;
+        }
+
+    .layui-tree-line .layui-tree-entry:hover .layui-tree-txt {
+        color: #999;
+        text-decoration: none;
+        transition: .3s;
+    }
+</style>
+<script>
+  
+    //富文本编辑框
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            height: 240, //set editable area's height
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'attachment']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ],
+            buttons: {
+                attachment: function() {
+                    var ui = $.summernote.ui;
+                    var button = ui.button({
+                        contents: '<i class="note-icon-paperclip"></i> 附件', // 图标和按钮文本
+                        tooltip: '插入附件',
+                        click: function() {
+                            //  console.log('附件按钮点击');
+                            $('#fileInput').click();  // 触发文件选择框
+                        }
+                    });
+                    return button.render();
+                }
+            },
+            lang: 'zh-CN', // 设置中文语言支持
+            codemirror: { // codemirror options
+                theme: 'monokai',
+                mode: 'text/html',  // 设置为 HTML 模式，支持显示 HTML 代码
+                lineNumbers: true  // 显示行号
+            }, callbacks: {
+                onImageUpload: function(files) {
+                    // 遍历所有上传的文件并添加到 FormData
+                    for (var i = 0; i < files.length; i++) {
+                        var data = new FormData();
+                        data.append("file", files[i]);  // 通过数组名 "files[]" 添加多个文件
+
+                        $.ajax({
+                            url: '/api/Files/Upload',  // 服务器图片上传的接口
+                            method: 'POST',
+                            data: data,
+                            contentType: false,
+                            processData: false,
+                            success: function(response) {
+                                // 图片上传成功后返回的图片 URL
+                                var imageUrl = response.FileUrl;
+                                $('#summernote').summernote('insertImage', imageUrl);
+                            }
+                        });
+                    }
+
+                }, onInit: function() {
+                    // 手动插入按钮
+                    const $button = $('<button class="note-btn btn btn-default btn-sm" type="button" title="插入代码块"><i class="note-icon-code"></i></button>');
+                    $button.on('click', function() {
+                        $('#summernote').summernote('editor.pasteHTML', '<pre><code>Your code here...</code></pre>');
+                    });
+                    $('.note-insert').append($button); // 将按钮添加到插入工具栏
+                }
+
+            }
+        });
+        // 当文件选择框选择文件时触发上传
+        $('#fileInput').on('change', function(e) {
+            console.log('文件选择框变化:', e.target.files);
+            var files = e.target.files;
+            if (files.length > 0) {
+                // 调用 Summernote 的 onFileUpload 事件上传文件
+                uploadFiles(files);
+            }
+        });
+        // 上传文件的功能
+        function uploadFiles(files) {
+            // 将选中的文件添加到 FormData
+            for (var i = 0; i < files.length; i++) {
+                var data = new FormData();
+                data.append("file", files[0]);
+
+                $.ajax({
+                    url: '/api/Files/Upload',  // 服务器文件上传的接口
+                    method: 'POST',
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        // 上传成功后，返回附件链接并插入
+                        var fileUrl = response.FileUrl;
+                        var fileName = response.FileName;
+                        var attachmentLink = `<a href="${fileUrl}" target="_blank">${fileName}</a> `;
+                        $('#summernote').summernote('insertNode', $(attachmentLink)[0]);
+                    }
+                });
+
+            }
+        }
+        $(".layui-btn").bind("click", function(event) {
+            $("#Desn").val($('#summernote').summernote('code'));
+        });
+        function htmlDecode(input) {
+            var e = document.createElement('div');
+            e.innerHTML = input;
+            return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+        }
+        var content = htmlDecode('@Model.Model.Desn');
+        console.log(content);
+        $('#summernote').summernote('code', content); // 将内容设置到编辑器中
+    });
+    //单图上传图片
+    layui.use('upload', function() {
+        upload = layui.upload;
+        layui.use('upload', function() {
+            var upload = layui.upload;
+            var i = 0;
+            var uploadInst = upload.render({
+                elem: '#ImageUpImages',  // 触发上传的元素
+                url: '/api/Files/Upload',  // 文件上传接口
+                accept: 'images',  // 只允许上传图片
+                auto: true,  // 自动上传
+                multiple: true,  // 支持多文件上传
+                size: 1420,  // 文件大小限制，单位KB
+                before: function(obj) {
+                    // 预览文件（本地预览）
+                    var previewDiv = $('#ImagePathImages');
+                    previewDiv.empty();  // 清空原先的预览
+                    obj.preview(function(index, file, result) {
+                        // var imgElement = '<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img" style="max-width: 200px; max-height:200px;  margin-right: 10px;"/>';
+                        //  previewDiv.append(imgElement);  // 添加预览图片
+                    });
+                },
+                done: function(res) {
+                    if (res.Code !== "0") {
+                        return layer.msg(res.Messge);
+                    }
+
+                    // 如果是多图上传，处理返回的 URL 列表
+                    var html_txt = "";
+                    if (res.FileType == ".pdf") {
+                        html_txt += `<div class="file-iteme">
+                    <a href="${res.FileUrl}" target="_blank"><img src="/images/PDF.png" /></a>
+                <i id="del" class="layui-icon layui-icon-close"></i>
+            </div>
+            `
+                    } else if (res.FileType == ".docx") {
+                        html_txt += `<div class="file-iteme">
+                            <a href="${res.FileUrl}" target="_blank"><img src="/images/DOC.png" /></a>
+                    <i id="del" class="layui-icon layui-icon-close"></i>
+                </div>
+                `
+                    } else if (res.FileType == ".xlsx") {
+                        html_txt += `<div class="file-iteme">
+                                <a href="${res.FileUrl}" target="_blank"><img src="/images/excel.jpeg" /></a>
+                        <i id="del" class="layui-icon layui-icon-close"></i>
+                    </div>
+                    `
+                    }
+                    else if (res.FileType == ".jpg" || res.FileType == ".png" || res.FileType == ".jpeg" || res.FileType == ".gif") {
+                        html_txt += `<div class="file-iteme">
+                                <a href="${res.FileUrl}" target="_blank"><img src="${res.FileUrl}"  class=\"layui-upload-img\" /></a>
+                <i id="del" class="layui-icon layui-icon-close"></i>
+                <div class="imgclik">
+                    <span class="move-prev">向前移动</span>
+                        <span class="move-next">向后移动</span>
+                        <span class="move-first">第一张</span>
+                </div></div>
+            `
+                    }
+                    $('#PicturePathImages').val($('#PicturePathImages').val() + res.FileUrl + "|");
+
+                    $("#ImagePathImages").append(html_txt)
+                    if (i == 0) {
+                        return layer.msg(res.Messge);
+                    }
+                    i++;
+                },
+                error: function() {
+                    var demoText = $('#errorText');
+                    demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                    demoText.find('.demo-reload').on('click', function() {
+                        uploadInst.upload();
+                    });
+                }
+            });
+        });
+        var uploadInst2 = upload.render({
+            elem: '#ImageUpImage',
+            url: '/api/Files/Upload',
+            accept: 'images',
+            auto: true,
+            size: 1420, // 文件大小限制，单位KB
+            choose: function(obj) {
+                //预读本地文件（不支持ie8）
+                var previewDiv = $('#ImagePathImage');
+                previewDiv.empty();  // 清空原先的预览
+                obj.preview(function(index, file, result) {
+                    var imgElement = '<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img" style="max-width:200px; max-height:200px;  margin-right: 10px;"/>';
+                    previewDiv.append(imgElement);  // 添加预览图片
+                });
+            },
+            done: function(res) {
+                if (0 != res.Code) {
+                    return layer.msg(res.Messge);
+                }
+                else {
+                    var html_txt = "";
+                    if (res.FileType == ".pdf") {
+                        html_txt += `<div class="file-iteme">
+                <a href="${res.FileUrl}" target="_blank"><img src="/images/PDF.png" /></a>
+            <i id="del" class="layui-icon layui-icon-close"></i>
+        </div>
+        `
+                    } else if (res.FileType == ".docx") {
+                        html_txt += `<div class="file-iteme">
+                        <a href="${res.FileUrl}" target="_blank"><img src="/images/DOC.png" /></a>
+                <i id="del" class="layui-icon layui-icon-close"></i>
+            </div>
+            `
+                    } else if (res.FileType == ".xlsx") {
+                        html_txt += `<div class="file-iteme">
+                            <a href="${res.FileUrl}" target="_blank"><img src="/images/excel.jpeg" /></a>
+                    <i id="del" class="layui-icon layui-icon-close"></i>
+                </div>
+                `
+                    }
+                    else if (res.FileType == ".jpg" || res.FileType == ".png" || res.FileType == ".jpeg" || res.FileType == ".gif") {
+                        html_txt += `<div class="file-iteme">
+                            <a href="${res.FileUrl}" target="_blank"><img src="${res.FileUrl}" class=\"layui-upload-img\" /></a>
+            <i id="del" class="layui-icon layui-icon-close"></i>
+        </div>
+        `
+                    }
+                    $("#ImagePathImage").html(html_txt)
+                    $('#PicturePathImage').val(res.FileUrl);
+                    return layer.msg(res.Messge);
+                }
+
+
+            },
+            error: function() {
+                //演示失败状态，并实现重传
+                var demoText = $('#errorText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function() {
+                    uploadInst2.upload();
+                });
+            }
+        });
+        //图片标题查看
+        layer.photos({
+            photos: '.layui-upload-list',
+            anim: 0 //0-6的选择，指定弹出图片动画类型
+        });
+        // 向前移动
+        $('body').on('click', '.move-prev', function() {
+            var currentItem = $(this).closest('.file-iteme');
+            var prevItem = currentItem.prev('.file-iteme');
+            if (prevItem.length) {
+                currentItem.insertBefore(prevItem);
+            }
+        });
+
+        // 向后移动
+        $('body').on('click', '.move-next', function() {
+            var currentItem = $(this).closest('.file-iteme');
+            var nextItem = currentItem.next('.file-iteme');
+            if (nextItem.length) {
+                currentItem.insertAfter(nextItem);
+            }
+        });
+
+        // 移动到第一张
+        $('body').on('click', '.move-first', function() {
+            var currentItem = $(this).closest('.file-iteme');
+            currentItem.prependTo('#ImagePathImages');
+        });
+        // 删除图片点击事件
+        $(document).on("click", "#del", function(event) {
+            $(this).parent().remove();
+        });
+        // 初始化上传的文件反显
+        if ('@Model.Model.Image' != "") {
+            var item = '@Model.Model.Image';
+           
+                var html_txt = "";
+                var i = item.lastIndexOf(".");
+                var a = item.substring(i, item.length);//用substring从I位置截取至最后Var a=path.substring(i)；
+
+                console.log(a);
+                if (a.toLowerCase() == ".pdf") {
+                    html_txt += `<div class="file-iteme">
+                            <a href="${item}" target="_blank"><img src="/images/PDF.png" /></a>
+                        <i id="del" class="layui-icon layui-icon-close"></i>
+                    </div>
+                    `
+                } else if (a.toLowerCase() == ".docx") {
+                    html_txt += `<div class="file-iteme">
+                                        <a href="${item}" target="_blank"><img src="/images/DOC.png" /></a>
+                            <i id="del" class="layui-icon layui-icon-close"></i>
+                        </div>
+                        `
+                } else if (a.toLowerCase() == ".xlsx") {
+                    html_txt += `<div class="file-iteme">
+                                            <a href="${item}" target="_blank"><img src="/images/excel.jpeg" /></a>
+                                <i id="del" class="layui-icon layui-icon-close"></i>
+                            </div>
+                            `
+                }
+                else if (a.toLowerCase() == ".jpg" || a.toLowerCase() == ".png" || a.toLowerCase() == ".jpeg" || a.toLowerCase() == ".gif") {
+                    html_txt += `<div class="file-iteme">
+                                                <a href="${item}" target="_blank"><img src="${item}"  class=\"layui-upload-img\" /></a>
+                        <i id="del" class="layui-icon layui-icon-close"></i>
+                        `
+                }
+                $("#ImagePathImage").append(html_txt)
+
+
+        }
+        // 初始化上传的文件反显
+        if ('@Model.Model.Images' != "") {
+            var file = '@Model.Model.Images';
+            var fileArr = file.split(",");
+            fileArr.forEach(item => {
+                var html_txt = "";
+                var i = item.lastIndexOf(".");
+                var a = item.substring(i , item.length);//用substring从I位置截取至最后Var a=path.substring(i)；
+
+                console.log(a);
+                if (a.toLowerCase() == ".pdf") {
+                    html_txt += `<div class="file-iteme">
+                        <a href="${item}" target="_blank"><img src="/images/PDF.png" /></a>
+                    <i id="del" class="layui-icon layui-icon-close"></i>
+                </div>
+                `
+                } else if (a.toLowerCase() == ".docx") {
+                    html_txt += `<div class="file-iteme">
+                                    <a href="${item}" target="_blank"><img src="/images/DOC.png" /></a>
+                        <i id="del" class="layui-icon layui-icon-close"></i>
+                    </div>
+                    `
+                } else if (a.toLowerCase() == ".xlsx") {
+                    html_txt += `<div class="file-iteme">
+                                        <a href="${item}" target="_blank"><img src="/images/excel.jpeg" /></a>
+                            <i id="del" class="layui-icon layui-icon-close"></i>
+                        </div>
+                        `
+                }
+                else if (a.toLowerCase() == ".jpg" || a.toLowerCase() == ".png" || a.toLowerCase() == ".jpeg" || a.toLowerCase() == ".gif") {
+                    html_txt += `<div class="file-iteme">
+                                            <a href="${item}" target="_blank"><img src="${item}"  class=\"layui-upload-img\" /></a>
+                    <i id="del" class="layui-icon layui-icon-close"></i>
+                    <div class="imgclik">
+                        <span class="move-prev">向前移动</span>
+                            <span class="move-next">向后移动</span>
+                            <span class="move-first">第一张</span>
+                    </div></div>
+                `
+                }
+                $("#ImagePathImages").append(html_txt)
+
+            })
+
+        }
+    });
+    layui.config({
+        base: '/js/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'layer'], function() {
+        var $ = layui.$
+            , form = layui.form;
+        $.ajax({
+            url: "/api/ArticleCategory/Select",
+            type: "post",
+            data: { ParentID: 0, BigID: "@Model.Model.BigID", Top: 1 },
+            dataType: "Json",
+            success: function(data) {
+                var demo1 = xmSelect.render({
+                    el: '#ParentIDnow',
+                    model: { label: { type: 'text' } },
+                    radio: true,
+                    clickClose: true,
+                    tree: {
+                        show: true,
+                        strict: false,
+                        expandedKeys: true,
+                    },
+                    height: 'auto',
+                    on: function(data) {
+                        if (data.isAdd) {
+                            $("#BigID").val(data.arr[0].value);
+                        }
+                    },
+                    data: function() {
+                        return data.data
+                    }
+                })
+            }
+        })
+        //监听提交
+        form.on('submit(layuiadmin-app-form-submit)', function(data) {
+            var Images = "";
+            var doms = [...$("#ImagePathImages")[0].children]
+            if (doms.length > 0) {
+                doms.forEach((item, index) => {
+                    var anchor = $(item).find("a");
+                    if (anchor.length > 0) {
+                        var href = anchor.attr("href");
+                        if (index === 0) {
+                            Images += href;
+                        } else {
+                            Images += ',' + href;
+                        }
+                    }
+                })
+            }
+            var field = data.field; //获取提交的字段
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            var count = layer.load(1);
+            $.ajax({
+                url: "/api/Articles/Update",
+                type: "post",
+                async: false,
+                data: {
+                    ArticleID:'@Model.Model.ArticleID',
+                    BigID: data.field.BigID,
+                    ArticleTitle: data.field.ArticleTitle,
+                    Articlekey: data.field.Articlekey,
+                    ArticleDesn: data.field.ArticleDesn,
+                    Statues: data.field.Statues,
+                    Sorts: data.field.Sorts,
+                    NavSites: data.field.NavSites,
+                    ReleaseTime: data.field.ReleaseTime,
+                    Hits: data.field.Hits,
+                    Image: data.field.Image,
+                    Images: Images,
+                    Desn: data.field.Desn
+                },
+                success: function(datax) {
+                    layer.close(count);
+                    if (0 == datax.code) {
+                        layer.msg(datax.msg, { time: 1000 }, function() {
+                            parent.location.reload()
+                            parent.layer.close(index)
+                        });
+                    } else {
+                        layer.msg(datas.msg, {
+                            icon: 1,
+                            time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                        }, function() {
+                            layer.closeAll();
+                        });
+                    }
+                },
+                error: function(e) {
+                    layer.closeAll();
+                    alert("错误！！");
+                }
+            });
+        });
+    })
+</script>

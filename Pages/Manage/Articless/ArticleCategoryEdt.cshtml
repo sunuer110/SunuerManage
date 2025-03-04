@@ -1,0 +1,284 @@
+﻿@page
+@model SunuerManage.Pages.Manage.Articless.ArticleCategoryEdtModel
+@{
+}
+
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+    <div class="layui-form-item">
+        <label class="layui-form-label">上级<span class="red">*</span></label>
+        <div class="layui-input-inline input-inline nselect">
+            <div id="ParentIDnow"></div>
+            <input name="ParentID" id="ParentID" class="layui-input" type="hidden" lay-verify="required" autocomplete="off" value="@Model.Model.ParentID" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">分类名称<span class="red">*</span></label>
+        <div class="layui-input-block">
+            <input type="text" name="BigTitle" lay-verify="required" placeholder="请输入分类名称" autocomplete="off" class="layui-input" value="@Model.Model.BigTitle">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">优化标题<span class="red">*</span></label>
+        <div class="layui-input-block">
+            <input type="text" name="KeyTitle" lay-verify="required" placeholder="请输入优化标题" autocomplete="off" class="layui-input" value="@Model.Model.KeyTitle">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">关键词</label>
+        <div class="layui-input-block">
+            <input type="text" name="KeyWord"  placeholder="请输入关键词" autocomplete="off" class="layui-input" value="@Model.Model.KeyWord">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">描述</label>
+        <div class="layui-input-block">
+            <textarea name="KeyDesn" class="layui-textarea" placeholder="" id="KeyDesn">@Model.Model.KeyDesn</textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序<span class="red">*</span></label>
+        <div class="layui-input-block">
+            <input type="text" name="Sorts" lay-verify="required|number" placeholder="排序" autocomplete="off" class="layui-input" value="@Model.Model.Sorts" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">跳转链接</label>
+        <div class="layui-input-block">
+            <input type="text" name="SiteUrl" placeholder="请输入跳转链接" autocomplete="off" class="layui-input" value="@Model.Model.SiteUrl">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">导航<span class="red">*</span></label>
+        <div class="layui-input-block">
+            <input type="radio" name="Statues" value="0" title="显示" lay-filter="Statues" @(Model.Model.Statues == 0 ? "checked" : "")>
+            <input type="radio" name="Statues" value="1" title="不显示" lay-filter="Statues" @(Model.Model.Statues == 1 ? "checked" : "")>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">图片</label>
+        <div class="layui-input-block">
+            <div id="UpImageImages" class="layui-upload-list" style="float: left; margin-left: 10px;">
+                <img id="ImageImages" class="layui-upload-img HeadPortrait_Ordinary" src="@Model.Model.Images"/>
+                <div class="layui-upload-drag" id="ImageUpImages" style="padding: 0px; display: block;">
+                    <i class="layui-icon">&#xe67c;</i>
+                    <p>点击上传，或将文件拖拽到此处</p>
+                </div>
+
+                <input id="PicturePathImages" name="Images" type="hidden" value="@Model.Model.Images" />
+
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">图片手机</label>
+        <div class="layui-input-block">
+            <div id="UpImageImagesPhone" class="layui-upload-list" style="float: left; margin-left: 10px;">
+                <img id="ImageImagesPhone" class="layui-upload-img HeadPortrait_Ordinary" src='@Model.Model.ImagesPhone'>
+                <div class="layui-upload-drag" id="ImageUpImagesPhone" style="padding: 0px; display: block;">
+                    <i class="layui-icon">&#xe67c;</i>
+                    <p>点击上传，或将文件拖拽到此处</p>
+                </div>
+
+                <input id="PicturePathImagesPhone" name="ImagesPhone" type="hidden" value="@Model.Model.ImagesPhone" />
+
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline">
+            <input type="button" lay-submit lay-filter="layuiadmin-app-form-submit" class="layui-btn btn" id="layuiadmin-app-form-submit" value="确认编辑">
+        </div>
+    </div>
+</div>
+
+<script src="/js/layuiadmin/xm-select.js"></script>
+<style>
+    .nselect {
+        z-index: 20;
+    }
+
+    .wrap {
+        width: 80%;
+        margin: 40px auto;
+        display: flex;
+    }
+
+        .wrap > div {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .wrap p {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 40px;
+            color: #ffffff;
+        }
+
+    .layui-tree-line .layui-tree-entry:hover .layui-tree-txt {
+        color: #999;
+        text-decoration: none;
+        transition: .3s;
+    }
+</style>
+<script>
+    //单图上传图片
+    layui.use('upload', function() {
+        upload = layui.upload;
+        var uploadInst = upload.render({
+            elem: '#ImageUpImages',
+            url: '/api/Files/Upload',
+            accept: 'images',
+            auto: true,
+            size: 1420,
+            choose: function(obj) {
+                //预读本地文件（不支持ie8）
+                obj.preview(function(index, file, result) {
+                    $('#ImageImages').attr('src', result); //图片链接（base64）
+                });
+            },
+            done: function(res) {
+                if (0 != res.Code) {
+                    return layer.msg(res.Messge);
+                }
+                else {
+                    $('#PicturePathImages').val(res.FileUrl);
+                    $('#ImageImages').attr('src', res.FileUrl);
+                    return layer.msg(res.Messge);
+                }
+            },
+            error: function() {
+                //演示失败状态，并实现重传
+                var demoText = $('#errorText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function() {
+                    uploadInst.upload();
+                });
+            }
+        });
+        var uploadInst2 = upload.render({
+            elem: '#ImageUpImagesPhone',
+            url: '/api/Files/Upload',
+            accept: 'ImagesPhone',
+            auto: true,
+            size: 1420,
+            choose: function(obj) {
+                //预读本地文件（不支持ie8）
+                obj.preview(function(index, file, result) {
+                    $('#ImageImagesPhone').attr('src', result); //图片链接（base64）
+                });
+            },
+            done: function(res) {
+                if (0 != res.Code) {
+                    return layer.msg(res.Messge);
+                }
+                else {
+                    $('#PicturePathImagesPhone').val(res.FileUrl);
+                    $('#ImagePathImagesPhone').attr('src', res.FileUrl);
+                    return layer.msg(res.Messge);
+                }
+            },
+            error: function() {
+                //演示失败状态，并实现重传
+                var demoText = $('#errorText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function() {
+                    uploadInst2.upload();
+                });
+            }
+        });
+        //图片标题查看
+        layer.photos({
+            photos: '.layui-upload-list',
+            anim: 0 //0-6的选择，指定弹出图片动画类型
+        });
+
+    });
+    layui.config({
+        base: '/js/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'layer'], function() {
+        var $ = layui.$
+            , form = layui.form;
+        $.ajax({
+            url: "/api/ArticleCategory/Select",
+            type: "post",
+            data: { ParentID: 0, BigID: "@Model.Model.ParentID" },
+            dataType: "Json",
+            success: function(data) {
+                var demo1 = xmSelect.render({
+                    el: '#ParentIDnow',
+                            model: {
+                                label: {
+                                    type: 'text'
+                                }
+                            },
+                    tips: '上级分类',
+                    radio: true,
+                    clickClose: true,
+                    tree: {
+                        show: true,
+                        strict: false,
+                        expandedKeys: true,
+                    },
+                    height: 'auto',
+                    on: function(data) {
+                        if (data.isAdd) {
+                            $("#ParentID").val(data.arr[0].value);
+                        }
+                    },
+                    data: function() {
+                        return data.data
+                    }
+                })
+            }
+        })
+        //监听提交
+        form.on('submit(layuiadmin-app-form-submit)', function(data) {
+            var field = data.field; //获取提交的字段
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            var count = layer.load(1);
+            $.ajax({
+                url: "/api/ArticleCategory/Update",
+                type: "post",
+                async: false,
+                data: {
+                    BigID: @Model.Model.BigID,
+                    ParentID: data.field.ParentID,
+                    Statues: data.field.Statues,
+                    BigTitle: data.field.BigTitle,
+                    KeyTitle: data.field.KeyTitle,
+                    KeyWord: data.field.KeyWord, 
+                    KeyDesn: data.field.KeyDesn,
+                    Images: data.field.Images,
+                    ImagesPhone: data.field.ImagesPhone,
+                    Sorts: data.field.Sorts,
+                    SiteUrl: data.field.SiteUrl
+                        },
+                success: function(datax) {
+                    layer.close(count);
+                    if (0 == datax.code) {
+                        layer.msg(datax.msg, { time: 1000 }, function() {
+                            parent.location.reload()
+                            parent.layer.close(index)
+                        });
+                    } else {
+                        layer.msg(datas.msg, {
+                            icon: 1,
+                            time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                        }, function() {
+                            layer.closeAll();
+                        });
+                    }
+                },
+                error: function(e) {
+                    layer.closeAll();
+                    alert("错误！！");
+                }
+            });
+        });
+    })
+</script>

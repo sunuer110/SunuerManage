@@ -1,0 +1,106 @@
+﻿@page
+@model WebSite.Pages.Manage.LoginModel
+
+<link href="~/css/login.css" rel="stylesheet" />
+
+<div class="contents">
+    <div class="content">
+        <div class="h1">
+            <h1>Login</h1>
+        </div>
+        <div class="reinput ">
+            <span class="user"><i class="layui-icon layui-icon-username"></i></span>
+            <input name="UserName" class="text UserName" style="color: #FFFFFF !important" type="text" placeholder="请输入帐号">
+        </div>
+        <div class="reinput">
+            <span class="user"><i class="layui-icon layui-icon-lock"></i></span>
+            <input name="Password" class="text Password" style="color: #FFFFFF !important; z-index: 100;" value="" type="password" placeholder="请输入密码">
+        </div>
+        <div class="reinput">
+            <span class="user"><i class="layui-icon layui-icon-lock"></i></span>
+            <input name="yanzheng" class="text textyanzheng" style="color: #FFFFFF !important; z-index: 100;" value="" type="text" placeholder="请输入验证码">
+            <span id="cannot" class="yanzm">
+                <span id="yanzhengma">
+                    <img src="/api/Captcha/Generate" id="viewimg" alt="验证码" class="yanzms" />
+                </span>
+            </span>
+        </div>
+        <div class="mb2">
+            <a class="act-but submit" href="javascript:;" style="color: #000">登录</a>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/javascript.js"></script>
+<script type="text/javascript">
+    $(function() {
+        function pwd(strs) {
+            var encrypt = new JSEncrypt();
+            encrypt.setPublicKey("MIIBITANBgkqhkiG9w0BAQEFAAOCAQ4AMIIBCQKCAQBtMw5aUdmgCw9lRpxytiOjW/j+HMzLiDxrfE2/39jn+Jxc7LJPcgdgy+R495KJuXHMJWypLwoexRbypXWQQPMnF7+BG/lkwFjnVY1gWCl8gpWwSrf5za2wxBxxjOApMUPIb/dcBwJ63JUr5oN4hJo+dvogAXrLUIxKN1o/bvCot15F3pNy96VUZT6WbPSKnAkDqWACtQE2fWMKhfrd9RBtmCV6m/69Gt0heHlUgHk/DmHaz/xtE7rnQrcwP9ulPL7va8GbHNPlJ+huHCzrYzKUhxxHsHoVxCt60RllbARuvb5GwLA8FU7gscD0fqJKMueCX+qhYUyLVut5dld5BmZzAgMBAAE=");
+            var str = strs;
+            var encryptData = encrypt.encrypt(str);//加密后的字符串
+            return encryptData;
+        }
+        layui.config({
+            base: '/js/layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index'], function() {
+            var $ = layui.$
+                , admin = layui.admin
+                , element = layui.element
+                , layer = layui.layer;
+            $(function() {
+                $(".submit").click(function() {
+                    var text = $(".textyanzheng").val();
+                    var UserName = $(".UserName").val();
+                    var Password = $(".Password").val();
+                    if ($('.UserName').val() == '') {
+                        layer.msg('请输入账号');
+                        $('.UserName').css("border-color", "red");
+                        $(".UserName").focus();
+                        return false;
+                    }
+                    if ($('.Password').val() == '') {
+                        layer.msg('请输入密码');
+                        $('.Password').css("border-color", "red");
+                        $(".Password").focus();
+                        return false;
+                    }
+                    if ($('.textyanzheng').val() == '') {
+                        layer.msg('请输入验证码');
+                        $('.textyanzheng').css("border-color", "red");
+                        $(".textyanzheng").focus();
+                        return false;
+                    }
+                    text = pwd(text);
+                    UserName = pwd(UserName);
+                    Password = pwd(Password);
+                    $.ajax({
+                        url: '/api/Admin/Login',//后面添加
+                        type: 'post',
+                        data: { text: text, AdminName: UserName, Password: Password },
+                        success: function(data) {
+                            if (data.code == 0) {
+                                layer.closeAll();
+                                layer.msg("登录成功！");
+                                setTimeout(function() {
+                                    window.location.href = "/Manage/admin_index"
+                                }, 1000)
+                            }
+                            else {
+                                layer.msg(data.msg);
+                                setTimeout(function() { layer.closeAll(); }, 2000);
+                                return false;
+                            }
+                        }
+                    });
+
+                });
+                $(".yanzms").click(function() {
+                    $(this).attr("src", "/api/Captcha/Generate?code=" + Math.random());
+                });
+            });
+        });
+    });
+</script>

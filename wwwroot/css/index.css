@@ -1,0 +1,106 @@
+﻿
+html, body {
+    padding: 0px;
+    width: 100%;
+    margin: 0 auto;
+    -webkit-text-size-adjust: none;
+    background: #fff no-repeat top center;
+    background-size: 100% auto;
+    font-size: 12px;
+    -webkit-text-size-adjust: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    -webkit-touch-callout: none;
+    -moz-touch-callout: none;
+    -ms-touch-callout: none;
+    touch-callout: none;
+}
+
+::placeholder {
+    color: #e8e9e7;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: #e8e9e7;
+}
+
+::-ms-input-placeholder {
+    color: #e8e9e7;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: #333;
+        text-decoration: none
+    }
+
+    a:link {
+        text-decoration: none;
+        color: #333;
+    }
+
+    a:active {
+        text-decoration: none;
+        color: #333;
+    }
+
+.clear {
+    clear: both;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: "";
+    clear: both;
+    height: 0;
+}
+
+img {
+    border: 0px;
+    width: 100%;
+    display: block;
+}
+
+.error_massage {
+    color: Red;
+}
+
+li {
+    list-style-type: none;
+}
+
+button, input, select, textarea {
+    font-size: 100%;
+    border: 0;
+    outline: none;
+}
+
+    input[type="button"], input[type="submit"], input[type="reset"], input[type="text"] {
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+/*移动端页面*/
+@media (max-width: 1200px) {
+}
+/*手机版*/
+@media (max-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}

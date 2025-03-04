@@ -1,0 +1,240 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Web
+build_property.RootNamespace = Web
+build_property.ProjectDir = D:\sites\NET8\Web\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\sites\NET8\Web
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+
+[D:/sites/NET8/Web/Pages/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWJvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Cases.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FzZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Admins/AdminAdd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFkbWluc1xBZG1pbkFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Admins/AdminEdt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFkbWluc1xBZG1pbkVkdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Admins/AdminList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFkbWluc1xBZG1pbkxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Admins/AdminPassWord.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFkbWluc1xBZG1pblBhc3NXb3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Admins/AdminPowerAdd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFkbWluc1xBZG1pblBvd2VyQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Admins/AdminPowerEdt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFkbWluc1xBZG1pblBvd2VyRWR0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Admins/AdminPowerList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFkbWluc1xBZG1pblBvd2VyTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Admins/AdminRolesAdd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFkbWluc1xBZG1pblJvbGVzQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Admins/AdminRolesEdt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFkbWluc1xBZG1pblJvbGVzRWR0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Admins/AdminRolesList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFkbWluc1xBZG1pblJvbGVzTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Admins/Adminview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFkbWluc1xBZG1pbnZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/admin_index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXGFkbWluX2luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Agreement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFncmVlbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Articless/ArticleCategoryAdd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFydGljbGVzc1xBcnRpY2xlQ2F0ZWdvcnlBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Articless/ArticleCategoryEdt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFydGljbGVzc1xBcnRpY2xlQ2F0ZWdvcnlFZHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Articless/ArticleCategoryList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFydGljbGVzc1xBcnRpY2xlQ2F0ZWdvcnlMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Articless/ArticlesAdd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFydGljbGVzc1xBcnRpY2xlc0FkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Articless/ArticlesEdt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFydGljbGVzc1xBcnRpY2xlc0VkdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Articless/ArticlesList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXEFydGljbGVzc1xBcnRpY2xlc0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/consoles/console.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXGNvbnNvbGVzXGNvbnNvbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/LoginOut.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXExvZ2luT3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/ManageSets/ManageSetEdt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXE1hbmFnZVNldHNcTWFuYWdlU2V0RWR0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesDomainNameAdd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc0RvbWFpbk5hbWVBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesDomainNameEdt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc0RvbWFpbk5hbWVFZHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesDomainNameList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc0RvbWFpbk5hbWVMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesDomainNameRenew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc0RvbWFpbk5hbWVSZW5ldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesDomainNameRenewEdt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc0RvbWFpbk5hbWVSZW5ld0VkdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesDomainNameRenewList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc0RvbWFpbk5hbWVSZW5ld0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesSpaceAdd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc1NwYWNlQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesSpaceEdt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc1NwYWNlRWR0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesSpaceList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc1NwYWNlTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesSpaceRenew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc1NwYWNlUmVuZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesSpaceRenewEdt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc1NwYWNlUmVuZXdFZHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesSpaceRenewList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc1NwYWNlUmVuZXdMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesTheServerAdd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc1RoZVNlcnZlckFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesTheServerEdt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc1RoZVNlcnZlckVkdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesTheServerList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc1RoZVNlcnZlckxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesTheServerRenew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc1RoZVNlcnZlclJlbmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesTheServerRenewEdt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc1RoZVNlcnZlclJlbmV3RWR0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Manage/Sitess/SitesTheServerRenewList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlXFNpdGVzc1xTaXRlc1RoZVNlcnZlclJlbmV3TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/News.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/newsview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcbmV3c3ZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Shared/Menu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXE1lbnUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Shared/_indexLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9pbmRleExheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Shared/_ManageIndexLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9NYW5hZ2VJbmRleExheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/sites/NET8/Web/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-esyc55q667

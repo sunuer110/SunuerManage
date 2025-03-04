@@ -1,0 +1,156 @@
+﻿@page
+@model SunuerManage.Pages.Manage.Admins.AdminAddModel
+@{
+}
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">登录名<span class="red">*</span></label>
+        <div class="layui-input-inline input-inline">
+            <input type="text" name="AdminName" lay-verify="required" placeholder="请输入登录名" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">昵称<span class="red">*</span></label>
+        <div class="layui-input-inline input-inline">
+            <input type="text" name="AdminNick" lay-verify="required" placeholder="请输入昵称" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">登录密码<span class="red">*</span></label>
+        <div class="layui-input-inline input-inline">
+            <input type="text" name="PassWord" lay-verify="required" placeholder="请输入登录密码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">角色<span class="red">*</span></label>
+        <div class="layui-input-inline input-inline">
+            <select name="RoleID" lay-verify="required" id="RoleID" lay-filter="RoleID">
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">状态<span class="red">*</span></label>
+        <div class="layui-input-inline input-inline">
+            <input type="radio" name="Statues" value="0" title="正常" lay-filter="Statues" checked>
+            <input type="radio" name="Statues" value="1" title="冻结" lay-filter="Statues">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline">
+            <input type="button" lay-submit lay-filter="layuiadmin-app-form-submit" class="layui-btn btn" id="layuiadmin-app-form-submit" value="确认添加">
+        </div>
+    </div>
+</div>
+
+<script src="/js/layuiadmin/xm-select.js"></script>
+<style>
+    .nselect {
+        z-index: 20;
+    }
+
+    .wrap {
+        width: 80%;
+        margin: 40px auto;
+        display: flex;
+    }
+
+        .wrap > div {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .wrap p {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 40px;
+            color: #ffffff;
+        }
+
+    .layui-tree-line .layui-tree-entry:hover .layui-tree-txt {
+        color: #999;
+        text-decoration: none;
+        transition: .3s;
+    }
+</style>
+
+<script>
+    layui.config({
+        base: '/js/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form'], function () {
+        var $ = layui.$
+            , form = layui.form;
+       
+            //拉取角色表
+        $.ajax({
+            url: "/api/AdminRoles/Get",
+            type: "get",
+            data: { Page: 1, PageSize: 20000 },
+            dataType: "json",
+            success: function (Data) {
+                if (Data.code == 0) {
+                    var str = "";
+                    str += GetRoles(str, Data);
+                    $("#RoleID").html(str);
+                    form.render();//表单重载
+                } else {
+                    alert("数据错误");
+
+                }
+            }
+        })
+        function GetRoles(str, data) {
+            str += "<option value=\"\">请选择</option>"
+            for (var i = 0; i < data.data.length; i++) {
+                str += "<option value=\"" + data.data[i].RoleID + "\">" + data.data[i].RolesTitle + "</option>"
+            }
+            return str
+        }
+        //监听提交
+        form.on('submit(layuiadmin-app-form-submit)', function (data) {
+            var field = data.field; //获取提交的字段
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            var index = layer.load();
+            //提交 Ajax 成功后，关闭当前弹层并重载表格
+            //$.ajax({});
+            $.ajax({
+                url: "/api/Admin/Add",
+                type: "post",
+                async: false,
+                data: {
+                    AdminName: data.field.AdminName,
+                    PassWord: data.field.PassWord,
+                    Statues: data.field.Statues,
+                    AdminNick: data.field.AdminNick,
+                    RoleID: data.field.RoleID
+                },
+                success: function (datas) {
+                    if (0 == datas.code) {
+                        layer.msg(datas.msg, {
+                            icon: 1,
+                            time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                        }, function() {
+                            parent.location.reload();
+                            parent.layer.close(index); //再执行关闭
+                        });
+                    } else {
+                        layer.msg(datas.msg, {
+                            icon: 1,
+                            time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                        }, function() {
+                            layer.closeAll();
+                        });
+                    }
+                },
+                error: function (e) {
+                    layer.closeAll();
+                    alert("错误！！");
+                }
+            });
+        });
+    })
+</script>

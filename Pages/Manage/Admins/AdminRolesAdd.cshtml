@@ -1,0 +1,170 @@
+﻿@page
+@model SunuerManage.Pages.Manage.Admins.AdminRolesAddModel
+@{
+    ViewData["Title"] = "角色添加";
+}
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+    <div class="layui-form-item">
+        <label class="layui-form-label">角色名称<span class="red">*</span></label>
+        <div class="layui-input-block">
+            <input name="RolesTitle" class="layui-input" type="text" lay-verify="required" placeholder="请输入角色名称" autocomplete="off" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">权限选择</label>
+
+        <div class="Strhtme"></div><div class="clear"></div>
+
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline">
+            <input type="button" lay-submit lay-filter="layuiadmin-app-form-submit" class="layui-btn btn" id="layuiadmin-app-form-submit" value="确认添加">
+        </div>
+    </div>
+</div>
+
+<script>
+    var i = 0;
+    var Count = 0;
+    layui.use('form', function () {
+        var form = layui.form;
+        $.ajax({
+            url: "/api/AdminPower/GetAll",
+            type: "post",
+            data: {},
+            dataType: "json",
+            success: function (Data) {
+                if (Data.code == 0) {
+                    var str = "";
+                    str += gerstr(str, Data, 0);
+                    $(".Strhtme").html(str);
+                    form.render();//表单重载
+                } else {
+                    alert("数据错误");
+
+                }
+            }
+        })
+
+        form.on('checkbox(Power)', function (data) {
+            var id = data.value;
+            if (data.elem.checked) {
+                $('.' + id).each(function () {
+                    $(this).prop('checked', true);
+                });
+            } else {
+                $('.' + id).each(function () {
+                    $(this).prop('checked', false);
+                });
+            }
+            form.render();//表单重载
+        });
+        form.on('checkbox(PowerSmall)', function (data) {
+            var ParentID = $(data.elem).attr('class');
+            if (data.elem.checked) {
+                $(".parent." + ParentID).prop('checked', true);
+                form.render();//表单重载
+            }
+
+        });
+
+    })
+    function gerstr(str, data, ParentID) {
+        var strs = "";
+        for (var i = 0; i < data.data.length; i++) {
+            if (data.data[i].ParentID == ParentID) {
+                str += "  <fieldset class=\"layui-elem-field layui-col-md12 elem-field\">";
+                str += "      <legend>" + data.data[i].PowerTitle + "</legend> ";
+                str += "       <div class=\"layui-field-box\">";
+                str += "          <ul> ";
+                str += "            <li>";
+                str += " <input type=\"checkbox\" name=\"Power\" title=\"" + data.data[i].PowerTitle + "(" + data.data[i].PowerID + ")\" lay-skin=\"primary\" value=\"" + data.data[i].PowerID + "\" lay-filter=\"Power\" class='parent " + data.data[i].PowerID + "' > ";
+                for (var j = 0; j < data.data.length; j++) {
+                    if (data.data[j].ParentID == data.data[i].PowerID) {
+                        str += "               <dl>";
+                        str += "                   <dd class=\"layui-col-md2\">";
+                        str += "                    <input type=\"checkbox\"  name=\"Power\" title=\"" + data.data[j].PowerTitle + "(" + data.data[j].PowerID + ")\" lay-skin=\"primary\" class='" + data.data[i].PowerID + "'  lay-filter=\"PowerSmall\" value=\"" + data.data[j].PowerID + "\" > ";
+                        str += "                  </dd> ";
+                        str += "               </dl> ";
+                    }
+                }
+                str += "            </li> ";
+                str += "           </ul> ";
+                str += "    </div> ";
+                str += "    </fieldset> ";
+                Count = i;
+            }
+            else {
+                continue;
+            }
+
+        }
+        return str;
+    }
+</script>
+
+<script>
+    layui.config({
+        base: '/js/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form'], function () {
+        var $ = layui.$
+        , form = layui.form;
+
+        //监听提交
+        form.on('submit(layuiadmin-app-form-submit)', function (data) {
+            var field = data.field; //获取提交的字段
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            var index = layer.load();
+            var value = "";
+            var Powers = "|";
+            $("input[type=checkbox]").each(function () {
+                if ($(this).is(':checked')) {
+                    value = $(this).attr("value");
+                    Powers += value + "|";
+                }
+            })
+            //提交 Ajax 成功后，关闭当前弹层并重载表格
+            //$.ajax({});
+            $.ajax({
+                url: "/api/AdminRoles/Add",
+                type: "post",
+                async: false,
+                data: {
+                    RolesTitle: data.field.RolesTitle, 
+                    Powers: Powers
+                },
+                success: function (datas) {
+
+                    if (0 == datas.code) {
+                        layer.open({
+                            type: 0,
+                            title: '提示信息',
+                            content: datas.msg,
+                            time: 3000,
+                            resize: false,
+                            end: function () {
+                                //重载父级表格
+                                parent.location.reload();
+                                parent.layer.close(index); //再执行关闭
+                            }
+                        });
+                    } else {
+                        layer.msg(datas.msg, {
+                            icon: 1,
+                            time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                        }, function() {
+                            layer.closeAll();
+                        });
+                    }
+                },
+                error: function (e) {
+                    layer.closeAll();
+                    alert("错误！！");
+                }
+            });
+        });
+    })
+</script>

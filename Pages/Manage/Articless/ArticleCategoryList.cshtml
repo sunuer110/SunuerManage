@@ -1,0 +1,207 @@
+﻿@page
+@model SunuerManage.Pages.Manage.Articless.ArticleCategoryListModel
+@{
+}
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <div style="padding-bottom: 10px;">
+
+                @if (Model.AdminModel.Roles.IndexOf("|2|") > -1)
+                {
+                    <button class="layui-btn layuiadmin-btn-list" data-type="add" add="0" id="1"> <i class="layui-icon">&#xe654;</i>&nbsp;添加顶级分类</button>
+                }
+            </div>
+            <table id="LAY-app-content-list" lay-filter="LAY-app-content-list">
+            </table>
+
+        </div>
+    </div>
+</div>
+<script>
+    layui.config({
+        base: '/js/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'element', 'table', 'layer'], function() {
+        var table = layui.table, form = layui.form
+        var $ = layui.$, admin = layui.admin, element = layui.element, router = layui.router()
+            , active = {
+                add: function() {
+                    var ParentID = $(this).attr("add");
+                    layer.open({
+                        type: 2,
+                        title: '添加分类',
+                        content: 'ArticleCategoryAdd?ParentID=' + ParentID,
+                        maxmin: true,
+                        area: ['90%', '90%']
+                    });
+                },
+                edt: function() {
+                    var BigID = $(this).attr("edt");
+                    layer.open({
+                        type: 2,
+                        title: '修改分类',
+                        content: 'ArticleCategoryEdt?BigID=' + BigID,
+                        maxmin: true,
+                        area: ['90%', '90%']
+                    });
+                },
+                del: function() {
+                    var BigID = $(this).attr("del");
+                    layer.confirm('确定删除此吗？', function(index) {
+                        layer.close(index);
+                        var count = layer.load(1);
+                        $.ajax({
+                            url: "/api/ArticleCategory/Delete",
+                            type: "post",
+                            async: false,
+                            data: { BigID: BigID },
+                            success: function(datax) {
+                                layer.close(count);
+                                if (0 == datax.code) {
+                                    layer.msg(datax.msg, { time: 1000 }, function() {
+                                        location.reload()
+                                        layer.close(index)
+                                    });
+                                } else {
+                                    layer.msg(datax.msg, {
+                                        icon: 1,
+                                        time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                                    }, function() {
+                                        layer.closeAll();
+                                    });
+                                }
+                            },
+                            error: function(e) {
+                                alert("错误！！");
+                            }
+                        });
+                    });
+                }
+            };
+        $('.layui-btn.layuiadmin-btn-list').on('click', function() {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+        $('.layui-btn.layui-btn-sm').on('click', function() {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+        element.render('collapse');
+        //监听折叠
+        element.on('collapse(component-panel)', function(data) {
+            if (data.show == true) {
+                var ParentID = $(this).attr("Dal");
+                $("#submenu" + ParentID).html("<i class=\"layui-icon layui-icon-loading\"></i> ");
+                $.post("/api/ArticleCategory/Get", { ParentID: ParentID }, function(data) {
+                    var html = ``;
+                    if (data.data.length == 0) {
+                        html = `无分类`;
+                    }
+                    for (let i = 0; i < data.data.length; i++) {
+                        html = html + `<div class="layui-collapse"  lay-filter="component-panel"><div class="layui-colla-item">
+                                                    <h2 class="layui-colla-title"  Dal="${data.data[i].BigID}">${data.data[i].BigTitle} [ID:${data.data[i].BigID}]<div class="menu">`;
+    @if (Model.AdminModel.Roles.IndexOf("|18|") > -1)
+    {
+        @:html = html + `<button class="layui-btn layui-btn-sm add" onClick="showadd(${data.data[i].BigID})"  data-type="add"  add="${data.data[i].BigID}" data-depths="${data.data[i].BigID}"><i class="layui-icon">&#xe654;</i>添加下级分类</button>`;
+
+    }
+
+    @if (Model.AdminModel.Roles.IndexOf("|19|") > -1)
+    {
+        @:html = html + `<button class="layui-btn layui-btn-sm layui-btn-normal edt"  onClick="showedt(${data.data[i].BigID})"   data-type="edt" edt = "${data.data[i].BigID}"><i class="layui-icon">&#xe642;</i>编辑</button>`;
+    }
+    @if (Model.AdminModel.Roles.IndexOf("|20|") > -1)
+    {
+
+        @:html = html + `<button class="layui-btn layui-btn-sm layui-btn-danger del"  onClick="showdelete(${data.data[i].BigID})"    data-type="del" del="${data.data[i].BigID}"><i class="layui-icon">&#xe640;</i>删除</button>`;
+
+    }
+                            html = html + `</div></h2><div class="layui-colla-content"  id='submenu${data.data[i].BigID}'></div></div></div></div>`;
+                    }
+
+                    $("#submenu" + ParentID).html(html)
+                    element.render('collapse');
+                });
+            }
+        });
+        $.post("/api/ArticleCategory/Get", { ParentID: 0 }, function(data) {
+            var html = ``;
+            for (let i = 0; i < data.data.length; i++) {
+                html = html + `<div class="layui-collapse"  lay-filter="component-panel"><div class="layui-colla-item" >
+                                                    <h2 class="layui-colla-title"  Dal="${data.data[i].BigID}">${data.data[i].BigTitle} [ID:${data.data[i].BigID}]<div class="menu">`;
+    @if (Model.AdminModel.Roles.IndexOf("|18|") > -1)
+    {
+        @:html = html + `<button class="layui-btn layui-btn-sm add" onClick="showadd(${data.data[i].BigID})"  data-type="add"  add="${data.data[i].BigID}" data-depths="${data.data[i].BigID}"><i class="layui-icon">&#xe654;</i>添加下级分类</button>`;
+
+    }
+
+    @if (Model.AdminModel.Roles.IndexOf("|19|") > -1)
+    {
+        @:html = html + `<button class="layui-btn layui-btn-sm layui-btn-normal edt"    onClick="showedt(${data.data[i].BigID})"  data-type="edt" edt="${data.data[i].BigID}"><i class=\"layui-icon\">&#xe642;</i>编辑</button>`;
+    }
+    @if (Model.AdminModel.Roles.IndexOf("|20|") > -1)
+    {
+        @:html = html + `<button class="layui-btn layui-btn-sm layui-btn-danger del"   onClick="showdelete(${data.data[i].BigID})"   data-type="del" del = "${data.data[i].BigID}" > <i class="layui-icon">&#xe640;</i>删除</button>`;
+    }
+
+                    html = html + `</div></h2><div class="layui-colla-content"  id='submenu${data.data[i].BigID}'></div></div></div></div>`;
+            }
+            $("#LAY-app-content-list").html(html)
+            element.render('collapse');
+        });
+    });
+</script>
+<script type="text/javascript">
+    function showadd(ParentID) {
+        layer.open({
+            type: 2,
+            title: '添加分类',
+            content: 'ArticleCategoryAdd?ParentID=' + ParentID,
+            maxmin: true,
+            area: ['90%', '90%']
+        });
+    }
+    function showedt(BigID) {
+        layer.open({
+            type: 2,
+            title: '修改分类',
+            content: 'ArticleCategoryEdt?BigID=' + BigID,
+            maxmin: true,
+            area: ['90%', '90%']
+
+        });
+    }
+    function showdelete(BigID) {
+        layer.confirm('确定删除此吗?', function(index) {
+            layer.close(index);
+            var index = layer.load(1);
+            $.ajax({
+                url: "/api/ArticleCategory/Delete",
+                type: "post",
+                async: false,
+                data: { BigID: BigID },
+                success: function(datax) {
+                    if (0 == datax.code) {
+                        layer.msg(datax.msg, { time: 1000 }, function() {
+                            location.reload()
+                            layer.close(index)
+                        });
+                    } else {
+                        layer.msg(datax.msg, {
+                            icon: 1,
+                            time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                        }, function() {
+                            layer.closeAll();
+                        });
+                    }
+                },
+                error: function(e) {
+                    alert("错误！！");
+                }
+            });
+        });
+    }
+</script>

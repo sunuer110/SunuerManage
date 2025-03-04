@@ -1,0 +1,66 @@
+﻿@page
+@model SunuerManage.Pages.Manage.Admins.AdminPowerEdtModel
+@{
+    ViewData["Title"] = "编辑权限";
+}
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+ 
+    <div class="layui-form-item">
+        <label class="layui-form-label">权限名称<span class="red">*</span></label>
+        <div class="layui-input-inline input-inline">
+            <input type="text" name="PowerTitle" lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" value="@Model.Model.PowerTitle" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline">
+            <input type="button" lay-submit lay-filter="layuiadmin-app-form-submit" class="layui-btn btn" id="layuiadmin-app-form-submit" value="确认编辑">
+        </div>
+    </div>
+</div>
+<script>
+    layui.config({
+        base: '/js/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'layer'], function () {
+        var $ = layui.$
+        , form = layui.form;
+
+        //监听提交
+        form.on('submit(layuiadmin-app-form-submit)', function (data) {
+            var field = data.field; //获取提交的字段
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            var count = layer.load(1);
+            $.ajax({
+                url: "/api/AdminPower/Update",
+                type: "post",
+                async: false,
+                data: {
+                    PowerTitle: data.field.PowerTitle
+                    , PowerID: @Model.PowerID
+                },
+                success: function(datax) {
+                    layer.close(count);
+                    if (0 == datax.code) {
+                        layer.msg(datax.msg, { time: 1000 }, function () {
+                            parent.location.reload()
+                            parent.layer.close(index)
+                        });
+                    } else {
+                        layer.msg(datas.msg, {
+                            icon: 1,
+                            time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                        }, function() {
+                            layer.closeAll();
+                        });
+                    }
+                },
+                error: function (e) {
+                    layer.closeAll();
+                    alert("错误！！");
+                }
+            });
+        });
+    })
+</script>

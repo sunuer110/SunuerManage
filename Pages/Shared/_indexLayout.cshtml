@@ -1,0 +1,139 @@
+﻿
+@{
+
+    var menu = Model.Menu;  // 引用传递的 MenuModel
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no" />
+    <title>@ViewData["Title"]</title>
+    <meta name="keywords" content="@ViewData["keywords"]" />
+    <meta name="description" content="@ViewData["description"]" />
+    <meta name="author" content="HaiDong" />
+    <meta name="HelpUrl" content="https://www.sunuer.com/" />
+    <meta name="renderer" content="webkit" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <script src="~/js/jquery-3.7.1.min.js"></script>
+    <script src="~/js/back-to-top.js"></script>
+    <script src="~/js/superfish.min.js"></script>
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+        <header class="header">
+            <div class="container">
+                <div class="top">
+                    <ul>
+                    <li class="tel">服务热线：@menu.Phone</li>
+                        <li class="phone">
+                            手机端<div class="weixin">
+                            <img src="/api/QRCode/GenerateQRCode?text=@menu.ManageUrl" alt="扫码浏览手机端" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="logo pull-left">
+                    <a href="/">
+                    <img src="@menu.Logo" alt="@menu.ManageTitle" />
+                    </a>
+                </div>
+                <!--导航条-->
+                <nav id="nav-menu-container" class="clearfix">
+                    <ul class="nav-menu">
+                        <li><a href="/" title="首页" class="xuan">首页</a></li>
+                    @foreach (var item in menu.ArticleCategoryList)
+                        {
+                            @if (@item.Statues == 0)
+                            {
+                                <li><a href="@item.SiteUrl" title="@item.BigTitle" class="xuan" target="_blank">@item.BigTitle</a></li>
+                            }
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        @RenderBody()
+
+    <div class="suspension">
+        <div class="suspension-box">
+            <div class="yincang">
+                <a href="javascript:;" class="a h-service "><i class="i"></i></a>
+                <a href="javascript:;" class="a h-service-phone "><i class="i"></i></a>
+            </div>
+            <a href="javascript:;" class="a h-top"><i class="i"></i></a>
+            <div class="d d-service">
+                <i class="arrow"></i>
+                <div class="inner-box">
+                    <div class="d-service-item clearfix">
+                        <a href="tel:#" rel="nofollow">
+                            <span class="circle"><i class="i-qq"></i></span>
+                            <div class="p3">咨询热线：400</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="d d-service-phone">
+                <i class="arrow"></i>
+                <div class="inner-box">
+                    <div class="d-service-item clearfix">
+                        <span class="circle"><i class="i-tel"></i></span>
+                        <div class="text">
+                            <p>服务热线</p>
+                            <p class="red number">400</p>
+                        </div>
+                    </div>
+                    <div class="d-service-intro clearfix">
+                        <p>功能和特性</p>
+                        <p>价格和优惠</p>
+                        <p>获取内部资料</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer-bg">
+        <div class="container">
+
+            <div class="row wow bounceInUp">
+                <div class="copyright">@menu.CopyRight</div>
+            </div>
+            <div style="width:300px;margin:0 auto; padding:20px 0;">
+            </div>
+        </div>
+    </footer>
+    <footer class="phone-fudong">
+        <div class="qmyl"></div>
+        <div class="footer_nav">
+            <ul>
+                <li>
+                    <a href="/">
+                        <span>
+                            <img src="/images/footer_home.png" width="25" height="25" />
+                        </span>网站首页
+                    </a>
+                </li>
+                <li>
+                    <a href="tel:#">
+                        <span>
+                            <img src="/images/footer_tel.png" width="25" height="25" />
+                        </span>一键拨号
+                    </a>
+                </li>
+                <li>
+                    <a href="Contact">
+                        <span>
+                            <img src="/images/footer_message.png" width="25" height="25" />
+                        </span>联系我们
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

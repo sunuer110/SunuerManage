@@ -1,0 +1,34 @@
+﻿@page
+@model SunuerManage.Pages.Manage.Admins.AdminviewModel
+@{
+}
+
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">登录名</label>
+        <div class="layui-input-inline input-inline">
+            <input type="text" name="AdminName" lay-verify="required" autocomplete="off" class="layui-input" value="@Model.Model.AdminName" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">昵称</label>
+        <div class="layui-input-inline input-inline">
+            <input type="text" name="AdminNick" lay-verify="required" autocomplete="off" class="layui-input" value="@Model.Model.AdminNick" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">权限</label>
+        <div class="layui-input-inline input-inline">
+            <input type="text" name="RolesTitle" lay-verify="required" autocomplete="off" class="layui-input" value="@Model.Model.RolesTitle" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户状态</label>
+        <div class="layui-input-inline input-inline">
+            <input type="radio" name="Statues" value="0" title="正常" lay-filter="Statues" @(Model.Model.Statues == 0 ? "checked" : "") disabled>
+            <input type="radio" name="Statues" value="1" title="冻结" lay-filter="Statues" @(Model.Model.Statues == 1 ? "checked" : "") disabled>
+        </div>
+    </div>
+</div>

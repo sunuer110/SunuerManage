@@ -1,0 +1,47 @@
+﻿@page
+@model SunuerManage.Pages.newsviewModel
+@{
+    Layout = "_IndexLayout";
+}
+
+<section>
+
+    <div class="banner-box-ny">
+        <div class="ny-banner" style="background: url(@Model.Model.Images) no-repeat top center; background-size: auto 100%">
+        </div>
+        <div class="banner-xuanfu">
+            <div class="p1">更聪明的管理，更高效的工作</div>
+            <span><h2>Manage Smarter, Work Faster</h2></span>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="new_bt">
+            <h1> @Model.NewsList.ArticleTitle</h1><br />
+            <div class="time">发布日期：@Model.NewsList.ReleaseTime.ToString("yyyy-MM-dd") </div>
+        </div>
+        <div class="new_content content">
+            @Html.Raw(Model.NewsList.Desn)
+        </div>
+        <div class="next_ticket">
+            <ul>
+                <li>
+                    上一篇：
+                    @Html.Raw(Model.Last)
+                </li>
+                <li>
+                    下一篇：
+                    @Html.Raw(Model.Next)
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    $(function() {
+        $(".nav-menu li a[title=@Model.Model.BigTitle]").addClass("Underline");
+    });
+</script>

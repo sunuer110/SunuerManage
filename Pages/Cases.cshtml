@@ -1,0 +1,97 @@
+﻿@page
+@model SunuerManage.Pages.CasesModel
+@{
+    Layout = "_IndexLayout";
+}
+<section>
+
+    <div class="banner-box-ny">
+        <div class="ny-banner" style="background: url(@Model.Model.Images) no-repeat top center; background-size: auto 100%">
+        </div>
+        <div class="banner-xuanfu">
+            <div class="p1">现代管理的全能解决方案</div>
+            <span><h2>The Universal Solution for Modern Management.</h2></span>
+        </div>
+    </div>
+</section>
+
+<section class="ny-case">
+    <div class="container">
+        <div class="ny-cases">
+            <kbd class="ol-lg-6 col-md-6 col-sm-6">期待与您的合作！</kbd>
+            <span class="ol-lg-6 col-md-6 col-sm-6">服务热线：<em>@Model.Phone</em></span>
+        </div>
+    </div>
+</section>
+
+<section class="section-top2 section-bottom">
+
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.CaseList)
+            {
+                <div class="case-con col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                    <div class="case-con-list">
+                        <div class="case-tu">
+                            <div class="case-tu-img">
+                                <a href="newsview?ArticleID=@item.ArticleID" title="@item.ArticleTitle"><img src="@item.Image" alt="@item.ArticleTitle"></a>
+                            </div><div class="overlay">
+                                <div class="overlay1"><a href="newsview?ArticleID=@item.ArticleID" title="@item.ArticleTitle">查看详情</a></div>
+                            </div>
+                        </div><div class="case-name">
+                            <div class="p1"><a href="newsview?ArticleID=@item.ArticleID" title="@item.ArticleTitle">@item.ArticleTitle</a></div>
+                            <span>@item.ArticleDesn</span>
+                        </div><div class="ny-news-numeral"><span><i class="ny-news-time"></i><em>@item.ReleaseTime.ToString("yyyy-MM-dd")</em></span><span></span></div>
+                    </div>
+                </div>
+            }
+        </div>
+        <!--翻页-->
+        <div class="pagination">
+            @if (Model.CurrentPage > 1)
+            {
+                <a href="?CurrentPage=@(Model.CurrentPage - 1)">上一页</a>
+
+            }
+            else
+            {
+
+                <span class="last">上一页</span>
+            }
+
+            @for (int i = 1; i <= (Model.TotalRecords + Model.PageSize - 1) / Model.PageSize; i++)
+            {
+                if (i == Model.CurrentPage)
+                {
+                    <span class="active">@i</span>
+                }
+                else
+                {
+                    if (i >= Model.CurrentPage - Model.ShowSize && i <= Model.CurrentPage + Model.ShowSize)
+                    {
+                    <a href="?CurrentPage=@i">@i</a>
+                    }
+                }
+            }
+
+            @if (Model.CurrentPage < (Model.TotalRecords + Model.PageSize - 1) / Model.PageSize)
+            {
+
+                <a href="?CurrentPage=@(Model.CurrentPage + 1)">下一页</a>
+
+            }
+            else
+            {
+
+                <span class="last">下一页</span>
+            }
+        </div>
+    </div>
+
+
+</section>
+<script>
+    $(function() {
+        $(".nav-menu li a[title=@Model.Model.BigTitle]").addClass("Underline");
+    });
+</script>

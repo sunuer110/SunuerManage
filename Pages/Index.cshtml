@@ -1,0 +1,445 @@
+﻿@page
+@model IndexModel
+@{
+    Layout = "_IndexLayout";
+}
+<script src="~/js/swiper-bundle.min.js"></script>
+<link href="~/css/swiper-bundle.min.css" rel="stylesheet" />
+
+
+<!--淡入淡出-->
+<script src="js/wow.min.js"></script>
+
+<style type="text/css">
+
+    .swiper-button-next, .swiper-button-prev {
+        color: #fff
+    }
+
+    .swiper-pagination-bullet {
+        background-color: #fff;
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: #fff;
+    }
+
+</style>
+
+<!--轮显-->
+<section>
+    <div class="banner-box">
+        <div class="banner">
+            <div class="banner-box">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        @for (var i = 0; i < Model.ArticlesList.Count; i++)
+                        {
+                            var item = Model.ArticlesList[i];
+                            <div class="swiper-slide swiper-slide-next" role="group" aria-label="@(i + 1) / @Model.ArticlesList.Count" data-swiper-slide-index="0" style="width: 1663px;">
+                                <img src="@item.Image" alt="@item.ArticleTitle"><div class="container">
+                                    <div class="row">
+                                        <div class="slide-text  slide_style_right">
+                                            <div class="banner_tu fl"></div>
+                                            <div class="banner_wenzi fr">
+                                                <div class="p1" data-animation="animated">@item.ArticleTitle</div>
+                                                <div class="p2" data-animation="animated">@item.Articlekey</div>
+                                                <p data-animation="animated">@item.ArticleDesn</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!--产品-->
+<section class="section bgf7">
+    <div class="container">
+        <div class="service-title text-center section-bottom wow bounceInUp">
+            <div class="p1">更好的管理，更大的成就</div>
+            <p2>Sunuer Manage: Manage Better, Achieve More.</p2>
+        </div>
+        <div class="row text-center wow bounceInUp" data-wow-delay="0.5s">
+            <div class="service-con col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <a href="https://www.sunuer.com/sunuermanage" title="网站管理后台">
+                    <div class="service-tu">
+                        <span class="icon">
+                            <i>
+                                <img src="/images/ser01.png" alt="网站管理后台" />
+                            </i><i><img src="/images/ser011.png" alt="网站管理后台" /></i>
+                        </span>
+                    </div>
+                    <div class="service-name">
+                        <h1><div class="p1">网站管理后台</div></h1>
+                        <span>Management System</span>
+                    </div>
+                </a>
+            </div>
+            <div class="service-con col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <a href="https://www.sunuer.com/sunuermanage" title="APP后台">
+                    <div class="service-tu">
+                        <span class="icon">
+                            <i>
+                                <img src="images/ser02.png" alt="APP后台" />
+                            </i><i><img src="images/ser021.png" alt="APP后台" /></i>
+                        </span>
+                    </div>
+                    <div class="service-name">
+                        <div class="p1">APP后台</div>
+                        <span>App Backend System</span>
+                    </div>
+                </a>
+            </div>
+            <div class="service-con col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <a href="https://www.sunuer.com/sunuereasy" title="Sunuer Easy">
+                    <div class="service-tu">
+                        <span class="icon">
+                            <i>
+                                <img src="images/ser03.png" alt="Sunuer Easy" />
+                            </i><i><img src="images/ser031.png" alt="Sunuer Easy" /></i>
+                        </span>
+                    </div>
+                    <div class="service-name">
+                        <div class="p1">Sunuer Easy</div>
+                        <span>代码生成工具</span>
+                    </div>
+                </a>
+            </div>
+            <div class="service-con col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <a href="https://www.sunuer.com/sunuermanage" title="客户关系管理系统">
+                    <div class="service-tu">
+                        <span class="icon">
+                            <i>
+                                <img src="images/ser04.png" alt="客户关系管理系统" />
+                            </i><i><img src="images/ser041.png" alt="客户关系管理系统" /></i>
+                        </span>
+                    </div>
+                    <div class="service-name">
+                        <div class="p1">客户关系管理系统</div>
+                        <span>CRM</span>
+                    </div>
+                </a>
+            </div>
+            <div class="service-con col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <a href="https://www.sunuer.com/sunuermanage" title="办公自动化系统">
+                    <div class="service-tu">
+                        <span class="icon">
+                            <i>
+                                <img src="images/ser05.png" alt="办公自动化系统" />
+                            </i><i><img src="images/ser051.png" alt="办公自动化系统" /></i>
+                        </span>
+                    </div>
+                    <div class="service-name">
+                        <h1><div class="p1">办公自动化系统</div></h1>
+                        <span>OA</span>
+                    </div>
+                </a>
+            </div>
+            <div class="service-con col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <a href="https://www.sunuer.com/sunuermanage" title="Mes系统">
+                    <div class="service-tu">
+                        <span class="icon">
+                            <i>
+                                <img src="images/ser06.png" alt="Mes系统" />
+                            </i><i><img src="images/ser061.png" alt="Mes系统" /></i>
+                        </span>
+                    </div>
+                    <div class="service-name">
+                        <h1><div class="p1">Mes系统</div></h1>
+                        <span>MES System</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--案例模块--!>
+    <section class="section-top section-bottom">
+        <div class="container">
+            <div class="service-title text-center section-bottom wow bounceInUp">
+                <div class="p1">跨平台管理系统，一键开启高效开发之旅</div>
+                <div class="p2"><h2>节省时间，减少重复工作，轻松打造企业级与个人应用的核心解决方案。</h2></div>
+                <a href="Cases" class="btn-cases">更多案例</a>
+            </div>
+               <div class="row wow bounceInUp" data-wow-delay="0.5s">
+            @for (var i = 0; i < Model.CaseList.Count; i++)
+            {
+                var item = Model.CaseList[i];
+                            <div class="case-con col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                <div class="case-con-list">
+                            <div class="case-tu">
+                                    <div class="case-tu-img"><a href="newsview?ArticleID=@item.ArticleID" title="@item.ArticleTitle" target="_blank"><img src="@item.Image" alt="@item.ArticleTitle"></a></div>
+                                        <div class="overlay"><div class="overlay1"><a href="newsview?ArticleID=@item.ArticleID">查看详情</a></div></div>
+                                 </div>
+                                             <div class="case-name"><div class="p1"><a href="newsview?ArticleID=@item.ArticleID" title="@item.ArticleTitle" target="_blank">@item.ArticleTitle</a></div><span>@item.ArticleDesn</span></div></div>
+                        </div>
+            }
+        </div>
+    </section>
+    <section class="section-top section-bottom bg-blue">
+        <div class="container">
+            <div class="service-title color-fff section-bottom text-center  wow bounceInUp">
+                <div class="p1">我们能为您解决哪些问题？</div>
+                <div class="p2">我们的服务让您省心放心，事半功倍</div>
+            </div>
+            <div class="row text-center  wow bounceInUp" data-wow-delay="0.5s">
+                <div class="problem col-lg-3 col-md-6 col-sm-6">
+                    <div class="problem-tu">
+                        <span class="icon">
+                            <i>
+                                <img src="images/problem01.png" alt="优化企业管理流程" />
+                            </i><i><img src="images/problem011.png" alt="优化企业管理流程" /></i>
+                        </span>
+                    </div>
+                    <div class="problem-name">
+                        <div class="p1">优化企业管理流程</div>
+                        <span>通过高效的后台管理系统，简化企业各项管理操作，让管理者能够轻松掌控各类任务，提升工作效率</span>
+                    </div>
+                </div>
+                <div class="problem col-lg-3 col-md-6 col-sm-6">
+                    <div class="problem-tu">
+                        <span class="icon">
+                            <i>
+                                <img src="images/problem02.png" alt="帮助企业寻求商业合作" />
+                            </i><i><img src="images/problem021.png" alt="寻求商业合作" /></i>
+                        </span>
+                    </div>
+                    <div class="problem-name">
+                        <div class="p1">跨平台支持</div>
+                        <span>无论是Windows还是Unix系统，Sunuer Manage都能流畅运行，确保企业的不同环境下都能稳定使用，降低IT管理成本。</span>
+                    </div>
+                </div>
+                <div class="problem col-lg-3 col-md-6 col-sm-6">
+                    <div class="problem-tu">
+                        <span class="icon">
+                            <i>
+                                <img src="images/problem04.png" alt="用户友好界面" />
+                            </i><i><img src="images/problem041.png" alt="用户友好界面" /></i>
+                        </span>
+                    </div>
+                    <div class="problem-name">
+                        <div class="p1">用户友好界面</div>
+                        <span>
+                            简洁直观的用户界面设计，降低用户的学习成本，即使是非技术人员也能快速上手操作，提高系统的易用性。
+                        </span>
+                    </div>
+                </div>
+                <div class="problem col-lg-3 col-md-6 col-sm-6">
+                    <div class="problem-tu">
+                        <span class="icon">
+                            <i>
+                                <img src="images/problem03.png" alt="模块化设计" />
+                            </i><i><img src="images/problem031.png" alt="模块化设计" /></i>
+                        </span>
+                    </div>
+                    <div class="problem-name">
+                        <div class="p1">模块化设计</div>
+                        <span>系统内置多个灵活模块，如权限管理、角色管理、文章管理等，可以根据不同需求灵活配置，适应各种业务场景。</span>
+                    </div>
+                </div>
+                <div class="problem col-lg-3 col-md-6 col-sm-6">
+                    <div class="problem-tu">
+                        <span class="icon">
+                            <i>
+                                <img src="images/problem05.png" alt="自定义功能扩展" />
+                            </i><i><img src="images/problem051.png" alt="自定义功能扩展" /></i>
+                        </span>
+                    </div>
+                    <div class="problem-name">
+                        <div class="p1">自定义功能扩展</div>
+                        <span>
+                           提供强大的自定义功能，用户可以根据具体需求自由扩展系统，支持快速定制化开发，满足不同企业需求。
+                        </span>
+                    </div>
+                </div>
+                <div class="problem col-lg-3 col-md-6 col-sm-6">
+                    <div class="problem-tu">
+                        <span class="icon">
+                            <i>
+                                <img src="images/problem06.png" alt="网站建设安全性" />
+                            </i><i><img src="images/problem061.png" alt="网站建设代码扫描" /></i>
+                        </span>
+                    </div>
+                    <div class="problem-name">
+                        <div class="p1">数据安全保障</div>
+                        <span>
+                            采用先进的安全技术和权限控制机制，确保企业数据的安全性，防止未授权访问或数据泄露。
+                        </span>
+                    </div>
+                </div>
+                <div class="problem col-lg-3 col-md-6 col-sm-6">
+                    <div class="problem-tu">
+                        <span class="icon">
+                            <i>
+                                <img src="images/problem07.png" alt="高效的权限与角色管理" />
+                            </i><i><img src="images/problem071.png" alt="高效的权限与角色管理" /></i>
+                        </span>
+                    </div>
+                    <div class="problem-name">
+                        <div class="p1">高效的权限与角色管理</div>
+                        <span>
+                            灵活的权限分配机制和角色管理功能，能够精确到每个用户的操作权限，确保数据的安全性与管理的精确度。
+                        </span>
+                    </div>
+                </div>
+                <div class="problem col-lg-3 col-md-6 col-sm-6">
+                    <div class="problem-tu">
+                        <span class="icon">
+                            <i>
+                                <img src="images/problem08.png" alt="持续更新与优化" />
+                            </i><i><img src="images/problem081.png" alt="持续更新与优化" /></i>
+                        </span>
+                    </div>
+                    <div class="problem-name">
+                        <div class="p1">持续更新与优化</div>
+                        <span>
+                            Sunuer Manage将持续进行功能更新与性能优化，适应最新的行业需求和技术发展。
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section bgf7">
+        <div class="container">
+            <div class="service-title text-center section-bottom wow bounceInUp">
+                <div class="p1">专业的视角了解互联网</div>
+                <div class="p2">多年砥砺，丰富经验</div>
+            </div>
+            <div class="row">
+            <div class="new col-lg-4 col-md-4 col-sm-4 col-xs-12 wow bounceInUp" data-wow-delay="0.5s">
+                @if (Model.NewsList5?.Count > 0)
+                {
+                    var firstItem = Model.NewsList5[0];
+                            <!-- 正确声明 firstItem -->
+    <!-- 第一条新闻的特殊布局 -->
+    <div class="new-tu">
+        <a href="newsview?ArticleID=@firstItem.ArticleID" title="@firstItem.ArticleTitle">
+            <img src="@firstItem.Image" alt="@firstItem.ArticleTitle">
+        </a>
+    </div>
+    <div class="new-title">
+        <span class="pull-left">@firstItem.BigTitle</span>
+        <a href="News?nid=@firstItem.BigID" class="pull-right" title="更多 @firstItem.BigTitle">更多+</a>
+    </div>
+
+    <!-- 后续新闻列表 -->
+    <div class="new-list">
+        <ul>
+                            @for (var i = 1; i < Model.NewsList5.Count; i++) // 从第二条新闻开始
+                            {
+                                var item = Model.NewsList5[i];
+                <li>
+                    <a href="newsview?ArticleID=@item.ArticleID" title="@item.ArticleTitle">
+                        <span>@item.ReleaseTime.ToString("yyyy-MM-dd")</span> @item.ArticleTitle
+                    </a>
+                </li>
+                            }
+        </ul>
+    </div>
+                }
+</div>
+
+<div class="new col-lg-4 col-md-4 col-sm-4 col-xs-12 wow bounceInUp" data-wow-delay="0.8s">
+                @if (Model.NewsList6?.Count > 0)
+                {
+                    var firstItem = Model.NewsList6[0];
+        <!-- 正确声明 firstItem -->
+        <!-- 第一条新闻的特殊布局 -->
+        <div class="new-tu">
+            <a href="newsview?ArticleID=@firstItem.ArticleID" title="@firstItem.ArticleTitle">
+                <img src="@firstItem.Image" alt="@firstItem.ArticleTitle">
+            </a>
+        </div>
+        <div class="new-title">
+            <span class="pull-left">@firstItem.BigTitle</span>
+            <a href="News?nid=@firstItem.BigID" class="pull-right" title="更多 @firstItem.BigTitle">更多+</a>
+        </div>
+
+        <!-- 后续新闻列表 -->
+        <div class="new-list">
+            <ul>
+                            @for (var i = 1; i < Model.NewsList6.Count; i++) // 从第二条新闻开始
+                            {
+                                var item = Model.NewsList6[i];
+                    <li>
+                        <a href="newsview?ArticleID=@item.ArticleID" title="@item.ArticleTitle">
+                            <span>@item.ReleaseTime.ToString("yyyy-MM-dd")</span> @item.ArticleTitle
+                        </a>
+                    </li>
+                            }
+            </ul>
+        </div>
+                }
+</div>
+
+<div class="new col-lg-4 col-md-4 col-sm-4 col-xs-12 wow bounceInUp" data-wow-delay="1.1s">
+                @if (Model.NewsList4?.Count > 0)
+                {
+                    var firstItem = Model.NewsList4[0];
+        <!-- 正确声明 firstItem -->
+        <!-- 第一条新闻的特殊布局 -->
+        <div class="new-tu">
+            <a href="newsview?ArticleID=@firstItem.ArticleID" title="@firstItem.ArticleTitle">
+                <img src="@firstItem.Image" alt="@firstItem.ArticleTitle">
+            </a>
+        </div>
+        <div class="new-title">
+            <span class="pull-left">@firstItem.BigTitle</span>
+            <a href="News?nid=@firstItem.BigID" class="pull-right" title="更多 @firstItem.BigTitle">更多+</a>
+        </div>
+
+        <!-- 后续新闻列表 -->
+        <div class="new-list">
+            <ul>
+                            @for (var i = 1; i < Model.NewsList4.Count; i++) // 从第二条新闻开始
+                            {
+                                var item = Model.NewsList4[i];
+                    <li>
+                        <a href="newsview?ArticleID=@item.ArticleID" title="@item.ArticleTitle">
+                            <span>@item.ReleaseTime.ToString("yyyy-MM-dd")</span> @item.ArticleTitle
+                        </a>
+                    </li>
+                            }
+            </ul>
+        </div>
+                }
+</div>
+                    </div>
+                </div>
+            </section>
+
+
+<!--banner-->
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }, pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        loop: true, // 循环模式选项
+        speed: 500,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+    });
+    $(function() {
+        $(".nav-menu li a[title=首页]").addClass("Underline");
+    })
+</script>

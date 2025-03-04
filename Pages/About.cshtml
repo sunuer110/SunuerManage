@@ -1,0 +1,34 @@
+﻿@page
+@model SunuerManage.Pages.AboutModel
+@{
+    Layout = "_IndexLayout";
+}
+
+<section>
+
+    <div class="banner-box-ny">
+        <div class="ny-banner" style="background: url(@Model.Model.Images) no-repeat top center; background-size: auto 100%">
+        </div>
+        <div class="banner-xuanfu">
+            <div class="p1">高效团队合作的钥匙</div>
+            <span><h2> The Key to Effortless Teamwork</h2></span>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="new_bt">
+            <h1 style="font-size:1.6rem; font-weight:bold;"> @Model.NewsList.ArticleTitle</h1><br />
+        </div>
+        <div class="new_content content">
+            @Html.Raw(Model.NewsList.Desn)
+        </div>
+    </div>
+</section>
+
+
+<script>
+    $(function() {
+        $(".nav-menu li a[title=@Model.Model.BigTitle]").addClass("Underline");
+    });
+</script>

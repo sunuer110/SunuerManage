@@ -1,0 +1,232 @@
+﻿@page
+@model WebSite.Pages.Manage.admin_indexModel
+@{
+    Layout = "_ManageIndexLayout";
+}
+<style>
+    .suuer {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        margin-top: 20px;
+        font-size: 14px;
+        width: 100%;
+        line-height: 36px;
+        color: #666;
+        text-align: center;
+    }
+
+        .suuer a {
+            color: #acacad;
+        }
+
+    .hd {
+        height: 60px;
+        width: 100%;
+    }
+</style>
+<div id="LAY_app">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <!-- 头部区域 -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item layadmin-flexible" lay-unselect>
+                    <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩">
+                        <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="https://www.sunuer.com" target="_blank" title="前台">
+                        <i class="layui-icon layui-icon-website"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;" layadmin-event="refresh" title="刷新">
+                        <i class="layui-icon layui-icon-refresh-3"></i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
+                <li class="layui-nav-item" lay-unselect>
+                    <a href="javascript:;">
+                        <cite>@Model.AdminModel.AdminNick</cite>
+                    </a>
+                    <dl class="layui-nav-child">
+                        @if (Model.AdminModel.Roles.IndexOf("|14|") > -1)
+                        {
+                            <dd><a lay-href="Admins/Adminview">基本资料</a></dd>
+                        }
+                        @if (Model.AdminModel.Roles.IndexOf("|15|") > -1)
+                        {
+                            <dd><a lay-href="Admins/AdminPassWord">修改密码</a></dd>
+                        }
+                        <dd style="text-align: center;"><a href="LoginOut">退出</a></dd>
+                    </dl>
+                </li>
+
+            </ul>
+        </div>
+        <!-- 侧边菜单 -->
+        <div class="layui-side layui-side-menu">
+            <div class="layui-side-scroll">
+                <div class="layui-logo" lay-href="https://www.sunuer.com">
+                    <span>Sunuer Manage</span>
+                </div>
+                <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+
+                    @if (Model.AdminModel.Roles.IndexOf("|9|") > -1)
+                    {
+                        <li data-name="set" class="layui-nav-item">
+                            <a href="javascript:;" lay-tips="管理员管理" lay-direction="2">
+                                <i class="layui-icon layui-icon-user"></i>
+                                <cite>管理员管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                @if (Model.AdminModel.Roles.IndexOf("|1|") > -1)
+                                {
+                                    <dd>
+                                        <a lay-href="Admins/AdminPowerList">权限管理</a>
+                                    </dd>
+                                }
+                                @if (Model.AdminModel.Roles.IndexOf("|5|") > -1)
+                                {
+                                    <dd>
+                                        <a lay-href="Admins/AdminRolesList">角色管理</a>
+                                    </dd>
+                                }
+                                @if (Model.AdminModel.Roles.IndexOf("|9|") > -1)
+                                {
+                                    <dd>
+                                        <a lay-href="Admins/AdminList">管理员管理</a>
+                                    </dd>
+                                }
+                            </dl>
+                        </li>
+
+                    }
+
+                    @if (Model.AdminModel.Roles.IndexOf("|24|") > -1)
+                    {
+                        <li data-name="set" class="layui-nav-item">
+                            <a lay-href="ManageSets/ManageSetEdt" lay-tips="系统设置" lay-direction="2">
+                                <i class="layui-icon layui-icon-set"></i>
+                                <cite>系统设置</cite>
+                            </a>
+                        </li>
+
+                    }
+                    @if (Model.AdminModel.Roles.IndexOf("|13|") > -1)
+                    {
+                        <li data-name="set" class="layui-nav-item">
+
+                            <a href="javascript:;" lay-tips="我的设置" lay-direction="3">
+                                <i class="layui-icon layui-icon-username"></i>
+                                <cite>我的设置</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                @if (Model.AdminModel.Roles.IndexOf("|14|") > -1)
+                                {
+                                    <dd><a lay-href="Admins/Adminview">基本资料</a></dd>
+                                }
+                                @if (Model.AdminModel.Roles.IndexOf("|15|") > -1)
+                                {
+                                    <dd><a lay-href="Admins/AdminPassWord">修改密码</a></dd>
+                                }
+                            </dl>
+                        </li>
+                    }
+                    @if (Model.AdminModel.Roles.IndexOf("|16|") > -1)
+                    {
+                        <li data-name="set" class="layui-nav-item">
+
+                            <a href="javascript:;" lay-tips="文章管理" lay-direction="3">
+                                <i class="layui-icon layui-icon-read"></i>
+                                <cite>文章管理</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                @if (Model.AdminModel.Roles.IndexOf("|17|") > -1)
+                                {
+                                    <dd><a lay-href="Articless/ArticleCategoryList">文章分类</a></dd>
+                                }
+                                @if (Model.AdminModel.Roles.IndexOf("|16|") > -1)
+                                {
+                                    <span id="Category"></span>
+                                }
+                               
+                            </dl>
+                        </li>
+                    }
+
+               
+                </ul>
+                <div class="hd"></div>
+                <div class="suuer">©@DateTime.Now.ToString("yyyy") <a href="https://www.sunuer.com">Sunuer Manage</a> <br />All Rights Reserved</div>
+            </div>
+        </div>
+        <!-- 页面标签 -->
+        <div class="layadmin-pagetabs" id="LAY_app_tabs">
+            <div class="layui-icon layadmin-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+            <div class="layui-icon layadmin-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+            <div class="layui-icon layadmin-tabs-control layui-icon-down">
+                <ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+                    <li class="layui-nav-item" lay-unselect>
+                        <a href="javascript:;"></a>
+                        <dl class="layui-nav-child layui-anim-fadein">
+                            <dd layadmin-event="closeThisTabs"><a href="javascript:;">关闭当前标签页</a></dd>
+                            <dd layadmin-event="closeOtherTabs"><a href="javascript:;">关闭其它标签页</a></dd>
+                            <dd layadmin-event="closeAllTabs"><a href="javascript:;">关闭全部标签页</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div class="layui-tab" lay-unauto lay-allowclose="true" lay-filter="layadmin-layout-tabs">
+                <ul class="layui-tab-title" id="LAY_app_tabsheader">
+                    <li lay-id="consoles/console" lay-attr="console" class="layui-this"><i class="layui-icon layui-icon-home"></i></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 主体内容 -->
+        <div class="layui-body" id="LAY_app_body">
+            <div class="layadmin-tabsbody-item layui-show">
+                <iframe src="consoles/console" frameborder="0" class="layadmin-iframe"></iframe>
+            </div>
+        </div>
+        <!-- 辅助元素，一般用于移动设备下遮罩 -->
+        <div class="layadmin-body-shade" layadmin-event="shade"></div>
+    </div>
+</div>
+<script>
+    layui.config({
+        base: '/js/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use('index');
+    function showCategory() {
+
+        $("#Category").html("<li><div style=\"text-align:center;\"><img src=\"/images/progress.gif\" /></div></li>")
+             $.ajax({
+            url: "/api/ArticleCategory/Get",
+            type: "Post",
+            data: {
+                ParentID:1
+            },
+            success: function(datax) {
+                if (datax.code == 0) {
+                    let str = '';  // 确保str是一个空字符串
+
+                    // 循环遍历返回的datax.data
+                    for (let i = 0; i < datax.data.length; i++) {
+                        // 将每个字段对象拼接成表格行的 HTML
+
+                                    str += `<dd><a lay-href="Articless/ArticlesList?BigID=${datax.data[i].BigID}">${datax.data[i].BigTitle}</a></dd>`;
+                           }
+
+                            // 将拼接的HTML插入到#Category元素中
+                            $("#Category").html(str);
+                        }
+            }
+        });
+
+            }
+        showCategory();
+</script>

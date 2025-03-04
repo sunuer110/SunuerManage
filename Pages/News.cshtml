@@ -1,0 +1,116 @@
+﻿@page
+@model SunuerManage.Pages.NewsModel
+@{
+    Layout = "_IndexLayout";
+}
+<section>
+
+    <div class="banner-box-ny">
+        <div class="ny-banner" style="background: url(@Model.Model.Images) no-repeat top center; background-size: auto 100%">
+        </div>
+        <div class="banner-xuanfu">
+            <div class="p1">更聪明的管理，更高效的工作</div>
+            <span><h2>Manage Smarter, Work Faster</h2></span>
+        </div>
+    </div>
+</section>
+
+<div class="ny-new-list">
+    <ul>
+        @if (Model.ModelList?.Count > 0)
+        {
+            @foreach (var item in Model.ModelList)
+            {
+                @if (item.BigID ==Model.nid)
+                {
+                    <li>
+                        <a href="@item.SiteUrl" title="@item.BigTitle" class="list-bg">
+                            @item.BigTitle
+                        </a>
+                    </li>
+                }
+                else
+                {
+
+                    <li>
+                        <a href="@item.SiteUrl" title="@item.BigTitle">
+                            @item.BigTitle
+                        </a>
+                    </li>
+                }
+
+            }
+        }
+    </ul>
+</div>
+<section>
+    <div class="container">
+        <div class="ny-news">
+            <ul>
+                @foreach (var item in Model.NewsList)
+                {
+                    <li>
+                        <a href="newsview?ArticleID=@item.ArticleID" title="@item.ArticleTitle">
+                            <kbd class="ny-news-tu col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                                <img src="@item.Image" alt="@item.ArticleTitle">
+                            </kbd>
+                            <div class="ny-news-con col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <div class="p1">@item.ArticleTitle</div>
+                                <div class="ny-news-numeral"><span><i class="ny-news-time"></i><em>@item.ReleaseTime.ToString("yyyy-MM-dd")</em></span></div>
+                                <div class="p2">@item.ArticleDesn</div>        <span>了解更多</span>
+                            </div>
+                        </a>
+                    </li>
+
+                }
+            </ul>
+        </div>
+
+        <!--翻页-->
+        <div class="pagination">
+            @if (Model.CurrentPage > 1)
+            {
+                <a href="?CurrentPage=@(Model.CurrentPage - 1)&nid=@Model.nid">上一页</a>
+
+            }
+            else
+            {
+
+                <span class="last">上一页</span>
+            }
+
+            @for (int i = 1; i <= (Model.TotalRecords + Model.PageSize - 1) / Model.PageSize; i++)
+            {
+                if (i == Model.CurrentPage)
+                {
+                    <span class="active">@i</span>
+                }
+                else
+                {
+                    if (i >= Model.CurrentPage - Model.ShowSize && i <= Model.CurrentPage + Model.ShowSize)
+                    {
+                        <a href="?CurrentPage=@i&nid=@Model.nid">@i</a>
+                    }
+                }
+            }
+
+            @if (Model.CurrentPage < (Model.TotalRecords + Model.PageSize - 1) / Model.PageSize)
+            {
+
+                <a href="?CurrentPage=@(Model.CurrentPage + 1)&nid=@Model.nid">下一页</a>
+
+            }
+            else
+            {
+
+                <span class="last">下一页</span>
+            }
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function() {
+        $(".nav-menu li a[title=@Model.Model.BigTitle]").addClass("Underline");
+    });
+</script>

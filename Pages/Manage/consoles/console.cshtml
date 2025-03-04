@@ -1,0 +1,275 @@
+﻿@page
+@model SunuerManage.Pages.Manage.consoles.consoleModel
+@{
+}
+<script src="~/js/echarts.min.js"></script>
+<style>
+    .layui-carousel > [carousel-item] > * {
+        display: block;
+    }
+
+</style>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md8">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <div class="layui-card-header">快捷方式</div>
+                        <div class="layui-card-body">
+
+                            <div class="layui-carousel layadmin-carousel layadmin-shortcut">
+                                <div carousel-item>
+                                    <ul class="layui-row layui-col-space10">
+                                        @if (Model.AdminModel.Roles.IndexOf("|5|") > -1)
+                                        {
+                                            <li class="layui-col-xs3">
+                                                <a lay-href="Admins/AdminRolesList">
+                                                    <i class="layui-icon layui-icon-app"></i>
+                                                    <cite>角色管理</cite>
+                                                </a>
+                                            </li>
+                                        }
+                                        @if (Model.AdminModel.Roles.IndexOf("|9|") > -1)
+                                        {
+                                            <li class="layui-col-xs3">
+                                                <a lay-href="Admins/AdminList">
+                                                    <i class="layui-icon layui-icon-user"></i>
+                                                    <cite>管理员管理</cite>
+                                                </a>
+                                            </li>
+                                        }
+                                        @if (Model.AdminModel.Roles.IndexOf("|24|") > -1)
+                                        {
+                                            <li class="layui-col-xs3">
+                                                <a lay-href="ManageSets/ManageSetEdt">
+                                                    <i class="layui-icon layui-icon-set"></i>
+                                                    <cite>系统设置</cite>
+                                                </a>
+                                            </li>
+                                        }
+                                        @if (Model.AdminModel.Roles.IndexOf("|15|") > -1)
+                                        {
+                                            <li class="layui-col-xs3">
+                                                <a lay-href="Admins/AdminPassWord">
+                                                    <i class="layui-icon layui-icon-template-1"></i>
+                                                    <cite>修改密码</cite>
+                                                </a>
+                                            </li>
+                                        }
+                                        @if (Model.AdminModel.Roles.IndexOf("|17|") > -1)
+                                        {
+                                            <li class="layui-col-xs3">
+                                                <a lay-href="Articless/ArticleCategoryList">
+                                                    <i class="layui-icon layui-icon-chat"></i>
+                                                    <cite>文章分类</cite>
+                                                </a>
+                                            </li>
+                                        }
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <div class="layui-card-header">文章管理</div>
+                        <div class="layui-card-body">
+
+                            <div class="layui-carousel layadmin-carousel layadmin-backlog">
+                                <div carousel-item>
+                                    <ul class="layui-row layui-col-space10 ct2_hd">
+                                         @foreach (var item in Model.List)
+                                         {
+                                                <li class="layui-col-xs3">
+                                                <a lay-href="Articless/ArticlesList?BigID=@item.BigID" lay-text="@item.BigTitle">
+                                                    <h3>@item.BigTitle</h3>
+                                                    <p><cite>@item.Number</cite></p>
+                                                 </a>
+                                              </li>
+                                         }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">数据概况</div>
+                        <div class="layui-card-body">
+                           
+                            <div id="container" style="height: 400px"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-col-md12">
+                    <div class="layui-card" style="height:600px; overflow:auto;">
+                        <iframe src="@Model.url" frameborder="0" class="layadmin-iframe" sandbox="allow-scripts  allow-same-origin"  style="width:100%; height:100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md4">
+             <div class="layui-card">
+                <div class="layui-card-body layui-text">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="100">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td>免责声明</td>
+                                <td>
+                                        使用前请阅读
+                                        <a lay-href="Agreement" style="padding-left: 15px;">《免责声明》</a>
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-header">版本信息</div>
+                <div class="layui-card-body layui-text">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="100">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <td>框架名称</td>
+                                <td>
+                                        Sunuer Manage
+                                   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>当前版本</td>
+                                <td>
+                                        v1.0
+                                        <a href="https://www.sunuer.com/SunuerManage?nid=11" target="_blank" style="padding-left: 15px;">更新日志</a>
+                                  
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>基于框架</td>
+                                <td>
+                                       前端框架:Layui
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>主要特色</td>
+                                <td>跨平台、适用场景广泛、易于扩展和维护、快速上手。</td>
+                            </tr>
+                            <tr>
+                                <td>获取渠道</td>
+                                <td style="padding-bottom: 0;">
+                                    <div class="layui-btn-container">
+                                        <a href="https://www.sunuer.com/sunermanage/" target="_blank" class="layui-btn">官网</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="layui-card">
+                <div class="layui-card-header">产品动态</div>
+                <div class="layui-card-body">
+                    <div class="layui-carousel layadmin-carousel layadmin-news"  lay-filter="news">
+                        <div>
+                            <div><a href="https://www.sunuer.com/SunerManage/" target="_blank" class="layui-bg-blue">获得 SunuerManage</a></div>
+                            <div style="margin-top:20px;"><a href="https://www.sunuer.com/SunuerEasy/" target="_blank" class="layui-bg-red">获得 SunuerEasy</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    作者心语
+                    <i class="layui-icon layui-icon-tips" lay-tips="要支持的噢" lay-offset="5"></i>
+                </div>
+                <div class="layui-card-body layui-text layadmin-text">
+                    <p>
+                        一直想写一套跨平台支持的管理系统，做为我们开发项目的主要框架，达到节省时间、减少重复工作，加速项目的上线与迭代。
+                    </p>
+                    <p>于是写了 Sunuer Manage管理系统， 她适用于各种 Web 应用程序，如 网站管理后台、会员中心、内容管理系统（CMS）、客户关系管理系统（CRM）、办公自动化系统（OA）,MES系统 等。</p>
+                    <p>无论是企业级应用，还是个人项目，都能满足您的需求。系统会持续更新优化，致力于为开发者提供更加高效的开发体验。</p>
+                    <p>—— HaiDong（<a href="https://www.sunuer.com/" target="_blank">sunuer.com</a>）</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    layui.config({
+        base: '/js/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use('index');
+</script>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('container'));
+        // 指定图表的配置项和数据
+        option = {
+            title: {
+                text: '数据统计'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['文章发布数据']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {},
+                    magicType: { type: ['line', 'bar'] },
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: @Html.Raw(Model.DataList)
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name: '文章发布情况',
+                    type: 'line',
+                    data: @Html.Raw(Model.TotalList)
+                },
+            ]
+        };
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+            
+        function htmlDecode(input) {
+            var e = document.createElement('div');
+            e.innerHTML = input;
+            return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+        }
+    </script>

@@ -1,0 +1,185 @@
+﻿@page
+@model SunuerManage.Pages.Manage.ManageSets.ManageSetEdtModel
+@{
+}
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">系统名称<span class="red">*</span></label>
+        <div class="layui-input-block">
+            <input class="layui-input" name="ManageTitle" type="text" placeholder="系统名称" lay-verify="required" id="ManageTitle" value="@Model.Model.ManageTitle">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">关键词</label>
+        <div class="layui-input-block">
+            <textarea name="ManageKey" class="layui-textarea" placeholder="关键词" id="ManageKey">@Model.Model.ManageKey</textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">描述</label>
+        <div class="layui-input-block">
+            <textarea name="ManageDesn" class="layui-textarea" placeholder="描述" id="ManageDesn">@Model.Model.ManageDesn</textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">网址</label>
+        <div class="layui-input-block">
+            <input name="ManageUrl" class="layui-input" type="text" placeholder="网站地址" value="@Model.Model.ManageUrl" id="ManageUrl">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">手机号</label>
+        <div class="layui-input-block">
+            <input name="Phone" class="layui-input" type="text" placeholder="手机号" value="@Model.Model.Phone" id="Phone">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+            <input name="Email" class="layui-input" type="text" placeholder="邮箱" value="@Model.Model.Email" id="Email">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">地址</label>
+        <div class="layui-input-block">
+            <input name="Address" class="layui-input" type="text" placeholder="地址" value="@Model.Model.Address" id="Address">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">版权</label>
+        <div class="layui-input-block">
+            <input name="CopyRight" class="layui-input" type="text" placeholder="版权" value="@Model.Model.CopyRight" id="CopyRight">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">图片网址</label>
+        <div class="layui-input-block">
+            <input name="ImageUrl" class="layui-input" type="text" placeholder="ImageUrl" value="@Model.Model.ImageUrl" id="ImageUrl">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">网站LOGO</label>
+        <div class="layui-input-block">
+            <div id="UpImageLogo" class="layui-upload-list" style="float: left; margin-left: 10px;">
+                <img id="ImageLogo" class="layui-upload-img HeadPortrait_Ordinary" src='@Model.Model.Logo'>
+                <div class="layui-upload-drag" id="ImageUpLogo" style="padding:0px; display:block;">
+                    <i class="layui-icon">&#xe67c;</i>
+                    <p>点击上传，或将文件拖拽到此处</p>
+                </div>
+
+                <input id="PicturePathLogo" name="Logo" type="hidden" value="@Model.Model.Logo" />
+
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline">
+            <input type="button" lay-submit lay-filter="layuiadmin-app-form-submit" class="layui-btn btn" id="layuiadmin-app-form-submit" value="确认修改">
+        </div>
+    </div>
+</div>   
+
+<script>
+    //单图上传图片
+    layui.use('upload', function() {
+        upload = layui.upload;
+        var uploadInst = upload.render({
+            elem: '#ImageUpLogo',
+            url: '/api/Files/Upload?name=logo',
+            accept: 'Logo',
+            auto: true,
+            size: 1420,
+            choose: function(obj) {
+                //预读本地文件（不支持ie8）
+                obj.preview(function(index, file, result) {
+                    $('#ImageLogo').attr('src', result); //图片链接（base64）
+                });
+            },
+            done: function(res) {
+                if (0 != res.Code) {
+                    return layer.msg(res.Messge);
+                }
+                else {
+                    $('#PicturePathLogo').val(res.FileUrl);
+                    $('#ImageLogo').attr('src', res.FileUrl);
+                    return layer.msg(res.Messge);
+                }
+            },
+            error: function() {
+                //演示失败状态，并实现重传
+                var demoText = $('#errorText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function() {
+                    uploadInst.upload();
+                });
+            }
+        });
+        //图片标题查看
+        layer.photos({
+            photos: '.layui-upload-list',
+            anim: 0 //0-6的选择，指定弹出图片动画类型
+        });
+
+    });
+    layui.config({
+        base: '/js/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'layer'], function() {
+        var $ = layui.$
+            , form = layui.form;
+       
+        //监听提交
+        form.on('submit(layuiadmin-app-form-submit)', function(data) {
+            var field = data.field; //获取提交的字段
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            var count = layer.load(1);
+            $.ajax({
+                url: "/api/ManageSet/Update",
+                type: "post",
+                async: false,
+                data: {
+                    ManageTitle: data.field.ManageTitle,
+                    ManageKey: data.field.ManageKey,
+                    ManageDesn: data.field.ManageDesn,
+                    ManageUrl: data.field.ManageUrl,
+                    Phone: data.field.Phone,
+                    Email: data.field.Email,
+                    Address: data.field.Address,
+                    CopyRight: data.field.CopyRight,
+                    ImageUrl: data.field.ImageUrl,
+                    About: data.field.About,
+                    Logo: data.field.Logo
+                        },
+                success: function(datax) {
+                    layer.close(count);
+                    if (0 == datax.code) {
+                        layer.msg(datax.msg, { time: 1000 }, function() {
+                           location.reload()
+                           layer.close(index)
+                        });
+                    } else {
+                        layer.msg(datas.msg, {
+                            icon: 1,
+                            time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                        }, function() {
+                            layer.closeAll();
+                        });
+                    }
+                },
+                error: function(e) {
+                    layer.closeAll();
+                    alert("错误！！");
+                }
+            });
+        });
+    })
+</script>
