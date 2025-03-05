@@ -57,17 +57,3 @@ sunuer@sunuer.com
 - jQuery
 - JSEncrypt
 ...
-
-
-
-#### 感谢
-感谢以下组件的支持：
-- NET Core
-- ASP.NET Core
-- NPOI
-- LayUI
-- layuiadmin
-- Sortable
-- jQuery
-- JSEncrypt
-...

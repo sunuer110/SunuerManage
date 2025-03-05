@@ -1,1 +1,5 @@
 * linguist-language=C#
+obj/
+bin/
+.vs/
+*.log
