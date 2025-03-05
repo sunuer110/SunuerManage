@@ -29,6 +29,6 @@
 
 <script>
     $(function() {
-        $(".nav-menu li a[title=@Model.Model.BigTitle]").addClass("Underline");
+        $(".nav-menu li a[title=@Html.Raw(Model.Model.BigTitle)]").addClass("Underline");
     });
 </script>

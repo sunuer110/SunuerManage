@@ -43,6 +43,19 @@ RBAC 权限管理：支持基于角色的权限控制，灵活配置用户权限
 #### 联系方式
 sunuer@sunuer.com
 
+#### 感谢
+感谢以下组件的支持：
+- NET Core
+- ASP.NET Core
+- NPOI
+- LayUI
+- layuiadmin
+- Sortable
+- jQuery
+- JSEncrypt
+...
+
+
 
 #### 感谢
 感谢以下组件的支持：

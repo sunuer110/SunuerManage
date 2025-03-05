@@ -476,6 +476,14 @@ body.mobile-nav-active #mobile-nav-toggle { color: #fff; }
 .service-title .p1{ font:24px/40px "微软雅黑" ; }
 .service-name{ margin-top:20px;}
 .process{ margin-bottom:20px;}
+	.banner_wenzi {
+		width: 100%;
+		padding: 0px 20px;
+		text-align: center;
+		text-shadow: 0 0 5px #4b4e4b; /* 10px 蓝色发光 */
+	}
+	
+
 .one-prompt{ font:14px/60px "微软雅黑" ;}
 .billing span{ font:14px/30px "微软雅黑" ;  }
 .billing a span{top:-70px;} 
@@ -560,7 +568,6 @@ body.mobile-nav-active #mobile-nav-toggle { color: #fff; }
 @media  (max-width: 480px) {
 .indicators-line > .carousel-indicators{ right: 40%;}
 .banner_tu{ display:none}
-.banner_wenzi{ width:100%; padding:0px 20px; text-align:center}
 .slide-text a.btn-default,.slide-text > a.btn-primary {font-size: 10px;line-height: 10px; margin-right: 10px; text-align: center; padding: 10px 15px;}
 .choose-li em{ float:left; width:100%;  }
 .choose-li span{ float:left; width:100%;}
