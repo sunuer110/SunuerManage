@@ -1,0 +1,244 @@
+﻿@page
+@model Web.Pages.Manage.LeaveMessages.LeaveMessageAuditModel
+@{
+}
+<style>
+    .layui-form-label {
+        position: relative;
+        float: left;
+        display: block;
+        padding: 9px 15px;
+        width: 120px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: right;
+    }
+
+    .layui-input-block {
+        margin-left: 150px;
+        min-height: 36px;
+    }
+
+    pre code {
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 4px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        display: block;
+        white-space: pre-wrap; /* 保持换行 */
+    }
+</style>
+<style>
+    .file-iteme {
+        position: relative;
+        padding: 0px 20px;
+        display: inline-block;
+    }
+
+    .layui-icon-close {
+        position: absolute;
+        top: 5px;
+        border: 0px solid #666;
+        color: #fff;
+        right: 25px;
+        z-index: 888
+    }
+
+    .file-iteme button {
+        margin-top: 5px;
+        display: inline-block;
+        padding: 5px;
+        cursor: pointer;
+        font-size: 12px;
+    }
+
+    .imgclik {
+        position: absolute;
+        bottom: 7px;
+        left: 0px;
+        width: 100%;
+        text-align: center;
+    }
+
+        .imgclik span {
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            padding: 6px 17px;
+            color: #fff;
+            border-radius: 3px;
+            margin: 0px 6px;
+        }
+    /* 隐藏文件输入框 */
+    .hidden-file-input {
+        display: none;
+    }
+
+    .summernote {
+        width: 97%;
+    }
+
+    .layui-form-label {
+        padding-right: 0px;
+    }
+</style>
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+  
+    <div class="layui-form-item">
+        <label class="layui-form-label">审核状态<span class="red">*</span></label>
+        <div class="layui-input-block">
+            <input type="radio" name="AuditStatus" value="1" title="审核通过" lay-filter="AuditStatus" checked>
+            <input type="radio" name="AuditStatus" value="2" title="审核未通过" lay-filter="AuditStatus">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">审核备注</label>
+        <div class="layui-input-block">
+            <textarea name="AuditDesn" class="layui-textarea" placeholder="请输入备注" id="AuditDesn"></textarea>
+        </div>
+    </div>
+
+    
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline">
+            <input type="button" lay-submit lay-filter="layuiadmin-app-form-submit" class="layui-btn btn" id="layuiadmin-app-form-submit" value="确认审核">
+        </div>
+    </div>
+</div>
+
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+    <div class="layui-form-item">
+        <label class='layui-form-label myLabel'>标题<span class="red">*</span></label>
+        <div class='layui-input-block myInput'>
+            <input name="Title" class="layui-input" lay-verify="required" type="text" placeholder="标题" value="@Model.Model.Title">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class='layui-form-label myLabel'>
+            手机号
+            @if (Model.ModelSet.PhoneRequire == 1)
+            {
+                <span class="red">*</span>
+            }
+        </label>
+        <div class='layui-input-block myInput'>
+            <input name="Phone" class="layui-input" type="text" placeholder="手机号" value="@Model.Model.Phone" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class='layui-form-label myLabel'>
+            姓名
+            @if (Model.ModelSet.NameRequire == 1)
+            {
+                <span class="red">*</span>
+            }
+        </label>
+        <div class='layui-input-block myInput'>
+            <input name="UserName" class="layui-input" type="text" placeholder="姓名" value="@Model.Model.UserName">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class='layui-form-label myLabel'>
+            邮箱
+            @if (Model.ModelSet.EmailRequire == 1)
+            {
+                <span class="red">*</span>
+            }
+        </label>
+        <div class='layui-input-block myInput'>
+            <input name="Email" class="layui-input" type="text" placeholder="邮箱" value="@Model.Model.Email">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class='layui-form-label myLabel'>留言内容<span class="red">*</span></label>
+        <div class='layui-input-block myInput)'>
+            <textarea name="Content" class="layui-textarea"  placeholder="留言内容">@Model.Model.Content</textarea>
+        </div>
+    </div>
+
+</div>
+<script src="/js/layuiadmin/xm-select.js"></script>
+<style>
+    .nselect {
+        z-index: 20;
+    }
+
+    .wrap {
+        width: 80%;
+        margin: 40px auto;
+        display: flex;
+    }
+
+        .wrap > div {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .wrap p {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 40px;
+            color: #ffffff;
+        }
+
+    .layui-tree-line .layui-tree-entry:hover .layui-tree-txt {
+        color: #999;
+        text-decoration: none;
+        transition: .3s;
+    }
+</style>
+<script>
+
+  
+    layui.config({
+        base: '/js/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'layer'], function () {
+      
+        var $ = layui.$
+            , form = layui.form;
+      
+        //监听提交
+        form.on('submit(layuiadmin-app-form-submit)', function (data) {
+            console.log(data.field)
+
+            var field = data.field; //获取提交的字段
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            var count = layer.load(1);
+            $.ajax({
+                url: "/api/LeaveMessage/Audit",
+                type: "post",
+                async: false,
+                data: {
+                    LeaveMessageIDs: "@Model.LeaveMessageIDs",
+                    ...field
+                },
+                success: function (datax) {
+                    layer.close(count);
+                    if (0 == datax.code) {
+                        layer.msg(datax.msg, { time: 1000 }, function () {
+                            parent.location.reload()
+                            parent.layer.close(index)
+                        });
+                    } else {
+                        layer.msg(datax.msg, {
+                            icon: 2,
+                            time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                        }, function () {
+                            layer.closeAll();
+                        });
+                    }
+                },
+                error: function (e) {
+                    layer.closeAll();
+                    alert("错误！！");
+                }
+            });
+        });
+    })
+</script>

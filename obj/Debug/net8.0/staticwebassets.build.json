@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fWIl38Lo4LsiSCYu7c6ddKCatSIylmWAM7K6R1aRgNk=",
+  "Hash": "l+4l3vObIEV6pUL4o5zSK3TjTXG1GDyoCYJf4Poy/u0=",
   "Source": "SunuerManage",
   "BasePath": "_content/SunuerManage",
   "Mode": "Default",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "qhbm2yccuj",
-      "Integrity": "rq32YJkK0owVGkaFXwNHnevCtjreHHB3t4Pyr66oDkI=",
+      "Fingerprint": "eu14576a9h",
+      "Integrity": "qpysqGsnFvfZAlhnA+yvMAH7d+ONZxyxf8w7JH/Jyy4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\sites\\NET8\\SunuerManage\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SunuerManage.styles.css"
@@ -52,8 +52,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "qhbm2yccuj",
-      "Integrity": "rq32YJkK0owVGkaFXwNHnevCtjreHHB3t4Pyr66oDkI=",
+      "Fingerprint": "eu14576a9h",
+      "Integrity": "qpysqGsnFvfZAlhnA+yvMAH7d+ONZxyxf8w7JH/Jyy4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\sites\\NET8\\SunuerManage\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SunuerManage.bundle.scp.css"
@@ -290,6 +290,27 @@
       "OriginalItemSpec": "wwwroot\\css\\index.css"
     },
     {
+      "Identity": "D:\\sites\\NET8\\SunuerManage\\wwwroot\\css\\LeaveMessage.css",
+      "SourceId": "SunuerManage",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\sites\\NET8\\SunuerManage\\wwwroot\\",
+      "BasePath": "_content/SunuerManage",
+      "RelativePath": "css/LeaveMessage#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "2nymv2dfj5",
+      "Integrity": "3q+A+L9HejkYrlo4DC4lpBc8aocaRURysBG3nF8p8VA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\LeaveMessage.css"
+    },
+    {
       "Identity": "D:\\sites\\NET8\\SunuerManage\\wwwroot\\css\\login.css",
       "SourceId": "SunuerManage",
       "SourceType": "Discovered",
@@ -346,8 +367,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "46w4l8ljav",
-      "Integrity": "JB9M1iO4kS//8i+vehHcU/KyzaA1Oag60umbrZ6erAo=",
+      "Fingerprint": "envdyczam4",
+      "Integrity": "eqNkZMwzd3thsAL1eyx9Cb4BuxvPjgiZLp0ylI+a0KE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css"
@@ -8040,6 +8061,88 @@
       ]
     },
     {
+      "Route": "css/LeaveMessage.2nymv2dfj5.css",
+      "AssetFile": "D:\\sites\\NET8\\SunuerManage\\wwwroot\\css\\LeaveMessage.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "349"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3q+A+L9HejkYrlo4DC4lpBc8aocaRURysBG3nF8p8VA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 07 Mar 2025 03:43:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2nymv2dfj5"
+        },
+        {
+          "Name": "label",
+          "Value": "css/LeaveMessage.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3q+A+L9HejkYrlo4DC4lpBc8aocaRURysBG3nF8p8VA="
+        }
+      ]
+    },
+    {
+      "Route": "css/LeaveMessage.css",
+      "AssetFile": "D:\\sites\\NET8\\SunuerManage\\wwwroot\\css\\LeaveMessage.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "349"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3q+A+L9HejkYrlo4DC4lpBc8aocaRURysBG3nF8p8VA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 07 Mar 2025 03:43:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3q+A+L9HejkYrlo4DC4lpBc8aocaRURysBG3nF8p8VA="
+        }
+      ]
+    },
+    {
       "Route": "css/login.css",
       "AssetFile": "D:\\sites\\NET8\\SunuerManage\\wwwroot\\css\\login.css",
       "Selectors": [],
@@ -8204,51 +8307,6 @@
       ]
     },
     {
-      "Route": "css/style.46w4l8ljav.css",
-      "AssetFile": "D:\\sites\\NET8\\SunuerManage\\wwwroot\\css\\style.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "41041"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"JB9M1iO4kS//8i+vehHcU/KyzaA1Oag60umbrZ6erAo=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 05 Mar 2025 07:06:54 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "46w4l8ljav"
-        },
-        {
-          "Name": "label",
-          "Value": "css/style.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-JB9M1iO4kS//8i+vehHcU/KyzaA1Oag60umbrZ6erAo="
-        }
-      ]
-    },
-    {
       "Route": "css/style.css",
       "AssetFile": "D:\\sites\\NET8\\SunuerManage\\wwwroot\\css\\style.css",
       "Selectors": [],
@@ -8259,7 +8317,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "41041"
+          "Value": "40970"
         },
         {
           "Name": "Content-Type",
@@ -8267,11 +8325,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"JB9M1iO4kS//8i+vehHcU/KyzaA1Oag60umbrZ6erAo=\""
+          "Value": "\"eqNkZMwzd3thsAL1eyx9Cb4BuxvPjgiZLp0ylI+a0KE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 05 Mar 2025 07:06:54 GMT"
+          "Value": "Wed, 05 Mar 2025 07:56:44 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -8281,7 +8339,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-JB9M1iO4kS//8i+vehHcU/KyzaA1Oag60umbrZ6erAo="
+          "Value": "sha256-eqNkZMwzd3thsAL1eyx9Cb4BuxvPjgiZLp0ylI+a0KE="
+        }
+      ]
+    },
+    {
+      "Route": "css/style.envdyczam4.css",
+      "AssetFile": "D:\\sites\\NET8\\SunuerManage\\wwwroot\\css\\style.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "40970"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"eqNkZMwzd3thsAL1eyx9Cb4BuxvPjgiZLp0ylI+a0KE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 05 Mar 2025 07:56:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "envdyczam4"
+        },
+        {
+          "Name": "label",
+          "Value": "css/style.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-eqNkZMwzd3thsAL1eyx9Cb4BuxvPjgiZLp0ylI+a0KE="
         }
       ]
     },
@@ -28148,11 +28251,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"rq32YJkK0owVGkaFXwNHnevCtjreHHB3t4Pyr66oDkI=\""
+          "Value": "\"qpysqGsnFvfZAlhnA+yvMAH7d+ONZxyxf8w7JH/Jyy4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 03:14:49 GMT"
+          "Value": "Fri, 07 Mar 2025 06:11:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -28162,12 +28265,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-rq32YJkK0owVGkaFXwNHnevCtjreHHB3t4Pyr66oDkI="
+          "Value": "sha256-qpysqGsnFvfZAlhnA+yvMAH7d+ONZxyxf8w7JH/Jyy4="
         }
       ]
     },
     {
-      "Route": "SunuerManage.qhbm2yccuj.bundle.scp.css",
+      "Route": "SunuerManage.eu14576a9h.bundle.scp.css",
       "AssetFile": "D:\\sites\\NET8\\SunuerManage\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SunuerManage.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -28185,11 +28288,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"rq32YJkK0owVGkaFXwNHnevCtjreHHB3t4Pyr66oDkI=\""
+          "Value": "\"qpysqGsnFvfZAlhnA+yvMAH7d+ONZxyxf8w7JH/Jyy4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 03:14:49 GMT"
+          "Value": "Fri, 07 Mar 2025 06:11:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -28199,7 +28302,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "qhbm2yccuj"
+          "Value": "eu14576a9h"
         },
         {
           "Name": "label",
@@ -28207,12 +28310,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-rq32YJkK0owVGkaFXwNHnevCtjreHHB3t4Pyr66oDkI="
+          "Value": "sha256-qpysqGsnFvfZAlhnA+yvMAH7d+ONZxyxf8w7JH/Jyy4="
         }
       ]
     },
     {
-      "Route": "SunuerManage.qhbm2yccuj.styles.css",
+      "Route": "SunuerManage.eu14576a9h.styles.css",
       "AssetFile": "D:\\sites\\NET8\\SunuerManage\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SunuerManage.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -28230,11 +28333,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"rq32YJkK0owVGkaFXwNHnevCtjreHHB3t4Pyr66oDkI=\""
+          "Value": "\"qpysqGsnFvfZAlhnA+yvMAH7d+ONZxyxf8w7JH/Jyy4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 03:14:49 GMT"
+          "Value": "Fri, 07 Mar 2025 06:11:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -28244,7 +28347,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "qhbm2yccuj"
+          "Value": "eu14576a9h"
         },
         {
           "Name": "label",
@@ -28252,7 +28355,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-rq32YJkK0owVGkaFXwNHnevCtjreHHB3t4Pyr66oDkI="
+          "Value": "sha256-qpysqGsnFvfZAlhnA+yvMAH7d+ONZxyxf8w7JH/Jyy4="
         }
       ]
     },
@@ -28275,11 +28378,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"rq32YJkK0owVGkaFXwNHnevCtjreHHB3t4Pyr66oDkI=\""
+          "Value": "\"qpysqGsnFvfZAlhnA+yvMAH7d+ONZxyxf8w7JH/Jyy4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 03:14:49 GMT"
+          "Value": "Fri, 07 Mar 2025 06:11:43 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -28289,7 +28392,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-rq32YJkK0owVGkaFXwNHnevCtjreHHB3t4Pyr66oDkI="
+          "Value": "sha256-qpysqGsnFvfZAlhnA+yvMAH7d+ONZxyxf8w7JH/Jyy4="
         }
       ]
     },

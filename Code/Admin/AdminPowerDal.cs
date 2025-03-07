@@ -170,7 +170,7 @@ namespace AdminPower
         /// </summary>
         public DataTable Get()
         {
-            string Sql = "select n.* FROM  [dbo].[AdminPower] as n where n.del=0 order by ParentID asc";
+            string Sql = "select n.* FROM  [dbo].[AdminPower] as n where n.del=0 order by PowerID asc";
             DbHelper SQLRUN = new DbHelper();
             DataTable DR = null;
             // 准备参数

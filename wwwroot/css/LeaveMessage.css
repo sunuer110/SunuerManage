@@ -1,0 +1,17 @@
+﻿@media (max-width: 991px) {
+    .myLabel {
+        padding: 0;
+        text-align: left;
+    }
+
+    .myInput {
+        margin-left: 0;
+    }
+
+    .layui-form .layui-form-item .mySubBtn {
+        width: 100% !important;
+        text-align: center !important;
+        margin: 0px !important;
+        float: left !important
+    }
+}

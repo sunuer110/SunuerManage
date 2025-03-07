@@ -1,0 +1,128 @@
+﻿@page
+@model Web.Pages.Manage.LeaveMessages.LeaveMessageAddModel
+@{
+}
+<link href="~/css/leavemessage.css" rel="stylesheet" />
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list" style="padding: 20px 0px 0 0;">
+    <h1 style="padding:20px">留言信息</h1>
+    <hr style="border-bottom:1px solid #ddd" />
+    <div class="layui-form-item">
+        <label class='layui-form-label myLabel'>标题<span class="red">*</span></label>
+        <div class='layui-input-block myInput'>
+            <input name="Title" class="layui-input" lay-verify="required" type="text" placeholder="标题">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class='layui-form-label myLabel'>
+            手机号
+            @if (Model.Model.PhoneRequire == 1)
+            {
+                <span class="red">*</span>
+            }
+        </label>
+        <div class='layui-input-block myInput'>
+            <input name="Phone" class="layui-input" lay-verify='@(Model.Model.PhoneRequire == 1?"required|phonemsg":"phonemsg")' type="text" placeholder="手机号">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class='layui-form-label myLabel'>
+            姓名
+            @if (Model.Model.NameRequire == 1)
+            {
+                <span class="red">*</span>
+            }
+        </label>
+        <div class='layui-input-block myInput'>
+            <input name="UserName" class="layui-input" lay-verify="@(Model.Model.NameRequire == 1?"required":"")" type="text" placeholder="姓名">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class='layui-form-label myLabel'>
+            邮箱
+            @if (Model.Model.EmailRequire == 1)
+            {
+                <span class="red">*</span>
+            }
+        </label>
+        <div class='layui-input-block myInput'>
+            <input name="Email" class="layui-input" lay-verify="@(Model.Model.EmailRequire == 1?"required|emailmsg":"emailmsg")" type="text" placeholder="邮箱">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class='layui-form-label myLabel'>留言内容<span class="red">*</span></label>
+        <div class='layui-input-block myInput)'>
+            <textarea name="Content" class="layui-textarea" placeholder="留言内容" lay-verify="required"></textarea>
+        </div>
+    </div>
+    
+    
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class='layui-input-inline mySubBtn'>
+            <input type="button" lay-submit lay-filter="layuiadmin-app-form-submit" class="layui-btn btn" id="layuiadmin-app-form-submit" value="确认留言">
+        </div>
+    </div>
+</div>   
+<script>
+    
+    layui.config({
+        base: '/js/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'layer'], function() {
+        var $ = layui.$
+            , form = layui.form;
+        // 自定义提示格式
+        form.verify({
+            phonemsg: function (value, item) { //value：表单的值、item：表单的DOM对象
+                if (value != "") {  //值不是空的时候再去走验证
+                    if (!/^1\d{10}$/.test(value)) {
+                        return '手机号格式不正确';
+                    }
+                }
+            },
+            emailmsg: function (value, item) { //value：表单的值、item：表单的DOM对象
+                if (value != "") {  //值不是空的时候再去走验证
+                    if (!/^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
+                        return '邮箱格式不正确';
+                    }
+                }
+            }
+        })
+        //监听提交
+        form.on('submit(layuiadmin-app-form-submit)', function(data) {
+            var field = data.field; //获取提交的字段
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            var count = layer.load(1);
+            $.ajax({
+                url: "/api/LeaveMessage/Add",
+                type: "post",
+                async: false,
+                data: {
+                   ...field
+                        },
+                success: function(datax) {
+                    layer.close(count);
+                    if (0 == datax.code) {
+                        layer.msg(datax.msg, { time: 1000 }, function() {
+                           location.reload()
+                           layer.close(index)
+                        });
+                    } else {
+                        layer.msg(datax.msg, {
+                            icon: 2,
+                            time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                        }, function() {
+                            layer.closeAll();
+                        });
+                    }
+                },
+                error: function(e) {
+                    layer.closeAll();
+                    alert("错误！！");
+                }
+            });
+        });
+    })
+</script>

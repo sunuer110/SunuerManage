@@ -1,0 +1,277 @@
+﻿@page
+@model Web.Pages.Manage.LeaveMessages.LeaveMessageListModel
+@{
+}
+
+<!-- 主体工具栏 -->
+
+<div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+
+
+    <div class="layui-inline">
+        <input type="text" id="Title" name="Title" class="layui-input" placeholder="标题" lay-filter="Title" style="width: 165px;" autocomplete="off">
+    </div>
+    <div class="layui-inline">
+        <input type="text" id="UserName" name="UserName" class="layui-input" placeholder="留言人" lay-filter="UserName" style="width: 165px;" autocomplete="off">
+    </div>
+    <div class="layui-inline" style="width:165px">
+        <select name="AuditStatus" id="AuditStatus">
+            <option value="">请选择审核状态</option>
+            <option value="0">未审核</option>
+            <option value="1">审核通过</option>
+            <option value="2">审核未通过</option>
+        </select>
+    </div>
+    <button class="layui-btn layuiadmin-btn-list" lay-submit lay-filter="LAY-app-contlist-search">
+        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+    </button>
+</div>
+
+<!-- 主体表格 -->
+<div id="tableContainer">
+
+    <table id="LAY-app-content-list" lay-filter="LAY-app-content-list"></table>
+</div>
+
+<style>
+    
+    #tableContainer{
+        position: relative;
+    }
+
+    #priceList{
+        color:gray;
+        margin:5px 0;
+    }
+
+    .layui-table-tool-temp{
+        padding: 0 !important;
+    }
+</style>
+<!-- layui -->
+<script src="/js/layuiadmin/xm-select.js"></script>
+
+<script>
+    layui.config({
+        base: '/js/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'table', 'laydate', 'layer'], function () {
+
+        var table = layui.table, form = layui.form;
+        var laydate = layui.laydate;
+        
+         
+      
+
+      
+        //监听头工具栏事件
+        table.on('toolbar(LAY-app-content-list)', function (obj) {
+            var checkStatus = table.checkStatus(obj.config.id)
+                , data = checkStatus.data; //获取选中的数据
+            switch (obj.event) {
+
+                case "Audit":
+
+                    console.log("审核", checkStatus.data)
+                    var listdata = '';
+                   
+                    // 循环获取审核的ID和所选数据的审核状态
+                    checkStatus.data.forEach(function (n, i) {
+                        listdata = listdata + n.LeaveMessageID + ",";
+                        
+                    });
+                  
+                    layer.open({
+                        id: 'shenhe',
+                        type: 2,
+                        title: '审核',
+                        content: 'LeaveMessageAudit?LeaveMessageIDs=' + listdata,
+                        anim: 1,
+                        shadeClose: true,
+                        shade: 0.8,
+                        resize: false,
+                        area: ['90%', '90%']
+                    });
+                    break;
+                case 'delete':
+                    if (data.length === 0) {
+                        layer.msg('请选择一行');
+                    } else {
+                        var listdata = '';
+                        layer.confirm('确定删除吗？', function (index) {
+
+                            var indexs = layer.load();
+                            checkStatus.data.forEach(function (n, i) {
+                                listdata = listdata + n.LeaveMessageID + ",";
+                            });
+
+                            //向服务端发送删除指令
+                            $.ajax({
+                                url: "/api/LeaveMessage/Delete",
+                                type: "post",
+                                data: { LeaveMessageIDs: listdata },
+                                dataType: "json",
+                                success: function (datax) {
+                                    if (0 == datax.code) {
+                                        layer.msg(datax.msg, { time: 1000 }, function () {
+                                            location.reload()
+                                            layer.close(index)
+                                        });
+                                    } else {
+                                        layer.msg(datax.msg, {
+                                            icon: 2,
+                                            time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                                        }, function () {
+                                            layer.closeAll();
+                                        });
+                                    }
+                                }
+                            })
+                        });
+                    }
+                    break;
+               
+            };
+        });
+        //监听搜索
+        form.on('submit(LAY-app-contlist-search)', function (data) {
+            var field = data.field;
+            //执行重载
+            table.reload('LAY-app-content-list', {
+                where: field
+                , page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+                , limit: 15
+                , limits: [10, 15, 20, 25, 30]
+                , text: { none: '无数据' }
+            });
+
+        });
+        
+        //文章管理
+        table.render({
+            elem: '#LAY-app-content-list'
+            , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+            , defaultToolbar: []
+            , url: '/api/LeaveMessage/Get' //模拟接口
+            , cols: [[
+                { type: 'checkbox', fixed: 'left', width: 80 }
+                ,
+                { field: 'LeaveMessageID',width:50, title: 'ID', sort: true, align: 'center' }
+
+                , { field: 'Title', title: '标题', align: 'center' }
+                , { field: 'Phone', title: '手机号', width: 150, align: 'center' }
+                , { field: 'UserName', title: '留言人', width: 80, align: 'center' }
+                , { field: 'Email', title: '邮箱', align: 'center' }
+                , { field: 'Content', title: '留言内容', width: 150, align: 'center' }
+                , { field: 'AuditStatus', title: '审核状态', width: 150, align: 'center', templet: "<span>{{d.AuditStatus==0?'未审核':d.AuditStatus==1?'审核通过':d.AuditStatus==2?'审核未通过':''}}</span>" }
+                , { field: 'AuditUserName', title: '审核人', width: 80, align: 'center' }
+                , { field: 'AuditDesn', title: '审核备注', width: 150, align: 'center' }
+                , { field: 'AuditTime', title: '审核时间', width: 200, align: 'center', templet: "{{d.AuditTime=='0001-01-01T00:00:00'?'':d.AuditTime.replace('T',' ')}}" }
+
+
+               , { title: '操作', width:200, align: 'center', fixed: 'right', toolbar: '#table-content-list' }
+
+            ]], request: {
+                pageName: 'Page', //页码的参数名称
+                limitName: 'PageSize' //每页数据量的参数名
+            }
+            , page: true
+            , limit: 15
+            , limits: [10, 15, 20, 25, 30, 300]
+            , text: '对不起，加载出现异常！'
+            , done: function (res, curr, count) {
+                $("#total").html(count);
+                
+
+            }, text: { none: '无数据' }
+        });
+        //监听工具条
+        table.on('tool(LAY-app-content-list)', function (obj) {
+            var data = obj.data;
+            if (obj.event == 'Audit') {
+
+               
+                layer.open({
+                    id: 'shenhe',
+                    type: 2,
+                    title: '审核',
+                    content: 'LeaveMessageAudit?LeaveMessageIDs=' + data.LeaveMessageID + ",",
+                    anim: 1,
+                    shadeClose: true,
+                    shade: 0.8,
+                    resize: false,
+                    area: ['90%', '90%']
+                });
+            } else if (obj.event === 'del') {
+                layer.confirm('确定删除吗？', function (index) {
+                    var indexs = layer.load();
+                    var LeaveMessageID = data.LeaveMessageID;
+                    //向服务端发送删除指令
+                    $.ajax({
+                        url: "/api/LeaveMessage/Delete",
+                        type: "post",
+                        data: { LeaveMessageIDs: LeaveMessageID + "," },
+                        dataType: "json",
+                        success: function (datax) {
+                            if (0 == datax.code) {
+                                layer.msg(datax.msg, { time: 1000 }, function () {
+                                    location.reload()
+                                    layer.close(index)
+                                });
+                            } else {
+                                layer.msg(datax.msg, {
+                                    icon: 1,
+                                    time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                                }, function () {
+                                    layer.closeAll();
+                                });
+                            }
+                        }
+                    })
+                });
+            }
+
+        });
+
+    });
+
+    function GetDateFormat(str) {
+        return new Date(parseInt(str.replace("/Date(", "").replace(")/", ""), 10)).toLocaleString();
+    }
+</script>
+
+<!-- 数据模版 -->
+<script type="text/html" id="CreateDates">
+    {{ toDate(d.CreateDate).pattern("yyyy-MM-dd") }}
+</script>
+
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        @if (Model.AdminModel.Roles.IndexOf("|404|") > -1)
+        {
+                            <button  class="layui-btn layuiadmin-btn-list" lay-event="delete"><i class="layui-icon layui-icon-delete"></i>删除</button>
+        }
+        @if (Model.AdminModel.Roles.IndexOf("|403|") > -1)
+        {
+                    <button  class="layui-btn layuiadmin-btn-list" lay-event="Audit"><i class="layui-icon layui-icon-survey"></i>审核</button>
+        }
+       
+    </div>
+    <div id="priceList" style="font-size:14px;"></div>
+</script>
+
+<script type="text/html" id="table-content-list">
+    @if (Model.AdminModel.Roles.IndexOf("|404|") > -1)
+    {
+                            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+    }
+    @if (Model.AdminModel.Roles.IndexOf("|403|") > -1)
+    {
+           <a class="layui-btn layui-btn-normal layui-btn-xs " lay-event="Audit"><i class="layui-icon layui-icon-survey"></i>审核</a>
+    }
+
+    
+</script>

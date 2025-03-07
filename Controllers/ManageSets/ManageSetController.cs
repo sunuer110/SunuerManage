@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 
-namespace SunuerManage.Controllers.ManageSets
+namespace Web.Controllers.ManageSets
 {
 
     /// <summary>
