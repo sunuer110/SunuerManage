@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SunuerManage")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44e24cf7347c384122544a92bf5f093c76467d17")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1bb4e0e509d2375eb55f85351f17fb6fd22f62e5")]
 [assembly: System.Reflection.AssemblyProductAttribute("SunuerManage")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SunuerManage")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
