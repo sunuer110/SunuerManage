@@ -1,6 +1,5 @@
-USE [SunuerManage]
-GO
-/****** Object:  Table [dbo].[Admin]    Script Date: 2025/3/8 12:55:11 ******/
+
+/****** Object:  Table [dbo].[Admin]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -25,7 +24,7 @@ CREATE TABLE [dbo].[Admin](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[AdminPower]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  Table [dbo].[AdminPower]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -45,7 +44,7 @@ CREATE TABLE [dbo].[AdminPower](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[AdminRoles]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  Table [dbo].[AdminRoles]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -65,7 +64,7 @@ CREATE TABLE [dbo].[AdminRoles](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ArticleCategory]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  Table [dbo].[ArticleCategory]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -96,7 +95,7 @@ CREATE TABLE [dbo].[ArticleCategory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ArticleCategoryLog]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  Table [dbo].[ArticleCategoryLog]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -131,7 +130,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Articles]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  Table [dbo].[Articles]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -161,7 +160,7 @@ CREATE TABLE [dbo].[Articles](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Example]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  Table [dbo].[Example]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -180,7 +179,7 @@ CREATE TABLE [dbo].[Example](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LeaveMessage]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  Table [dbo].[LeaveMessage]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -207,7 +206,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LeaveMessageLog]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  Table [dbo].[LeaveMessageLog]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -238,7 +237,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LeaveMessageSet]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  Table [dbo].[LeaveMessageSet]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -260,7 +259,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LeaveMessageSetLog]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  Table [dbo].[LeaveMessageSetLog]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -286,7 +285,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -307,7 +306,7 @@ CREATE TABLE [dbo].[Users](
 GO
 SET IDENTITY_INSERT [dbo].[Admin] ON 
 GO
-INSERT [dbo].[Admin] ([AdminID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [AdminName], [PassWord], [RoleID], [AdminNick], [Statues], [LoginAttempts], [LoginAttemptsLast]) VALUES (1, 0, CAST(N'2024-10-23T14:23:25.210' AS DateTime), CAST(N'2024-11-22T15:05:37.073' AS DateTime), 1, 0, N'niqiu', N'CE-0B-FD-15-05-9B-68-D6-76-88-88-4D-7A-3D-3E-8C', 1, N'泥鳅', 0, 0, CAST(N'2025-03-08T11:53:43.200' AS DateTime))
+INSERT [dbo].[Admin] ([AdminID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [AdminName], [PassWord], [RoleID], [AdminNick], [Statues], [LoginAttempts], [LoginAttemptsLast]) VALUES (1, 0, CAST(N'2024-10-23T14:23:25.210' AS DateTime), CAST(N'2024-11-22T15:05:37.073' AS DateTime), 1, 0, N'niqiu', N'CE-0B-FD-15-05-9B-68-D6-76-88-88-4D-7A-3D-3E-8C', 1, N'泥鳅', 0, 0, CAST(N'2025-03-14T13:50:28.337' AS DateTime))
 GO
 INSERT [dbo].[Admin] ([AdminID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [AdminName], [PassWord], [RoleID], [AdminNick], [Statues], [LoginAttempts], [LoginAttemptsLast]) VALUES (2, 1, CAST(N'2024-11-22T09:03:45.333' AS DateTime), CAST(N'2024-11-22T10:24:49.350' AS DateTime), 1, 1, N'1', N'CE-0B-FD-15-05-9B-68-D6-76-88-88-4D-7A-3D-3E-8C', 7, N'2', 0, 0, NULL)
 GO
@@ -355,17 +354,19 @@ INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate]
 GO
 INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (17, 1, CAST(N'2024-11-21T15:56:28.290' AS DateTime), NULL, 0, 0, 16, N'文章分类')
 GO
-INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (19, 1, CAST(N'2024-11-21T16:20:57.590' AS DateTime), NULL, 0, 0, 16, N'文章分类添加')
+INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (18, 1, CAST(N'2024-11-21T16:20:57.590' AS DateTime), NULL, 0, 0, 16, N'文章分类添加')
 GO
-INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (20, 0, CAST(N'2024-11-22T15:09:06.470' AS DateTime), NULL, 0, 0, 16, N'文章分类编辑')
+INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (19, 0, CAST(N'2024-11-22T15:09:06.470' AS DateTime), NULL, 0, 0, 16, N'文章分类编辑')
 GO
-INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (21, 0, CAST(N'2024-11-22T15:09:09.760' AS DateTime), NULL, 0, 0, 16, N'文章分类删除')
+INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (20, 0, CAST(N'2024-11-22T15:09:09.760' AS DateTime), NULL, 0, 0, 16, N'文章分类删除')
 GO
-INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (22, 0, CAST(N'2024-11-22T15:09:20.227' AS DateTime), NULL, 0, 0, 16, N'文章添加')
+INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (21, 0, CAST(N'2024-11-22T15:09:20.227' AS DateTime), NULL, 0, 0, 16, N'文章添加')
 GO
-INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (23, 0, CAST(N'2024-11-22T15:09:24.637' AS DateTime), NULL, 0, 0, 16, N'文章编辑')
+INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (22, 0, CAST(N'2024-11-22T15:09:24.637' AS DateTime), NULL, 0, 0, 16, N'文章编辑')
 GO
-INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (24, 0, CAST(N'2024-11-22T15:09:27.413' AS DateTime), NULL, 0, 0, 16, N'文章删除')
+INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (23, 0, CAST(N'2024-11-22T15:09:27.413' AS DateTime), NULL, 0, 0, 16, N'文章删除')
+GO
+INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (24, 0, CAST(N'2025-03-14T13:49:29.323' AS DateTime), NULL, 0, 0, 0, N'系统设置')
 GO
 INSERT [dbo].[AdminPower] ([PowerID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [PowerTitle]) VALUES (400, 0, CAST(N'2025-02-11T14:44:51.500' AS DateTime), NULL, 0, 0, 0, N'留言管理')
 GO
@@ -381,7 +382,7 @@ SET IDENTITY_INSERT [dbo].[AdminPower] OFF
 GO
 SET IDENTITY_INSERT [dbo].[AdminRoles] ON 
 GO
-INSERT [dbo].[AdminRoles] ([RoleID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [RolesTitle], [Powers]) VALUES (1, 0, CAST(N'2024-10-23T14:25:32.850' AS DateTime), CAST(N'2025-03-08T11:35:43.953' AS DateTime), 1, 0, N'超级管理员', N'|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|19|20|21|22|23|24|400|401|402|403|404|')
+INSERT [dbo].[AdminRoles] ([RoleID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [RolesTitle], [Powers]) VALUES (1, 0, CAST(N'2024-10-23T14:25:32.850' AS DateTime), CAST(N'2025-03-14T13:50:10.863' AS DateTime), 1, 0, N'超级管理员', N'|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|400|401|402|403|404|')
 GO
 INSERT [dbo].[AdminRoles] ([RoleID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [RolesTitle], [Powers]) VALUES (2, 1, CAST(N'2024-11-21T22:33:37.020' AS DateTime), CAST(N'2024-11-21T22:52:22.670' AS DateTime), 1, 1, N'2', N'|1|2|3|4|')
 GO
@@ -423,15 +424,19 @@ INSERT [dbo].[ArticleCategory] ([BigID], [CreateUserID], [CreateDate], [UpdateDa
 GO
 INSERT [dbo].[ArticleCategory] ([BigID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [Depths], [ParentIDs], [ParentIDFirst], [Statues], [KeyTitle], [BigTitle], [KeyWord], [KeyDesn], [Images], [Sorts], [ImagesPhone], [SiteUrl]) VALUES (10, 1, CAST(N'2024-12-02T13:37:23.397' AS DateTime), CAST(N'2025-02-24T14:59:35.160' AS DateTime), 1, 0, 1, 2, N'0,1', 1, 0, N'产品', N'产品', N'产品', N'', N'/Uploadfile/2025/02/94aba947-e9c0-4aea-9cf7-2682a6c0bc85.jpg', 10, N'/images/morenimg.png', N'/Products')
 GO
+INSERT [dbo].[ArticleCategory] ([BigID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [Depths], [ParentIDs], [ParentIDFirst], [Statues], [KeyTitle], [BigTitle], [KeyWord], [KeyDesn], [Images], [Sorts], [ImagesPhone], [SiteUrl]) VALUES (11, 1, CAST(N'2025-03-14T13:13:21.743' AS DateTime), NULL, 0, 0, 9, 3, N'0,1,9', 1, 0, N'电脑', N'电脑', N'电脑', N'', N'/images/morenimg.png', 0, N'/images/morenimg.png', N'')
+GO
+INSERT [dbo].[ArticleCategory] ([BigID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [ParentID], [Depths], [ParentIDs], [ParentIDFirst], [Statues], [KeyTitle], [BigTitle], [KeyWord], [KeyDesn], [Images], [Sorts], [ImagesPhone], [SiteUrl]) VALUES (12, 1, CAST(N'2025-03-14T13:14:41.637' AS DateTime), NULL, 0, 0, 9, 3, N'0,1,9', 1, 0, N'手机', N'手机', N'手机', N'手机', N'/images/morenimg.png', 0, N'/images/morenimg.png', N'')
+GO
 SET IDENTITY_INSERT [dbo].[ArticleCategory] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Articles] ON 
 GO
 INSERT [dbo].[Articles] ([ArticleID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [BigID], [ArticleTitle], [Articlekey], [ArticleDesn], [Statues], [Sorts], [NavSites], [ReleaseTime], [Hits], [Image], [Images], [Desn]) VALUES (1, 1, CAST(N'2024-12-02T11:48:17.593' AS DateTime), CAST(N'2024-12-28T16:31:33.337' AS DateTime), 1, 1, 9, N'MES系统', N'MES Manage', N'项目看板管理、生产过程控制、工具工装管理等功能', 0, 0, N'', CAST(N'2024-12-02T11:46:36.000' AS DateTime), 0, N'/Uploadfile/2024/12/b36d95a1-f6f6-460c-9617-60464f4f4a46.jpg', N'/Uploadfile/2024/12/e2136ad6-76ef-4695-b228-aba59caf8850.jpg', N'')
 GO
-INSERT [dbo].[Articles] ([ArticleID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [BigID], [ArticleTitle], [Articlekey], [ArticleDesn], [Statues], [Sorts], [NavSites], [ReleaseTime], [Hits], [Image], [Images], [Desn]) VALUES (2, 1, CAST(N'2024-12-02T11:54:18.433' AS DateTime), CAST(N'2024-12-06T09:04:14.993' AS DateTime), 1, 0, 9, N'Sunuer Manage', N'Sunuer Manage管理系统', N'现代管理的全能解决方案', 0, 0, N'', CAST(N'2024-12-02T11:52:38.000' AS DateTime), 0, N'/Uploadfile/2024/12/5c940969-d0fb-4797-97f1-d128e3cf5102.png', N'', N'<p><br></p>')
+INSERT [dbo].[Articles] ([ArticleID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [BigID], [ArticleTitle], [Articlekey], [ArticleDesn], [Statues], [Sorts], [NavSites], [ReleaseTime], [Hits], [Image], [Images], [Desn]) VALUES (2, 1, CAST(N'2024-12-02T11:54:18.433' AS DateTime), CAST(N'2025-03-14T13:15:15.553' AS DateTime), 1, 0, 11, N'Sunuer Manage', N'Sunuer Manage管理系统', N'现代管理的全能解决方案', 0, 0, N'', CAST(N'2024-12-02T11:52:38.000' AS DateTime), 0, N'/Uploadfile/2024/12/5c940969-d0fb-4797-97f1-d128e3cf5102.png', N'', N'<p><br></p>')
 GO
-INSERT [dbo].[Articles] ([ArticleID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [BigID], [ArticleTitle], [Articlekey], [ArticleDesn], [Statues], [Sorts], [NavSites], [ReleaseTime], [Hits], [Image], [Images], [Desn]) VALUES (3, 1, CAST(N'2024-12-02T11:56:59.227' AS DateTime), CAST(N'2024-12-06T09:04:09.150' AS DateTime), 1, 0, 9, N'Sunuer Easy', N'Sunuer Easy代码生成工具', N'更聪明地编码，更快速地构建', 0, 0, N'', CAST(N'2024-12-02T11:54:22.000' AS DateTime), 0, N'/Uploadfile/2024/12/0459e895-2758-49ec-a6d3-ed5dda8bdf96.png', N'', N'<p>更聪明地编码，更快速地构建</p>')
+INSERT [dbo].[Articles] ([ArticleID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [BigID], [ArticleTitle], [Articlekey], [ArticleDesn], [Statues], [Sorts], [NavSites], [ReleaseTime], [Hits], [Image], [Images], [Desn]) VALUES (3, 1, CAST(N'2024-12-02T11:56:59.227' AS DateTime), CAST(N'2025-03-14T13:36:41.550' AS DateTime), 1, 0, 11, N'Sunuer Easy', N'Sunuer Easy代码生成工具', N'更聪明地编码，更快速地构建', 0, 0, N'', CAST(N'2024-12-02T11:54:22.000' AS DateTime), 0, N'/Uploadfile/2024/12/0459e895-2758-49ec-a6d3-ed5dda8bdf96.png', N'', N'<p>更聪明地编码，更快速地构建</p>')
 GO
 INSERT [dbo].[Articles] ([ArticleID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [BigID], [ArticleTitle], [Articlekey], [ArticleDesn], [Statues], [Sorts], [NavSites], [ReleaseTime], [Hits], [Image], [Images], [Desn]) VALUES (4, 1, CAST(N'2024-12-02T20:38:47.773' AS DateTime), CAST(N'2024-12-04T09:52:31.727' AS DateTime), 1, 0, 2, N'兼职考勤系统', N'兼职考勤系统案例', N'兼职考勤系统案例', 0, 0, N'', CAST(N'2024-12-02T20:37:14.000' AS DateTime), 0, N'/Uploadfile/2024/12/b7cded25-5b10-464c-a8d0-877555aff8a4.png', N'', N'<p><img src="/Uploadfile/2024/12/dd794838-02e2-41a1-9fa6-fa7db7684b7e.png" style="width: 375px;"><br></p>')
 GO
@@ -507,6 +512,10 @@ INSERT [dbo].[Articles] ([ArticleID], [CreateUserID], [CreateDate], [UpdateDate]
 GO
 INSERT [dbo].[Articles] ([ArticleID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [BigID], [ArticleTitle], [Articlekey], [ArticleDesn], [Statues], [Sorts], [NavSites], [ReleaseTime], [Hits], [Image], [Images], [Desn]) VALUES (26, 1, CAST(N'2025-02-21T15:33:35.357' AS DateTime), NULL, 0, 0, 10, N'Sunuer Finance', N'Sunuer Finance', N'Sunuer Finance', 0, 0, N'', CAST(N'2025-02-21T15:32:21.000' AS DateTime), 0, N'/Uploadfile/2025/02/9cb61290-8992-4982-8832-71167ab8709c.png', N'', N'<p><img src="/Uploadfile/2025/02/04a6a855-a988-4375-a303-d717bfb1442b.png" style="width: 375px;"></p><p>官网地址：https://www.sunuer.com/Cases/CasesView?nid=5</p>')
 GO
+INSERT [dbo].[Articles] ([ArticleID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [BigID], [ArticleTitle], [Articlekey], [ArticleDesn], [Statues], [Sorts], [NavSites], [ReleaseTime], [Hits], [Image], [Images], [Desn]) VALUES (27, 1, CAST(N'2025-03-14T13:16:25.237' AS DateTime), CAST(N'2025-03-14T13:44:25.223' AS DateTime), 1, 0, 12, N'Sunuer Easy', N'Sunuer Easy代码生成工具', N'更聪明地编码，更快速地构建', 0, 0, N'', CAST(N'2025-03-14T13:15:25.000' AS DateTime), 0, N'/Uploadfile/2025/03/4cf96fb4-c783-497a-ae1b-e166bedfc2f9.png', N'', N'<p><br></p>')
+GO
+INSERT [dbo].[Articles] ([ArticleID], [CreateUserID], [CreateDate], [UpdateDate], [UpdateUserID], [Del], [BigID], [ArticleTitle], [Articlekey], [ArticleDesn], [Statues], [Sorts], [NavSites], [ReleaseTime], [Hits], [Image], [Images], [Desn]) VALUES (28, 1, CAST(N'2025-03-14T13:16:54.440' AS DateTime), CAST(N'2025-03-14T13:44:15.903' AS DateTime), 1, 0, 12, N'Sunuer Manage', N'Sunuer Manage管理系统', N'现代管理的全能解决方案', 0, 0, N'', CAST(N'2025-03-14T13:16:28.000' AS DateTime), 0, N'/Uploadfile/2025/03/874dfa4d-4ab9-4ed2-a8e0-56362f4794b3.png', N'', N'<p><br></p>')
+GO
 SET IDENTITY_INSERT [dbo].[Articles] OFF
 GO
 SET IDENTITY_INSERT [dbo].[LeaveMessageSet] ON 
@@ -561,17 +570,17 @@ ALTER TABLE [dbo].[Admin] ADD  DEFAULT ((0)) FOR [Statues]
 GO
 ALTER TABLE [dbo].[Admin] ADD  CONSTRAINT [DF_Admin_LoginAttempts]  DEFAULT ((0)) FOR [LoginAttempts]
 GO
-ALTER TABLE [dbo].[AdminPower] ADD  DEFAULT ((0)) FOR [CreateUserID]
+ALTER TABLE [dbo].[AdminPower] ADD  CONSTRAINT [DF__AdminPowe__Creat__4D94879B]  DEFAULT ((0)) FOR [CreateUserID]
 GO
-ALTER TABLE [dbo].[AdminPower] ADD  DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [dbo].[AdminPower] ADD  CONSTRAINT [DF__AdminPowe__Creat__4E88ABD4]  DEFAULT (getdate()) FOR [CreateDate]
 GO
-ALTER TABLE [dbo].[AdminPower] ADD  DEFAULT ((0)) FOR [UpdateUserID]
+ALTER TABLE [dbo].[AdminPower] ADD  CONSTRAINT [DF__AdminPowe__Updat__4F7CD00D]  DEFAULT ((0)) FOR [UpdateUserID]
 GO
-ALTER TABLE [dbo].[AdminPower] ADD  DEFAULT ((0)) FOR [Del]
+ALTER TABLE [dbo].[AdminPower] ADD  CONSTRAINT [DF__AdminPower__Del__5070F446]  DEFAULT ((0)) FOR [Del]
 GO
-ALTER TABLE [dbo].[AdminPower] ADD  DEFAULT ((0)) FOR [ParentID]
+ALTER TABLE [dbo].[AdminPower] ADD  CONSTRAINT [DF__AdminPowe__Paren__5165187F]  DEFAULT ((0)) FOR [ParentID]
 GO
-ALTER TABLE [dbo].[AdminPower] ADD  DEFAULT ((0)) FOR [PowerTitle]
+ALTER TABLE [dbo].[AdminPower] ADD  CONSTRAINT [DF__AdminPowe__Power__52593CB8]  DEFAULT ((0)) FOR [PowerTitle]
 GO
 ALTER TABLE [dbo].[AdminRoles] ADD  DEFAULT ((0)) FOR [CreateUserID]
 GO
@@ -693,7 +702,7 @@ ALTER TABLE [dbo].[Users] ADD  CONSTRAINT [DF_Users_CreateDate]  DEFAULT (getdat
 GO
 ALTER TABLE [dbo].[Users] ADD  CONSTRAINT [DF_Users_Statues]  DEFAULT ((0)) FOR [Statues]
 GO
-/****** Object:  StoredProcedure [dbo].[ArticleCategory_Add]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[ArticleCategory_Add]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -750,7 +759,7 @@ select @ParentIDFirst=ParentIDFirst,@Depths=Depths,@ParentIDS=ParentIDS from [Ar
     end    
  return @fanhui
 GO
-/****** Object:  StoredProcedure [dbo].[ArticleCategory_Delete]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[ArticleCategory_Delete]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -770,7 +779,7 @@ as
     update  [dbo].[ArticleCategory] set Del=1,UpdateUserID = @UpdateUserID, UpdateDate = getdate() where BigID = @BigID
     return @@rowcount
 GO
-/****** Object:  StoredProcedure [dbo].[ArticleCategory_Get]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[ArticleCategory_Get]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -789,7 +798,7 @@ begin
     select * from ArticleCategory where Del=0 and ParentID=@ParentID order by Sorts desc 
 end
 GO
-/****** Object:  StoredProcedure [dbo].[ArticleCategory_GetAll]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[ArticleCategory_GetAll]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -808,7 +817,7 @@ begin
     select * from ArticleCategory where Del=0
 end
 GO
-/****** Object:  StoredProcedure [dbo].[ArticleCategory_GetModel]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[ArticleCategory_GetModel]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -828,7 +837,7 @@ begin
     where BigID = @BigID
 end
 GO
-/****** Object:  StoredProcedure [dbo].[ArticleCategory_GetNumber]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[ArticleCategory_GetNumber]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -850,7 +859,7 @@ begin
 	 where a.Del=0 and (n.BigID=a.BigID or  charindex(','+CAST(n.BigID AS NVARCHAR(50))+',', ','+b.ParentIDs+',') > 0)) as Number from ArticleCategory as n where n.Del=0 and n.ParentID=@ParentID
 end
 GO
-/****** Object:  StoredProcedure [dbo].[ArticleCategory_GetParentIDAll]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[ArticleCategory_GetParentIDAll]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -869,7 +878,7 @@ begin
     select * from ArticleCategory where Del=0 and  charindex(','+CAST(@ParentID AS NVARCHAR)+',',','+ParentIDs+',')>0
 end
 GO
-/****** Object:  StoredProcedure [dbo].[ArticleCategory_Update]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[ArticleCategory_Update]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -938,7 +947,7 @@ AS
  
  return @fanhui
 GO
-/****** Object:  StoredProcedure [dbo].[Articles_Add]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Articles_Add]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -972,7 +981,7 @@ begin
     return @@identity
 end
 GO
-/****** Object:  StoredProcedure [dbo].[Articles_Delete]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Articles_Delete]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -994,7 +1003,7 @@ begin
     return @@rowcount
 end
 GO
-/****** Object:  StoredProcedure [dbo].[Articles_Get]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Articles_Get]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1027,7 +1036,7 @@ begin
     set @searchs = @searchs + ' and (n.BigID=@BigID or  charindex('',''+CAST(@BigID AS NVARCHAR(50))+'','', '',''+b.ParentIDs+'','') > 0)';
 end
 set @s ='  select a.*from(
-    select row_number() over(order by  n.ArticleID desc) as aid ,n.*,b.BigTitle FROM  [dbo].[Articles] as n
+    select row_number() over(order by n.Sorts desc, n.ArticleID desc) as aid ,n.*,b.BigTitle FROM  [dbo].[Articles] as n
 	left join ArticleCategory as b  on n.BigID=b.BigID 
 	 where n.del=0 	'+@searchs+'
 	) as a
@@ -1039,7 +1048,7 @@ print @s;
 EXEC sp_executesql @s, N'@ArticleTitle nvarchar(50),@BigID int,@StartRecord int,@EndRecord int', @ArticleTitle,@BigID,@StartRecord,@EndRecord
 
 GO
-/****** Object:  StoredProcedure [dbo].[Articles_GetCount]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Articles_GetCount]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1079,7 +1088,7 @@ print @s;
 EXEC sp_executesql @s, N'@ArticleTitle nvarchar(50),@BigID int', @ArticleTitle,@BigID
  
 GO
-/****** Object:  StoredProcedure [dbo].[Articles_GetCount30]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Articles_GetCount30]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1098,7 +1107,7 @@ CREATE Procedure [dbo].[Articles_GetCount30]
 as
 select count(ArticleID) as Number ,convert(varchar(11),CreateDate,111) as Datas from Articles  where  Del=0  and @StarTime<=CreateDate  and @EndTime>=CreateDate group by convert(varchar(11),CreateDate,111)order by convert(varchar(11),CreateDate,111)
 GO
-/****** Object:  StoredProcedure [dbo].[Articles_GetLast]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Articles_GetLast]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1124,7 +1133,7 @@ select top 1 ArticleID,ArticleTitle,NavSites from Articles   where bigid=(select
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[Articles_GetModel]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Articles_GetModel]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1145,7 +1154,7 @@ begin
     where Del=0 and ArticleID = @ArticleID
 end
 GO
-/****** Object:  StoredProcedure [dbo].[Articles_GetNext]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Articles_GetNext]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1171,7 +1180,7 @@ select top 1 ArticleID,ArticleTitle,NavSites from Articles   where bigid=(select
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[Articles_GetTop]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Articles_GetTop]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1217,7 +1226,7 @@ EXEC sp_executesql @s, N'@ArticleTitle nvarchar(50),@BigID int,@StartRecord int,
 
 
 GO
-/****** Object:  StoredProcedure [dbo].[Articles_GetTopCount]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Articles_GetTopCount]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1257,7 +1266,7 @@ print @s;
 EXEC sp_executesql @s, N'@ArticleTitle nvarchar(50),@BigID int', @ArticleTitle,@BigID
  
 GO
-/****** Object:  StoredProcedure [dbo].[Articles_Update]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Articles_Update]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1293,7 +1302,7 @@ begin
     return @@rowcount
 end
 GO
-/****** Object:  StoredProcedure [dbo].[Example_ADD]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Example_ADD]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1324,7 +1333,7 @@ select @return=-1
 	select @return= @@IDENTITY
 	return @return
 GO
-/****** Object:  StoredProcedure [dbo].[Example_Delete]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Example_Delete]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1346,7 +1355,7 @@ delete [Example]  where UserID=@UserID
 	select @return= @@rowcount
 	return @return
 GO
-/****** Object:  StoredProcedure [dbo].[Example_GetCount]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Example_GetCount]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1384,7 +1393,7 @@ if @Phone<>''
 set @s='select Count(n.UserID) as Num FROM [Example] as n  where n.Statues=0 '+@searchs
 	exec(@s)
 GO
-/****** Object:  StoredProcedure [dbo].[Example_GetList]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Example_GetList]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1425,7 +1434,7 @@ set @s='select a.* from(select row_number() over(order by n.UserID desc) as aid 
 	where a.aid between '+@startindex+' and ('+@endIndex+'+'+@startIndex+'-1) order by aid asc'
 	exec(@s)
 GO
-/****** Object:  StoredProcedure [dbo].[Example_Update]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[Example_Update]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1450,7 +1459,7 @@ update [Example] set UserName=@UserName,Phone=@Phone where UserID=@UserID
 	select @return= @@rowcount
 	return @return
 GO
-/****** Object:  StoredProcedure [dbo].[LeaveMessage_Add]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[LeaveMessage_Add]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1483,7 +1492,7 @@ begin
 	return @fanhui
 end
 GO
-/****** Object:  StoredProcedure [dbo].[LeaveMessage_Audit]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[LeaveMessage_Audit]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1518,7 +1527,7 @@ begin
     return @fanhui
 end
 GO
-/****** Object:  StoredProcedure [dbo].[LeaveMessage_Delete]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[LeaveMessage_Delete]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1545,7 +1554,7 @@ declare @fanhui int = 0
     return @fanhui
 end
 GO
-/****** Object:  StoredProcedure [dbo].[LeaveMessage_Get]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[LeaveMessage_Get]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1588,7 +1597,7 @@ begin
     EXEC sp_executesql @s, N'@Title nvarchar(50),@UserName nvarchar(50),@AuditStatus int,@StartRecord int,@EndRecord int', @Title,@UserName,@AuditStatus,@StartRecord,@EndRecord 
 end
 GO
-/****** Object:  StoredProcedure [dbo].[LeaveMessage_GetCount]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[LeaveMessage_GetCount]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1626,7 +1635,7 @@ begin
     EXEC sp_executesql @s, N'@Title nvarchar(50),@UserName nvarchar(50),@AuditStatus int', @Title,@UserName,@AuditStatus
 end
 GO
-/****** Object:  StoredProcedure [dbo].[LeaveMessage_GetModel]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[LeaveMessage_GetModel]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1645,7 +1654,7 @@ begin
     where Del=0 and [LeaveMessageID] = @LeaveMessageID
 end
 GO
-/****** Object:  StoredProcedure [dbo].[LeaveMessageSet_GetModel]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[LeaveMessageSet_GetModel]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1665,7 +1674,7 @@ begin
     where Del=0 and [SetID] = @SetID
 end
 GO
-/****** Object:  StoredProcedure [dbo].[LeaveMessageSet_Update]    Script Date: 2025/3/8 12:55:11 ******/
+/****** Object:  StoredProcedure [dbo].[LeaveMessageSet_Update]    Script Date: 2025/3/14 14:16:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

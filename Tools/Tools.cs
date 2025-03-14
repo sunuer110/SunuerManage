@@ -329,5 +329,15 @@ namespace Tools
             // 返回新的 URL
             return uriBuilder.ToString();
         }
+        /// <summary>
+        // 判断是否为移动设备
+        /// </summary>
+        /// <param name="request">HttpRequest request</param>
+        /// <returns>true/fasle</returns>
+        public static bool IsMobileDevice(HttpRequest request)
+        {
+            var userAgent = request.Headers["User-Agent"].ToString().ToLower();
+            return userAgent.Contains("mobi") || userAgent.Contains("android") || userAgent.Contains("iphone");
+        }
     }
 }

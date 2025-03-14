@@ -15,6 +15,7 @@ namespace SunuerManage.Pages
     /// </summary>
     public class IndexModel : PageModel
     {
+        public bool IsMobile { get; set; } = false;
         //list菜单
         public List<Articles.ArticlesModel> ArticlesList = new List<Articles.ArticlesModel>();
         public List<Articles.ArticlesModel> CaseList = new List<Articles.ArticlesModel>();
@@ -31,7 +32,10 @@ namespace SunuerManage.Pages
             var menu = new SunuerManage.Pages.Shared.MenuModel();
             menu.GetMenu();
             Menu = menu;  // 传递 Menu 数据
-
+            if (Tools.Tools.IsMobileDevice(HttpContext.Request))
+            {
+                IsMobile = true;
+            }
             //页面基础参数赋值
             ViewData["Title"] = Tools.ConfigurationHelper.GetConfigValue("ManageSet:ManageTitle");
             ViewData["KeyWords"] = Tools.ConfigurationHelper.GetConfigValue("ManageSet:ManageKey");
@@ -47,9 +51,16 @@ namespace SunuerManage.Pages
         {
             //轮显
             Articles.ArticlesDal Dal = new Articles.ArticlesDal();
-
-            DataTable Datas = Dal.GetTop(9,"",1,10);
-            ArticlesList = Tools.DataTableToList.DatatableToList<Articles.ArticlesModel>(Datas);
+            if (IsMobile)
+            {
+                DataTable Datas = Dal.GetTop(12, "", 1, 12);
+                ArticlesList = Tools.DataTableToList.DatatableToList<Articles.ArticlesModel>(Datas);
+            }
+            else
+            {
+                DataTable Datas = Dal.GetTop(11, "", 1, 12);
+                ArticlesList = Tools.DataTableToList.DatatableToList<Articles.ArticlesModel>(Datas);
+            }
         }
         public void GetCase()
         {
