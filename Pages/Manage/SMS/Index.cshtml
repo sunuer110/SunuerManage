@@ -1,0 +1,281 @@
+﻿@page
+@model SunuerManage.Pages.Manage.SMS.IndexModel
+@{
+}
+<link href="~/css/registered.css" rel="stylesheet" />
+
+<style>
+    .layui-tab-brief > .layui-tab-title .layui-this {
+        color: #1067F9;
+    }
+
+        .layui-tab-brief > .layui-tab-more li.layui-this:after, .layui-tab-brief > .layui-tab-title .layui-this:after {
+            border-bottom: 2px solid #1067F9;
+        }
+
+    .layui-form-label {
+        width: 100px;
+    }
+
+    .layui-input {
+        height: 48px;
+    }
+
+    .layui-form-label {
+        line-height: 40px;
+    }
+
+    .layui-form-item .layui-input-inline {
+        width: 180px;
+    }
+
+    .layui-form-item .layui-input-inline {
+        margin-right: 0;
+    }
+
+    .layui-form-mid {
+        padding: 0 !important;
+        margin-right: 0;
+    }
+
+    .yzmBtn {
+        height: 48px;
+    }
+
+    .layui-input-block{
+        margin-left: 130px;
+    }
+
+    .layui-tab-bar{
+        display: none;
+    }
+
+    .layui-input:focus, .layui-textarea:focus{
+        border-color: #3BA2EF !important;
+    }
+</style>
+<div class="contents">
+    <div class="content">
+        <div class="h1">
+            <div>
+                <h1>验证码</h1>
+            </div>
+
+        </div>
+        <div class="application page-section" style="padding: 40px 0 40px 0;">
+            <div class="container" style="background: #fff;">
+                <div class="formContainer">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title">
+                            <li style="width: 45%;" class=" layui-this"><i class="layui-icon layui-icon-cellphone mid"></i><span class="mid">手机号注册</span></li>
+                            <li style="width: 45%;"><i class="layui-icon layui-icon-email mid" style="font-size:26px;"></i><span class="mid">邮箱注册</span></li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div class="layui-form" lay-filter="layuiadmin-app-form-list2"
+                                     id="layuiadmin-app-form-list2">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">手机号码</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="Phone" id="Phone" required lay-verify="required|phone"
+                                                   placeholder="请输入手机号码" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">验证码</label>
+                                        <div class="layui-input-block" style="display: flex">
+                                            <input type="text" name="Code" required lay-verify="required"
+                                                   placeholder="请输入验证码" style="border-radius: 2px 0 0 2px"
+                                                   autocomplete="off" class="layui-input">
+                                            <div class="layui-form-mid layui-word-aux">
+                                                <button id="GetYzm"  class="yzmBtn layui-btn layui-btn-primary">
+                                                    获取验证码
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item ">
+                                <div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">邮箱</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="Email" id="Email" required lay-verify="required|emailmsg"
+                                                   placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">验证码</label>
+                                        <div class="layui-input-block" style="display: flex">
+                                            <input type="text" name="Code" required lay-verify="required"
+                                                   placeholder="请输入验证码" style="border-radius: 2px 0 0 2px" autocomplete="off"
+                                                   class="layui-input">
+                                            <div class="layui-form-mid layui-word-aux">
+                                                <button id="GetYzm2"  class="yzmBtn layui-btn layui-btn-primary">
+                                                    获取验证码
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/javascript.js"></script>
+<script type="text/javascript">
+    $(function() {
+
+        layui.config({
+            base: '/js/layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index'], function() {
+            var $ = layui.$
+                , admin = layui.admin
+                , element = layui.element
+                , layer = layui.layer
+                , form = layui.form;
+            // 自定义提示格式
+            form.verify({
+                emailmsg: function (value, item) { //value：表单的值、item：表单的DOM对象
+                    if (value != "") {  //值不是空的时候再去走验证
+                        if (!/^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
+                            return '邮箱格式不正确';
+                        }
+                    }
+                }
+            })
+            $("#GetYzm")[0].addEventListener('click', function (event) {
+                var tid = 1;
+                var Vstr = /^[1][3|4|5|7|8|6|9][0-9]{9}$/;
+                var Phone = $("#Phone").val();
+                if (Phone == "") {
+                    layer.msg("手机号不能为空!");
+                    return false;
+                }
+                if (!Vstr.test(Phone)) {
+                    layer.msg("无效手机号!");
+                    return false;
+                }
+                if (event.target.innerText == "重新获取验证码" || event.target.innerText == "获取验证码") {
+                    console.log("点击获取验证码", event)
+                    var time = 60;
+                    var timer = setInterval(() => {
+                        if (time <= 0) {
+                            clearInterval(timer);
+                            event.target.innerText = "重新获取验证码"
+                        } else {
+                            time -= 1;
+                            event.target.innerText = time + "S"
+                        }
+
+                    }, 1000)
+
+                    $.ajax({
+                        url: "/api/SMS/SendCode",
+                        type: "post",
+                        async: false,
+                        data: {
+                            Phone,
+                            Tipid: tid
+                        },
+                        success: function (datax) {
+                            layer.close(count);
+                            if (0 == datax.code) {
+                                layer.msg(datax.msg, { time: 1000 }, function () {
+                                    // layer.close(index)
+                                });
+                            } else {
+                                layer.msg(datax.msg, {
+                                    icon: 2,
+                                    time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                                }, function () {
+                                    layer.closeAll();
+                                });
+                            }
+                        },
+                        error: function (e) {
+                            layer.closeAll();
+                            alert("错误！！");
+                        }
+                    })
+                } else {
+                    console.log("重复点击")
+                }
+
+
+            });
+            $("#GetYzm2")[0].addEventListener('click', function (event) {
+                var tid = 1;
+                var Vstr = /^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                var Email = $("#Email").val();
+                if (Email == "") {
+                    layer.msg("邮箱号不能为空!");
+                    return false;
+                }
+                if (!Vstr.test(Email)) {
+                    layer.msg("无效邮箱号!");
+                    return false;
+                }
+                if (event.target.innerText == "重新获取验证码" || event.target.innerText == "获取验证码") {
+                    console.log("点击获取验证码", event)
+                    var time = 60;
+                    var timer = setInterval(() => {
+                        if (time <= 0) {
+                            clearInterval(timer);
+                            event.target.innerText = "重新获取验证码"
+                        } else {
+                            time -= 1;
+                            event.target.innerText = time + "S"
+                        }
+
+                    }, 1000)
+                    $.ajax({
+                        url: "/api/SMS/SendCode",
+                        type: "post",
+                        async: false,
+                        data: {
+                            Email,
+                            Tipid: tid
+                        },
+                        success: function (datax) {
+                            layer.close(count);
+                            if (0 == datax.code) {
+                                layer.msg(datax.msg, { time: 1000 }, function () {
+                                    // layer.close(index)
+
+                                });
+                            } else {
+                                layer.msg(datax.msg, {
+                                    icon: 2,
+                                    time: 3000 //2秒关闭（如果不配置，默认是3秒）
+                                }, function () {
+                                    layer.closeAll();
+                                });
+                            }
+                        },
+                        error: function (e) {
+                            layer.closeAll();
+                            alert("错误！！");
+                        }
+                    })
+                } else {
+                    console.log("重复点击")
+                }
+
+
+            });
+
+        });
+    });
+</script>
