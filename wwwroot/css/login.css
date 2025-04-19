@@ -33,10 +33,11 @@ h1 {
 }
 
 .contents {
-    position: relative;
-    width: 1200px;
-    margin:  0 auto;
-    text-align: center;
+	position: relative;
+	width: 1200px;
+	padding-top: 90px;
+	margin: 0 auto;
+	text-align: center;
 }
 
 .h1{	height: 46px;
@@ -44,7 +45,7 @@ h1 {
 	margin-bottom: 30px;
 	position: relative;
 }
-.content{ width:365px; margin:0 auto; margin-top:90px; padding:40px 60px;border-radius: 5px;background:rgba(255,255,255,0.08);}
+.content{ width:365px; margin:0 auto;  padding:40px 60px;border-radius: 5px;background:rgba(255,255,255,0.08);}
 .reinput {
 	height: 46px;
 	padding: 0 5px;

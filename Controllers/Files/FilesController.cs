@@ -15,7 +15,7 @@ namespace SunuerManage.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class FilesController : ControllerBase
-    { 
+    {
         // 通过依赖注入获取 IHttpContextAccessor- 获取实际IP地址使用
         private readonly IHttpContextAccessor _httpContextAccessor;
         //注入获取appsettings.json字符串
@@ -27,7 +27,7 @@ namespace SunuerManage.Controllers
             _configuration = configuration;
         }
         [HttpPost("Upload")]
-        public async Task<IActionResult> Upload(IFormFile file,[FromQuery] string? name)
+        public async Task<IActionResult> Upload(IFormFile file, [FromQuery] string? name)
         {
             if (file == null || file.Length == 0)
             {
@@ -39,14 +39,24 @@ namespace SunuerManage.Controllers
                 name = "";
             }
             // 限制文件类型
-            string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif", ".pdf", ".docx", ".xlsx" };
+            string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif", ".pdf", ".doc", ".xls", ".docx", ".xlsx", ".zip" };
             string fileExtension = Path.GetExtension(file.FileName).ToLower();
-            string[] allowedMimeTypes = { "image/jpeg", "image/png", "image/gif", "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" };
-
+            string[] allowedMimeTypes = {
+    "image/jpeg",
+    "image/png",
+    "image/gif",
+    "application/pdf",
+    "application/msword", // 对应 .doc
+    "application/vnd.ms-excel", // 对应 .xls
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // 对应 .docx
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // 对应 .xlsx
+    "application/zip" // 如果你要允许 .zip 文件
+    , "application/octet-stream"
+};
             string FileType = "";
             FileType = fileExtension;
             // 检查文件扩展名和 MIME 类型
-            if (!allowedExtensions.Contains(fileExtension) || !allowedMimeTypes.Contains(file.ContentType))
+            if (!allowedExtensions.Contains(fileExtension) || !allowedMimeTypes.Contains(file.ContentType.ToLower()))
             {
                 return Ok(new
                 {
@@ -66,7 +76,7 @@ namespace SunuerManage.Controllers
                 });
             }
             // 验证文件的 Magic Number
-            if (!IsValidFile(file))
+            if (!await IsValidFile(file, fileExtension))
             {
 
                 return Ok(new
@@ -99,7 +109,7 @@ namespace SunuerManage.Controllers
 
                     string uniqueFileName = $"{name}{fileExtension}";
                     string filePath = Path.Combine(baseFolder, uniqueFileName);
-                    Console.WriteLine(filePath);
+
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await file.CopyToAsync(stream);
@@ -154,7 +164,7 @@ namespace SunuerManage.Controllers
                     Messge = "上传失败",//An error occurred while uploading the file.
                     FileUrl = ""
                 });
-              
+
             }
         }
         [HttpPost("Uploads")]
@@ -171,7 +181,7 @@ namespace SunuerManage.Controllers
             }
 
             // 限制文件类型
-            string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif", ".pdf", ".docx", ".xlsx"};
+            string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif", ".pdf", ".docx", ".xlsx" };
             string[] allowedMimeTypes = { "image/jpeg", "image/png", "image/gif", "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" };
             List<string> fileUrls = new List<string>(); // 用于存储所有上传文件的 URL
 
@@ -203,7 +213,7 @@ namespace SunuerManage.Controllers
                 }
 
                 // 验证文件的 Magic Number
-                if (!IsValidFile(file))
+                if (!await IsValidFile(file, fileExtension))
                 {
                     return Ok(new
                     {
@@ -267,42 +277,37 @@ namespace SunuerManage.Controllers
 
 
         //文件类型安全判断
-        public bool IsValidFile(IFormFile file)
+        private async Task<bool> IsValidFile(IFormFile file, string extension)
         {
             try
             {
-                byte[] buffer = new byte[4];  // 读取前4个字节（Magic Number）
+                byte[] buffer = new byte[8]; // 读前8字节
                 using (var stream = file.OpenReadStream())
                 {
-                    // 读取文件的前4个字节
-                    stream.Read(buffer, 0, buffer.Length);
+                    await stream.ReadAsync(buffer, 0, buffer.Length);
                 }
 
-                string hex = BitConverter.ToString(buffer).Replace("-", string.Empty);
-                Console.WriteLine(hex);
-                // 验证文件类型的 Magic Number
-                if (hex.StartsWith("FFD8FF")) return true; // JPEG
-                if (hex.StartsWith("89504E47")) return true; // PNG
-                if (hex.StartsWith("47494638")) return true; // GIF
-                if (hex.StartsWith("25504446") && file.FileName.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase)) return true; // PDF
-                if (file.FileName.EndsWith(".docx", StringComparison.OrdinalIgnoreCase) || file.FileName.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase))
-                {
-                    // DOCX 和 XLSX 文件是 ZIP 格式，检查文件开头是否是 "PK"
-                    byte[] zipBuffer = new byte[2];
-                    using (var stream = file.OpenReadStream())
-                    {
-                        stream.Read(zipBuffer, 0, zipBuffer.Length);
-                    }
-                    string zipHex = BitConverter.ToString(zipBuffer).Replace("-", string.Empty);
-                    if (zipHex.StartsWith("504B")) return true; // ZIP (DOCX, XLSX)
-                }
-
-                return false; // 不符合已知格式
+                // 根据扩展名检查文件头（magic bytes）
+                if (extension == ".jpg" || extension == ".jpeg")
+                    return buffer[0] == 0xFF && buffer[1] == 0xD8;
+                if (extension == ".png")
+                    return buffer[0] == 0x89 && buffer[1] == 0x50 && buffer[2] == 0x4E && buffer[3] == 0x47;
+                if (extension == ".gif")
+                    return buffer[0] == 0x47 && buffer[1] == 0x49 && buffer[2] == 0x46;
+                if (extension == ".pdf")
+                    return buffer[0] == 0x25 && buffer[1] == 0x50 && buffer[2] == 0x44 && buffer[3] == 0x46;
+                if (extension == ".zip" || extension == ".docx" || extension == ".xlsx")
+                    return buffer[0] == 0x50 && buffer[1] == 0x4B; // zip头
+                if (extension == ".doc" || extension == ".xls")
+                    return buffer[0] == 0xD0 && buffer[1] == 0xCF && buffer[2] == 0x11 && buffer[3] == 0xE0; // 旧版Office格式头
             }
-            catch (Exception)
+            catch
             {
-                return false; // 如果读取失败，说明文件无效
+                return false; // 出错也判失败
             }
+
+            // 其他文件默认通过
+            return true;
         }
 
 

@@ -87,7 +87,7 @@
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">关键字</label>
+        <label class="layui-form-label">关键字<span class="red">*</span></label>
         <div class="layui-input-block">
             <input type="text" name="Articlekey" lay-verify="required" placeholder="请输入关键字" autocomplete="off" class="layui-input">
         </div>
@@ -156,7 +156,7 @@
                     <p>点击上传，或将文件拖拽到此处</p>
                 </div>
 
-                <input id="PicturePathImages" name="Images" type="hidden" value="/images/morenimg.png" />
+                <input id="PicturePathImages" name="Images" type="hidden" value="" />
 
             </div>
         </div>
@@ -362,11 +362,11 @@
                 accept: 'images',  // 只允许上传图片
                 auto: true,  // 自动上传
                 multiple: true,  // 支持多文件上传
-                size: 1420,  // 文件大小限制，单位KB
+                size: 10420,  // 文件大小限制，单位KB
                 before: function(obj) {
                     // 预览文件（本地预览）
                     var previewDiv = $('#ImagePathImages');
-                    previewDiv.empty();  // 清空原先的预览
+                   // previewDiv.empty();  // 清空原先的预览
                     obj.preview(function(index, file, result) {
                        // var imgElement = '<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img" style="max-width: 200px; max-height:200px;  margin-right: 10px;"/>';
                       //  previewDiv.append(imgElement);  // 添加预览图片
@@ -385,13 +385,13 @@
             <i id="del" class="layui-icon layui-icon-close"></i>
         </div>
         `
-                    } else if (res.FileType == ".docx") {
+                    } else if (res.FileType == ".docx"||res.FileType == ".doc") {
                         html_txt += `<div class="file-iteme">
                         <a href="${res.FileUrl}" target="_blank"><img src="/images/DOC.png" /></a>
                 <i id="del" class="layui-icon layui-icon-close"></i>
             </div>
             `
-                    } else if (res.FileType == ".xlsx") {
+                    } else if (res.FileType == ".xlsx" || res.FileType == ".xls") {
                         html_txt += `<div class="file-iteme">
                             <a href="${res.FileUrl}" target="_blank"><img src="/images/excel.jpeg" /></a>
                     <i id="del" class="layui-icon layui-icon-close"></i>
@@ -431,7 +431,7 @@
             url: '/api/Files/Upload',
             accept: 'images',
             auto: true,
-            size: 1420, // 文件大小限制，单位KB
+            size: 10420, // 文件大小限制，单位KB
             choose: function(obj) {
                 //预读本地文件（不支持ie8）
                 var previewDiv = $('#ImagePathImage');
@@ -453,13 +453,13 @@
         <i id="del" class="layui-icon layui-icon-close"></i>
     </div>
     `
-                    } else if (res.FileType == ".docx") {
+                    } else if (res.FileType == ".docx" || res.FileType == ".doc") {
                             html_txt += `<div class="file-iteme">
                     <a href="${res.FileUrl}" target="_blank"><img src="/images/DOC.png" /></a>
             <i id="del" class="layui-icon layui-icon-close"></i>
         </div>
         `
-                    } else if (res.FileType == ".xlsx") {
+                    } else if (res.FileType == ".xlsx" || res.FileType == ".xls") {
                         html_txt += `<div class="file-iteme">
                         <a href="${res.FileUrl}" target="_blank"><img src="/images/excel.jpeg" /></a>
                 <i id="del" class="layui-icon layui-icon-close"></i>

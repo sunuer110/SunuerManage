@@ -28,6 +28,8 @@ namespace SunuerManage.Pages
         public SunuerManage.Pages.Shared.MenuModel? Menu { get; set; }
         public void OnGet()
         {
+            var str = Tools.Tools.DateToDays("2025-03-01", "2025-03-06");
+            Console.WriteLine(str);
             //传递参数布局页面
             var menu = new SunuerManage.Pages.Shared.MenuModel();
             menu.GetMenu();

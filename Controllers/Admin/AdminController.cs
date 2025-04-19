@@ -120,11 +120,15 @@ namespace SunuerManage.Controllers
 
                                 //更新尝试登陆次数
                                 Dal.UpdateLoginAttempts(AdminName, 0);
+                                Dal.UpdateLoginLog(AdminName, 0, Tools.Tools.GetUserIp(_httpContextAccessor.HttpContext ?? throw new InvalidOperationException("HttpContext is null.")),0);
+
                                 return Ok(new ApiResponse<int> { code = 0, msg = "成功", count = 1, data = 1 });  // 返回登陆成功
                             }
                             else
                             {
                                 Dal.UpdateLoginAttempts(AdminName, LoginAttempts + 1);
+                                Dal.UpdateLoginLog(AdminName, 1, Tools.Tools.GetUserIp(_httpContextAccessor.HttpContext ?? throw new InvalidOperationException("HttpContext is null.")), LoginAttempts + 1);
+
                                 return Ok(new ApiResponse<int> { code = 404, msg = "账号或密码错误", count = 0, data = 0 });  // 返回登陆失败
 
                             }

@@ -285,6 +285,30 @@ namespace Admin
             return (Convert.ToInt32(SQLRUN.ExecuteScalar(Sql, CommandType.Text, parameters)));
         }
         /// <summary>
+        /// 更新登录日志
+        /// </summary>
+        /// <param name="AdminName">用户名</param>
+        /// <param name="IsOK">登陆成功0成功1失败</param>
+        /// <param name="IP">IP</param>
+        /// <param name="LoginAttempts">登陆尝试次数</param>
+        /// <returns>影响行数</returns>
+        public int UpdateLoginLog(string AdminName, int IsOK, string IP,int LoginAttempts)
+        {
+            // 执行更新操作并返回 @@rowcount 值 -影响行数（更新后会有受影响行数）
+            string Sql = "insert into  AdminLoginLog (AdminName,IsOK,IP,LoginAttempts) values(@AdminName,@IsOK,@IP,@LoginAttempts); select @@IDENTITY;";
+            DbHelper SQLRUN = new DbHelper();
+            SqlParameter[] parameters =
+           {
+                new SqlParameter("@AdminName", SqlDbType.NVarChar,50) { Value =AdminName },
+                new SqlParameter("@IsOK", SqlDbType.Int,4) { Value =IsOK},
+                new SqlParameter("@IP", SqlDbType.NVarChar,50) { Value =IP },
+                new SqlParameter("@LoginAttempts", SqlDbType.Int,4) { Value =LoginAttempts},
+
+            };
+            // 执行SQL
+            return (Convert.ToInt32(SQLRUN.ExecuteScalar(Sql, CommandType.Text, parameters)));
+        }
+        /// <summary>
         /// 获取单条数据模型-登陆
         /// </summary>
         /// <param name="AdminName">用户名</param>

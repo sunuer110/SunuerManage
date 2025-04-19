@@ -60,7 +60,7 @@
                         {
                             <dd><a lay-href="Admins/AdminPassWord">修改密码</a></dd>
                         }
-                        <dd style="text-align: center;"><a href="LoginOut">退出</a></dd>
+                        <dd style="text-align: center;"><a href="javascript:void(0);" onclick="logout()">退出</a></dd>
                     </dl>
                 </li>
 
@@ -228,6 +228,10 @@
     }).extend({
         index: 'lib/index' //主入口模块
     }).use('index');
+    function logout() {
+        // 使用时间戳避免缓存
+        location.replace('LoginOut?' + new Date().getTime());
+    }
     function showCategory() {
 
         $("#Category").html("<li><div style=\"text-align:center;\"><img src=\"/images/progress.gif\" /></div></li>")
