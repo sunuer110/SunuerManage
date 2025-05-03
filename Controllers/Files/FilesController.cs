@@ -39,7 +39,7 @@ namespace SunuerManage.Controllers
                 name = "";
             }
             // 限制文件类型
-            string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif", ".pdf", ".doc", ".xls", ".docx", ".xlsx", ".zip" };
+            string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif", ".pdf", ".doc", ".xls", ".docx", ".xlsx", ".zip", ".mp4", ".mpeg", ".mpg", ".ogv", ".webm" };
             string fileExtension = Path.GetExtension(file.FileName).ToLower();
             string[] allowedMimeTypes = {
     "image/jpeg",
@@ -51,7 +51,12 @@ namespace SunuerManage.Controllers
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // 对应 .docx
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // 对应 .xlsx
     "application/zip" // 如果你要允许 .zip 文件
-    , "application/octet-stream"
+    , "application/octet-stream",
+    "application/octet-stream", // 兼容浏览器上传
+    "video/mp4",   // 对应 .mp4
+    "video/mpeg",  // 对应 .mpeg 和 .mpg
+    "video/ogg",   // 对应 .ogv
+    "video/webm"   // 对应 .webm
 };
             string FileType = "";
             FileType = fileExtension;
@@ -94,7 +99,7 @@ namespace SunuerManage.Controllers
                 return Ok(new
                 {
                     Code = "404",
-                    Messge = "上传失败，格式错误！",//File size exceeds the 5MB limit.
+                    Messge = "上传失败，文件超出大小限制！",//File size exceeds the 5MB limit.
                     FileUrl = ""
                 });
             }
@@ -181,8 +186,25 @@ namespace SunuerManage.Controllers
             }
 
             // 限制文件类型
-            string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif", ".pdf", ".docx", ".xlsx" };
-            string[] allowedMimeTypes = { "image/jpeg", "image/png", "image/gif", "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" };
+            // 限制文件类型
+            string[] allowedExtensions = { ".jpg", ".jpeg", ".png", ".gif", ".pdf", ".doc", ".xls", ".docx", ".xlsx", ".zip", ".mp4", ".mpeg", ".mpg", ".ogv", ".webm" };
+            string[] allowedMimeTypes = {
+    "image/jpeg",
+    "image/png",
+    "image/gif",
+    "application/pdf",
+    "application/msword", // 对应 .doc
+    "application/vnd.ms-excel", // 对应 .xls
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // 对应 .docx
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // 对应 .xlsx
+    "application/zip" // 如果你要允许 .zip 文件
+    , "application/octet-stream",
+    "application/octet-stream", // 兼容浏览器上传
+    "video/mp4",   // 对应 .mp4
+    "video/mpeg",  // 对应 .mpeg 和 .mpg
+    "video/ogg",   // 对应 .ogv
+    "video/webm"   // 对应 .webm
+};
             List<string> fileUrls = new List<string>(); // 用于存储所有上传文件的 URL
 
             foreach (var file in files)
@@ -300,6 +322,16 @@ namespace SunuerManage.Controllers
                     return buffer[0] == 0x50 && buffer[1] == 0x4B; // zip头
                 if (extension == ".doc" || extension == ".xls")
                     return buffer[0] == 0xD0 && buffer[1] == 0xCF && buffer[2] == 0x11 && buffer[3] == 0xE0; // 旧版Office格式头
+                                                                                                             // 视频文件头检查
+                if (extension == ".mp4")
+                    return buffer[4] == 0x66 && buffer[5] == 0x74 && buffer[6] == 0x79 && buffer[7] == 0x70; // "ftyp"
+                if (extension == ".mpeg" || extension == ".mpg")
+                    return buffer[0] == 0x00 && buffer[1] == 0x00 && buffer[2] == 0x01 && (buffer[3] == 0xBA || buffer[3] == 0xB3);
+                if (extension == ".ogv")
+                    return buffer[0] == 0x4F && buffer[1] == 0x67 && buffer[2] == 0x67 && buffer[3] == 0x53; // "OggS"
+                if (extension == ".webm")
+                    return buffer[0] == 0x1A && buffer[1] == 0x45 && buffer[2] == 0xDF && buffer[3] == 0xA3; // Matroska (webm是它的子集)
+
             }
             catch
             {
