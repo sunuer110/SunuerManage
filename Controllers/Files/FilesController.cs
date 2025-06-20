@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace SunuerManage.Controllers
+namespace Web.Controllers
 {
 
     /// <summary>
@@ -303,33 +302,33 @@ namespace SunuerManage.Controllers
         {
             try
             {
+                Task<string> type = DetectRealFileExtension(file);
                 byte[] buffer = new byte[8]; // 读前8字节
                 using (var stream = file.OpenReadStream())
                 {
                     await stream.ReadAsync(buffer, 0, buffer.Length);
                 }
-
                 // 根据扩展名检查文件头（magic bytes）
-                if (extension == ".jpg" || extension == ".jpeg")
+                if (type.Result == ".jpg" || type.Result == ".jpeg")
                     return buffer[0] == 0xFF && buffer[1] == 0xD8;
-                if (extension == ".png")
+                if (type.Result == ".png")
                     return buffer[0] == 0x89 && buffer[1] == 0x50 && buffer[2] == 0x4E && buffer[3] == 0x47;
-                if (extension == ".gif")
+                if (type.Result == ".gif")
                     return buffer[0] == 0x47 && buffer[1] == 0x49 && buffer[2] == 0x46;
-                if (extension == ".pdf")
+                if (type.Result == ".pdf")
                     return buffer[0] == 0x25 && buffer[1] == 0x50 && buffer[2] == 0x44 && buffer[3] == 0x46;
-                if (extension == ".zip" || extension == ".docx" || extension == ".xlsx")
+                if (type.Result == ".zip" || type.Result == ".docx" || type.Result == ".xlsx")
                     return buffer[0] == 0x50 && buffer[1] == 0x4B; // zip头
-                if (extension == ".doc" || extension == ".xls")
+                if (type.Result == ".doc" || type.Result == ".xls")
                     return buffer[0] == 0xD0 && buffer[1] == 0xCF && buffer[2] == 0x11 && buffer[3] == 0xE0; // 旧版Office格式头
                                                                                                              // 视频文件头检查
-                if (extension == ".mp4")
+                if (type.Result == ".mp4")
                     return buffer[4] == 0x66 && buffer[5] == 0x74 && buffer[6] == 0x79 && buffer[7] == 0x70; // "ftyp"
-                if (extension == ".mpeg" || extension == ".mpg")
+                if (type.Result == ".mpeg" || type.Result == ".mpg")
                     return buffer[0] == 0x00 && buffer[1] == 0x00 && buffer[2] == 0x01 && (buffer[3] == 0xBA || buffer[3] == 0xB3);
-                if (extension == ".ogv")
+                if (type.Result == ".ogv")
                     return buffer[0] == 0x4F && buffer[1] == 0x67 && buffer[2] == 0x67 && buffer[3] == 0x53; // "OggS"
-                if (extension == ".webm")
+                if (type.Result == ".webm")
                     return buffer[0] == 0x1A && buffer[1] == 0x45 && buffer[2] == 0xDF && buffer[3] == 0xA3; // Matroska (webm是它的子集)
 
             }
@@ -342,6 +341,59 @@ namespace SunuerManage.Controllers
             return true;
         }
 
+        public async Task<string> DetectRealFileExtension(IFormFile file)
+        {
+            byte[] buffer = new byte[12]; // 最大需要判断前 12 字节
+            using (var stream = file.OpenReadStream())
+            {
+                await stream.ReadAsync(buffer, 0, buffer.Length);
+            }
 
+            // PNG
+            if (buffer.Take(8).SequenceEqual(new byte[] { 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A }))
+                return ".png";
+
+            // JPEG
+            if (buffer[0] == 0xFF && buffer[1] == 0xD8)
+                return ".jpg";
+
+            // GIF
+            if (buffer[0] == 0x47 && buffer[1] == 0x49 && buffer[2] == 0x46)
+                return ".gif";
+
+            // PDF
+            if (buffer.Take(4).SequenceEqual(new byte[] { 0x25, 0x50, 0x44, 0x46 }))
+                return ".pdf";
+
+            // ZIP / DOCX / XLSX
+            if (buffer[0] == 0x50 && buffer[1] == 0x4B)
+                return ".zip";
+
+            // DOC / XLS (老版 Office)
+            if (buffer.Take(4).SequenceEqual(new byte[] { 0xD0, 0xCF, 0x11, 0xE0 }))
+                return ".doc";
+
+            // MP4 (查找 ftyp)
+            if (buffer.Length >= 8 &&
+                buffer[4] == 0x66 && buffer[5] == 0x74 && buffer[6] == 0x79 && buffer[7] == 0x70)
+                return ".mp4";
+
+            // WebM
+            if (buffer.Take(4).SequenceEqual(new byte[] { 0x1A, 0x45, 0xDF, 0xA3 }))
+                return ".webm";
+
+            // OGV
+            if (buffer.Take(4).SequenceEqual(new byte[] { 0x4F, 0x67, 0x67, 0x53 }))
+                return ".ogv";
+
+            // MPEG
+            if (buffer[0] == 0x00 && buffer[1] == 0x00 && buffer[2] == 0x01 &&
+                (buffer[3] == 0xBA || buffer[3] == 0xB3))
+                return ".mpg";
+
+            // 未识别类型
+            return "unknown";
+        }
     }
+
 }

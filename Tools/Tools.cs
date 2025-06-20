@@ -165,6 +165,16 @@ namespace Tools
             const string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             return Regex.IsMatch(str, pattern);
         }
+
+        /// <summary>
+        /// 获取用户的 IP 地址
+        /// 优先获取外网 IP，如果没有则获取内网 IP
+        /// </summary>
+        /// <returns>用户 IP 地址</returns>
+        public static string GetIP()
+        {
+            return HttpContextHelper.GetUserIp();
+        }
         /// <summary>
         /// 获取用户的 IP 地址
         /// 优先获取外网 IP，如果没有则获取内网 IP

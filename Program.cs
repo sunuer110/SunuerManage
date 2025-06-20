@@ -47,8 +47,13 @@ namespace SunuerManage
                 options.Cookie.HttpOnly = true; // 仅允许通过 HTTP 访问 Cookie，防止客户端脚本访问
                 options.Cookie.IsEssential = true; // 确保 Cookie 在隐私策略下也是必须的
             });
+            //注册HttpContext
+            builder.Services.AddHttpContextAccessor();
             var app = builder.Build();
 
+            // 初始化 HttpContextHelper
+            var httpContextAccessor = app.Services.GetRequiredService<IHttpContextAccessor>();
+            HttpContextHelper.Configure(httpContextAccessor);
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {

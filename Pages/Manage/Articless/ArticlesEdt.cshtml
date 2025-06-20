@@ -524,13 +524,13 @@
                         <i id="del" class="layui-icon layui-icon-close"></i>
                     </div>
                     `
-            } else if (a.toLowerCase() == ".docx" || res.FileType == ".doc") {
+            } else if (a.toLowerCase() == ".docx" || a.toLowerCase() == ".doc") {
                     html_txt += `<div class="file-iteme">
                                         <a href="${item}" target="_blank"><img src="/images/DOC.png" /></a>
                             <i id="del" class="layui-icon layui-icon-close"></i>
                         </div>
                         `
-            } else if (a.toLowerCase() == ".xlsx" || res.FileType == ".xls") {
+            } else if (a.toLowerCase() == ".xlsx" || a.toLowerCase() == ".xls") {
                     html_txt += `<div class="file-iteme">
                                             <a href="${item}" target="_blank"><img src="/images/excel.jpeg" /></a>
                                 <i id="del" class="layui-icon layui-icon-close"></i>
@@ -563,13 +563,13 @@
                     <i id="del" class="layui-icon layui-icon-close"></i>
                 </div>
                 `
-                } else if (a.toLowerCase() == ".docx" || res.FileType == ".doc") {
+                } else if (a.toLowerCase() == ".docx" || a.toLowerCase() == ".doc") {
                     html_txt += `<div class="file-iteme">
                                     <a href="${item}" target="_blank"><img src="/images/DOC.png" /></a>
                         <i id="del" class="layui-icon layui-icon-close"></i>
                     </div>
                     `
-                } else if (a.toLowerCase() == ".xlsx" || res.FileType == ".xls") {
+                } else if (a.toLowerCase() == ".xlsx" || a.toLowerCase() == ".xls") {
                     html_txt += `<div class="file-iteme">
                                         <a href="${item}" target="_blank"><img src="/images/excel.jpeg" /></a>
                             <i id="del" class="layui-icon layui-icon-close"></i>
@@ -675,7 +675,7 @@
                             parent.layer.close(index)
                         });
                     } else {
-                        layer.msg(datas.msg, {
+                        layer.msg(datax.msg, {
                             icon: 1,
                             time: 3000 //2秒关闭（如果不配置，默认是3秒）
                         }, function() {
